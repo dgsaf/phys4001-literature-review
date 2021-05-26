@@ -31,38 +31,27 @@
 % cover page
 
 \begin{titlepage}
-  {
-    \centering
+  \begin{flushleft}
+    \theinstitution \hfill \theassessment
+  \end{flushleft}
+  \hrule
+  \begin{center}
     {
-      \scshape\large\theinstitution
-      ~\\
-      \scshape\large\theassessment
-      \par
-    }
-    \vspace{1 em}
-    \hrule
-    ~\\
-    {
-      \scshape\huge\thetitle
-      \par
-    }
-    \vspace{1 em}
-    {
-      \scshape\large
-      {
-        \theauthor
-        ~supervised by
-        \thesupervisor
-      }
-      \par
+      \huge
+      \thetitle
     }
     ~\\
-    \hrule
-  }
-  \vspace{2 em}
-  {
+    \rule[1.0pt]{8.5cm}{0.4pt}
+    ~\\
+    {
+      \large
+      \theauthor ~supervised by \thesupervisor
+    }
+  \end{center}
+  \hrule
+  \begin{center}
     [ABSTRACT]
-  }
+  \end{center}
 \end{titlepage}
 
 \clearpage
@@ -112,6 +101,9 @@
 \paragraph{Total Cross Sections}
 
 \paragraph{Differential Cross Sections}
+
+\subsubsection{S-Wave Model}
+\label{sec:s-wave-model}
 
 \subsection{Electron-Impact Hydrogen Scattering}
 \label{sec:e-h}

@@ -1,0 +1,110 @@
+\documentclass[draft]{article}
+
+% - Style
+\usepackage{base}
+
+% - Title
+\gdef\theassessment{PHYS4001 - Literature Review}
+\gdef\thesupervisor{Professor Igor Bray}
+\gdef\theinstitution{Curtin University}
+\gdef\thestudentid{1834 2884}
+
+\title{Ionization Amplitudes in Electron-Helium Collisions within the S-Wave Model}
+\author{Tom Ross - \thestudentid}
+\date{\today}
+
+% - Headers
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\theauthor}
+\chead{}
+\lhead{\theassessment}
+\rfoot{\thepage}
+\cfoot{}
+\lfoot{}
+
+% document
+
+\begin{document}
+
+% cover page
+
+\begin{titlepage}
+  {
+    \centering
+    {
+      \scshape\large\theinstitution
+      ~\\
+      \scshape\large\theassessment
+      \par
+    }
+    \vspace{1 em}
+    \hrule
+    ~\\
+    {
+      \scshape\huge\thetitle
+      \par
+    }
+    \vspace{1 em}
+    {
+      \scshape\large
+      {
+        \theauthor
+        ~\\
+        \thesupervisor
+      }
+      \par
+    }
+    ~\\
+    \hrule
+  }
+  \vspace{2 em}
+  {
+  }
+  % \vfill
+  {
+    [ABSTRACT]
+  }
+\end{titlepage}
+
+\clearpage
+
+% contents page
+
+\tableofcontents
+\listoffigures
+
+\listoftables
+
+% statement
+
+\clearpage
+
+\section{Introduction}
+\label{sec:introduction}
+
+\section{Theory}
+\label{sec:theory}
+
+\subsection{Convergent Close-Coupling Method}
+\label{sec:ccc-method}
+
+\subsection{Ionization Amplitudes}
+\label{sec:ionization-amplitudes}
+
+\section{Survey of Results}
+\label{sec:survey-results}
+
+% extant ccc results
+
+% exterior complex scaling
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+\clearpage
+
+\bibliographystyle{chicago}
+\bibliography{references}
+
+\end{document}

@@ -1,5 +1,6 @@
 # Ionisation Amplitudes in Electron-Impact Helium Collisions within the S-Wave
-  Model
+Model
+
 
 PHYS4001 - Literature Review
 

@@ -190,17 +190,14 @@ Further properties of the Laguerre basis are provided in
 Possessing now a suitable basis to work with, we proceed to represent the
 projectile-target system in this basis by the method of basis expansion.
 We first construct the projectile states, and the target states, before
-considering how to construct the two into a total state.
+considering how to combine the two into a set of total states.
 
 \paragraph{Projectile States}
 
 The projectile states, $\ket{\boldsymbol{k}}$, are defined to be eigenstates of
 the free Hamiltonian; that is,
 \begin{equation}
-  \label{eq:projectile-hamiltonian}
-  \hat{H}_{1}
-  \ket{\boldsymbol{k}}
-  =
+  \label{eq:projectile-free-hamiltonian}
   \hat{K}_{1}
   \ket{\boldsymbol{k}}
   =
@@ -223,6 +220,30 @@ coordinate-space representation is of the form
     \vdot
     \boldsymbol{r}
   }
+  .
+\end{equation}
+Note that the Hamiltonian for the projectile, in the projectile-target system,
+is of the form
+\begin{equation}
+  \label{eq:projectile-hamiltonian}
+  \hat{H}_{1}
+  \ket{\boldsymbol{k}}
+  =
+  \lrsq
+  {
+    \hat{K}_{1}
+    +
+    \hat{V}_{1}
+  }
+  \ket{\boldsymbol{k}}
+  =
+  \lrsq
+  {
+    \tfrac{k^{2}}{2}
+    +
+    \hat{V}_{1}
+  }
+  \ket{\boldsymbol{k}}
   .
 \end{equation}
 
@@ -250,29 +271,73 @@ pseudoenergies are dependent on the size of the Laguerre basis utilised.
 The procedure of diagonalising the target Hamiltonian is discussed in further
 detail in \autoref{app:diagonalisation}.
 
+Lastly, we note that where $\hat{I}_{2}^{\lr{N}}$ is the projection operator for
+the orthnormal target states, which is of the form,
+\begin{equation}
+  \label{eq:target-projection}
+  \hat{I}_{2}^{\lr{N}}
+  =
+  \sum_{i = 1}^{N}
+  \ket*{\phi_{i}^{\lr{N}}}
+  \bra*{\phi_{i}^{\lr{N}}}
+\end{equation}
+that it will converge to the identity operator in the limit as $N \to \infty$,
+\begin{equation}
+  \label{eq:target-projection-convergence}
+  \lim_{N \to \infty}
+  I_{2}^{\lr{N}}
+  =
+  I_{2}
+\end{equation}
+
 \paragraph{Total State}
 
+The total state, $\ket*{\Psi^{\lr{S}}}$, with a given total spin $S$, are
+eigenstates of the total Hamiltonian,
+$\hat{H} = \hat{H}_{1} + \hat{H}_{2} + \hat{V}_{1, 2}$; that is,
+\begin{equation}
+  \label{eq:total-hamiltonian}
+  \hat{H}
+  \ket*{\Psi^{\lr{S}}}
+  =
+  E
+  \ket*{\Psi^{\lr{S}}}
+  .
+\end{equation}
 As a result of the asymptotic initial conditions, in which the projectile and
 the target are assumed to be sufficiently far apart as to be non-interacting,
-we might naively suppose the total state of the projectile-target system can be
-constructed as a tensor products of the individual projectile and target states.
-That is, we might suppose that the total asymptotic state,
-$\ket*{\Psi^{\lr{+}}}$, may be
-written as $\ket*{\Psi^{\lr{+}}} = \ket{\phi, \boldsymbol{k}}$,
-where $\ket{\phi}$ is the target state, and $\ket{\boldsymbol{k}}$ is the
-projectile state.
-However, this neglects to account for the effects of spin and Pauli's exclusion
+the asymptotic Hamiltonian, $\hat{H}_{\lr{+}} = \hat{K}_{1} + \hat{H}_{2}$,
+satisfies
+\begin{equation}
+  \label{eq:total-asymptotic-hamiltonian}
+  \hat{H}_{\lr{+}}
+  \ket*{\phi_{i}^{\lr{N}}, \boldsymbol{k}}
+  =
+  \lr
+  {
+    \epsilon_{i}^{\lr{N}}
+    +
+    \tfrac{k^{2}}{2}
+  }
+  \ket*{\phi_{i}^{\lr{N}}, \boldsymbol{k}}
+  .
+\end{equation}
+Naively, we might suppose that the total asymptotic state,
+$\ket*{\Psi_{i}^{\lr{S, +}}}$, may be written in the form
+$\ket*{\Psi_{i}^{\lr{S, +}}} = \ket{\phi_{i}, \boldsymbol{k}_{i}}$,
+however, this does not account for the effects of spin and Pauli's exclusion
 principle, or more generally symmetrisation / anti-symmetrisation.
-
 For the case where the projectile is a fermion, and the target contains one such
 fermion, then the fermions are necessarily indistinguishable.
 Additionally, Pauli's exclusion principle states that two fermions cannot occupy
 the same state (including spin) within a system.
-To account for this principle, we may write the total state,
-$\ket*{\Psi^{\lr{S+}}}$, for a given total spin $S$, in the form
+This case is applicable for both e-H scattering and e-He scattering with a
+frozen core model for He.
+To account for this principle, we write the total state,
+$\ket*{\Psi_{i}^{\lr{S, +}}}$, in the form
 \begin{equation}
-  \label{eq:total-state}
-  \ket*{\Psi^{\lr{S+}}}
+  \label{eq:total-state-symmetrisation}
+  \ket*{\Psi_{i}^{\lr{S, +}}}
   =
   \lrsq
   {
@@ -281,13 +346,42 @@ $\ket*{\Psi^{\lr{S+}}}$, for a given total spin $S$, in the form
     \lr{-1}^{S}
     \hat{P}_{r}
   }
-  \ket*{\psi^{\lr{S+}}}
+  \ket*{\psi_{i}^{\lr{S, +}}}
 \end{equation}
 where $\hat{P}_{r}$ is the spatial exchange operator, and where
-$\ket*{\psi^{\lr{S+}}}$ is the two-fermion state.
-It follows that the total state, in this form, is guaranteed to adhere to
-Pauli's exclusion principle.
-
+$\ket*{\psi_{i}^{\lr{S, +}}}$ is a two-fermion state, for which it follows that the
+total state is guaranteed to possess the proper symmetry properties.
+It then remains to determine the form of $\ket*{\psi_{i}^{\lr{S, +}}}$.
+We note that by expanding this two-fermion state in the set of target states, we
+have that
+\begin{equation}
+  \label{eq:target-expansion}
+  \ket*{\psi_{i}^{\lr{S, +}}}
+  =
+  \hat{I}_{2}
+  \ket*{\psi_{i}^{\lr{S, +}}}
+  =
+  \lim_{N \to \infty}
+  \hat{I}_{2}^{\lr{N}}
+  \ket*{\psi_{i}^{\lr{S, +}}}
+  =
+  \lim_{N \to \infty}
+  \ket*{\psi_{i}^{\lr{N, S, +}}}
+\end{equation}
+where
+\begin{equation}
+  \label{eq:2}
+  \ket*{\psi_{i}^{\lr{N, S, +}}}
+  =
+  \hat{I}_{2}^{\lr{N}}
+  \ket*{\psi_{i}^{\lr{S, +}}}
+  =
+  \sum_{j = 1}^{N}
+  \ket*{\phi_{j}^{\lr{N}}}
+  \bra*{\phi_{j}^{\lr{N}}}
+  \ket*{\psi_{i}^{\lr{S, +}}}
+  .
+\end{equation}
 
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}

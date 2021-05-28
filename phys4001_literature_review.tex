@@ -90,9 +90,10 @@ method.
 \subsection{Convergent Close-Coupling Method}
 \label{sec:ccc-method}
 
-In brief, the CCC method utilises the method of basis expansion to numerically
-solve the Lippmann-Schwinger equation, for a projectile-target system, to yield
-the transition amplitudes, which are convergent as the size of the basis is
+In brief, the CCC method utilises the method of basis expansion, discussed in
+further detail in \autoref{app:basis-expansion}, to numerically solve the
+Lippmann-Schwinger equation, for a projectile-target system, to yield the
+transition amplitudes, which are convergent as the size of the basis is
 increased.
 The rate of convergence depends on many factors, such as the complexity and
 geometry of the projectile-target system for example, as well as the choice of
@@ -157,6 +158,10 @@ Hence, the Laguerre basis functions
 $\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forms a complete basis
 for the Hilbert space $L_{\complex}^{2}\lr{\real^{3}}$ space.
 
+This Laguerre basis is utilised due to being a complete basis, the short-range
+and long-range behaviour of the radial basis functions, and because it allows
+the matrix elements of certain operators to be calculated analytically.
+
 Practically, we cannot utilise a a basis of infinite size.
 Hence, we truncate the Laguerre radial basis,
 $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{N_{l}}$, to a certain number of radial basis
@@ -184,15 +189,8 @@ Further properties of the Laguerre basis are provided in
 
 Possessing now a suitable basis to work with, we proceed to represent the
 projectile-target system in this basis by the method of basis expansion.
-As a result of the asymptotic initial conditions, in which the projectile and
-the target are assumed to be sufficiently far apart as to be non-interacting,
-the total state of the projectile-target system can be constructed as a tensor
-product of the individual projectile and target states.
-That is, the total state, $\ket{\Phi}$, may be written as
-$\ket{\Phi} = \ket{\phi, \boldsymbol{k}}$,
-where $\ket{\phi}$ is the target state, and $\ket{\boldsymbol{k}}$ is the
-projectile state.
-It now remains to construct the projectile states, and the target states.
+We first construct the projectile states, and the target states, before
+considering how to construct the two into a total state.
 
 \paragraph{Projectile States}
 
@@ -228,25 +226,68 @@ coordinate-space representation is of the form
   .
 \end{equation}
 
-\paragraph{Target Structure}
+\paragraph{Target States}
 
 The target states, $\ket{\phi}$ are constructed by expanding the target
-Hamiltonian,
+Hamiltonian, $\hat{H}_{2} = \hat{K}_{2} + \hat{V}_{2}$,
+in a Laguerre basis, $\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and diagonalising
+to yield the target pseudostates
+$\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$, which are orthonormal and satisfy
 \begin{equation}
   \label{eq:target-hamiltonian}
+  \bra*{\phi_{i}^{\lr{N}}}
   \hat{H}_{2}
-  \ket{\phi}
+  \ket*{\phi_{j}^{\lr{N}}}
+  =
+  \epsilon_{i}^{\lr{N}}
+  \delta_{i, j}
+  .
+\end{equation}
+Note that the $\lr{N}$ superscript has been introduced to indicate that these
+are not true eigenstates of the target Hamiltonian, only of its representation
+in the truncated Laguerrre basis, and that these pseudostates and their
+pseudoenergies are dependent on the size of the Laguerre basis utilised.
+The procedure of diagonalising the target Hamiltonian is discussed in further
+detail in \autoref{app:diagonalisation}.
+
+\paragraph{Total State}
+
+As a result of the asymptotic initial conditions, in which the projectile and
+the target are assumed to be sufficiently far apart as to be non-interacting,
+we might naively suppose the total state of the projectile-target system can be
+constructed as a tensor products of the individual projectile and target states.
+That is, we might suppose that the total asymptotic state,
+$\ket*{\Psi^{\lr{+}}}$, may be
+written as $\ket*{\Psi^{\lr{+}}} = \ket{\phi, \boldsymbol{k}}$,
+where $\ket{\phi}$ is the target state, and $\ket{\boldsymbol{k}}$ is the
+projectile state.
+However, this neglects to account for the effects of spin and Pauli's exclusion
+principle, or more generally symmetrisation / anti-symmetrisation.
+
+For the case where the projectile is a fermion, and the target contains one such
+fermion, then the fermions are necessarily indistinguishable.
+Additionally, Pauli's exclusion principle states that two fermions cannot occupy
+the same state (including spin) within a system.
+To account for this principle, we may write the total state,
+$\ket*{\Psi^{\lr{S+}}}$, for a given total spin $S$, in the form
+\begin{equation}
+  \label{eq:total-state}
+  \ket*{\Psi^{\lr{S+}}}
   =
   \lrsq
   {
-    \hat{K}_{2}
+    1
     +
-    \hat{V}_{2}
+    \lr{-1}^{S}
+    \hat{P}_{r}
   }
-  \ket{\phi}
+  \ket*{\psi^{\lr{S+}}}
 \end{equation}
-in a Laguerre basis, and diagonalising to yield the target pseudostates
-$\lrset{\ket{\phi_{i}}}_{i = 1}^{N}$
+where $\hat{P}_{r}$ is the spatial exchange operator, and where
+$\ket*{\psi^{\lr{S+}}}$ is the two-fermion state.
+It follows that the total state, in this form, is guaranteed to adhere to
+Pauli's exclusion principle.
+
 
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}
@@ -337,8 +378,6 @@ $\lrset{\ket{\phi_{i}}}_{i = 1}^{N}$
 \clearpage
 
 \bibliographystyle{chicago}
-\section{Laguerre Radial Basis}
-\label{sec:laguerre-radial-basis}
 
 \bibliography{references}
 
@@ -346,8 +385,14 @@ $\lrset{\ket{\phi_{i}}}_{i = 1}^{N}$
 
 \appendix
 
-\section{Properties of Laguerre Basis}
-\label{app:laguerre-basis}
+\section{Properties of Utilised Bases}
+\label{app:properties}
+
+\subsection{Spherical Harmonics}
+\label{app:spherical-harmonics}
+
+\subsubsection{Completeness}
+\label{app:spherical-harmonic-completeness}
 
 \subsection{Laguerre Radial Basis}
 \label{app:laguerre-radial-basis}
@@ -355,11 +400,19 @@ $\lrset{\ket{\phi_{i}}}_{i = 1}^{N}$
 \subsubsection{Completeness}
 \label{app:laguerre-completeness}
 
-\subsection{Spherical Harmonic}
-\label{app:spherical-harmonics}
+\subsection{Laguerre Basis}
+\label{app:laguerre-basis}
 
-\subsubsection{Completeness}
-\label{app:spherical-harmonic-completeness}
+\subsection{Plane Waves}
+\label{app:plane-waves}
 
+\section{Numerical Techniques}
+\label{app:numerical-techniques}
+
+\subsection{Basis Expansion}
+\label{app:basis-expansion}
+
+\subsection{Diagonalisation}
+\label{app:diagonalisation}
 
 \end{document}

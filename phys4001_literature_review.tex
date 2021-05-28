@@ -80,11 +80,85 @@
 \section{Theory}
 \label{sec:theory}
 
+We shall describe the development of the Convergent Close-Coupling (CCC) method
+for generalised projectile-target scattering, before describing its application
+to the cases of: electron-impact hydrogen (e-H) scattering, and electron-impact
+helium (e-He) scattering.
+In particular, we shall explore the treatment of target ionisation within the CCC
+method.
+
 \subsection{Convergent Close-Coupling Method}
 \label{sec:ccc-method}
 
+In brief, the CCC method utilises the method of basis expansion to numerically
+solve the Lippmann-Schwinger equation, for a projectile-target system, to yield
+the transition amplitudes, which are convergent as the size of the basis is
+increased.
+The rate of convergence depends on many factors, such as the complexity and
+geometry of the projectile-target system for example, as well as the choice of
+basis used in the expansion.
+Furthermore, by selecting a complete basis, ionisation transition amplitudes can
+be treated in a similar manner to discrete excitation transition amplitudes.
+
 \subsubsection{Laguerre Basis}
 \label{sec:laguerre-basis}
+
+To describe the target structure, the CCC method utilises a Laguerre basis,
+$\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, for which the coordinate-space
+representation is of the form
+\begin{equation}
+  \label{eq:laguerre-basis}
+  \varphi_{i}\lr{r, \Omega}
+  =
+  \tfrac{1}{r}
+  \xi_{k_{i}, l{i}}\lr{r}
+  Y_{l_{i}}^{m_{i}}\lr{\Omega}
+\end{equation}
+where $Y_{l_{i}}^{m_{i}}\lr{\Omega}$ are the spherical harmonics, and where
+$\xi_{k_{i}, l_{i}}\lr{r}$ are the Laguerre radial basis functions, which are of
+the form
+\begin{equation}
+  \label{eq:laguerre-radial-basis}
+  \xi_{k, l}\lr{r}
+  =
+  \sqrt
+  {
+    \dfrac
+    {
+      \lambda_{l}
+      \lr{k - 1}!
+    }
+    {
+      \lr{2l + 1 + k}!
+    }
+  }
+  \lr{\lambda_{l} r}^{l + 1}
+  \exponential\lr[\big]{- \tfrac{1}{2} \lambda_{l} r}
+  L_{k - 1}^{2l + 2}\lr{\lambda_{l} r}
+\end{equation}
+where $\alpha_{l}$ is the exponential fall-off, for each $l$, and where
+$L_{k - 1}^{2l + 2}\lr{\lambda_{l} r}$ are the associated Laguerre polynomials.
+Note that we must have that
+$k_{i} \in \lrset{1, \dotsc, N_{l}}$,
+$l_{i} \in \lrset{0, \dotsc, l_{max}}$ and
+$m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
+$i \in \lrset{1, 2, \dotsc, N}$, where $N_{l}$ is the total number of radial
+basis functions for each ${l}$.
+
+It is shown in \autoref{app:laguerre-completeness}, for each $l$, that the
+Laguerre radial basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$,
+forms a complete basis for the Hilbert space $L_{\complex}^{2}\lr{[0, \infty)}$.
+Similarly, it is also shown in \autoref{app:spherical-harmonic-completeness},
+that the set of spherical harmonics,
+$\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
+forms a orthonormal, complete basis for the Hilbert space
+$L_{\complex}^{2}\lr{S^{2}}$.
+Hence, the Laguerre basis functions
+$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forms a complete basis
+for the Hilbert space $L_{\complex}^{2}\lr{\real^{3}}$ space.
+
+Further properties of the Laguerre basis are provided in
+\autoref{app:laguerre-basis}.
 
 \subsubsection{Target-Projectile System}
 \label{sec:target-projectile}
@@ -178,6 +252,29 @@
 \clearpage
 
 \bibliographystyle{chicago}
+\section{Laguerre Radial Basis}
+\label{sec:laguerre-radial-basis}
+
 \bibliography{references}
+
+\clearpage
+
+\appendix
+
+\section{Properties of Laguerre Basis}
+\label{app:laguerre-basis}
+
+\subsection{Laguerre Radial Basis}
+\label{app:laguerre-radial-basis}
+
+\subsubsection{Completeness}
+\label{app:laguerre-completeness}
+
+\subsection{Spherical Harmonic}
+\label{app:spherical-harmonics}
+
+\subsubsection{Completeness}
+\label{app:spherical-harmonic-completeness}
+
 
 \end{document}

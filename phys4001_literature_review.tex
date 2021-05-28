@@ -104,11 +104,12 @@ be treated in a similar manner to discrete excitation transition amplitudes.
 \label{sec:laguerre-basis}
 
 To describe the target structure, the CCC method utilises a Laguerre basis,
-$\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, for which the coordinate-space
+$\lrset{\ket{\varphi_{i}}}_{i = 1}^{\infty}$, for which the coordinate-space
 representation is of the form
 \begin{equation}
   \label{eq:laguerre-basis}
-  \varphi_{i}\lr{r, \Omega}
+  \bra{\boldsymbol{r}}
+  \ket{\varphi_{i}}
   =
   \tfrac{1}{r}
   \xi_{k_{i}, l{i}}\lr{r}
@@ -139,11 +140,10 @@ the form
 where $\alpha_{l}$ is the exponential fall-off, for each $l$, and where
 $L_{k - 1}^{2l + 2}\lr{\lambda_{l} r}$ are the associated Laguerre polynomials.
 Note that we must have that
-$k_{i} \in \lrset{1, \dotsc, N_{l}}$,
-$l_{i} \in \lrset{0, \dotsc, l_{max}}$ and
+$k_{i} \in \lrset{1, 2, \dotsc}$,
+$l_{i} \in \lrset{0, 1, \dotsc}$ and
 $m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
-$i \in \lrset{1, 2, \dotsc, N}$, where $N_{l}$ is the total number of radial
-basis functions for each ${l}$.
+$i \in \lrset{1, 2, \dotsc}$.
 
 It is shown in \autoref{app:laguerre-completeness}, for each $l$, that the
 Laguerre radial basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$,
@@ -157,11 +157,96 @@ Hence, the Laguerre basis functions
 $\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forms a complete basis
 for the Hilbert space $L_{\complex}^{2}\lr{\real^{3}}$ space.
 
+Practically, we cannot utilise a a basis of infinite size.
+Hence, we truncate the Laguerre radial basis,
+$\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{N_{l}}$, to a certain number of radial basis
+functions, $N_{l}$, for each $l$, and we also truncate
+$l \in \lrset{0, \dotsc, l_{max}}$,
+limiting the maximum angular momentum we consider in our basis.
+Hence, for a given value of $m$, we have a basis size of
+\begin{equation}
+  \label{eq:basis-size}
+  N
+  =
+  \sum_{l = 0}^{l_{max}}
+  N_{l}
+  .
+\end{equation}
+In the limit as $N \to \infty$, the truncated basis will tend towards
+completeness, and it is in this limit that we discuss the convergence of the
+Convergent Close-Coupling method.
+
 Further properties of the Laguerre basis are provided in
 \autoref{app:laguerre-basis}.
 
-\subsubsection{Target-Projectile System}
-\label{sec:target-projectile}
+\subsubsection{Projectile-Target System}
+\label{sec:projectile-target}
+
+Possessing now a suitable basis to work with, we proceed to represent the
+projectile-target system in this basis by the method of basis expansion.
+As a result of the asymptotic initial conditions, in which the projectile and
+the target are assumed to be sufficiently far apart as to be non-interacting,
+the total state of the projectile-target system can be constructed as a tensor
+product of the individual projectile and target states.
+That is, the total state, $\ket{\Phi}$, may be written as
+$\ket{\Phi} = \ket{\phi, \boldsymbol{k}}$,
+where $\ket{\phi}$ is the target state, and $\ket{\boldsymbol{k}}$ is the
+projectile state.
+It now remains to construct the projectile states, and the target states.
+
+\paragraph{Projectile States}
+
+The projectile states, $\ket{\boldsymbol{k}}$, are defined to be eigenstates of
+the free Hamiltonian; that is,
+\begin{equation}
+  \label{eq:projectile-hamiltonian}
+  \hat{H}_{1}
+  \ket{\boldsymbol{k}}
+  =
+  \hat{K}_{1}
+  \ket{\boldsymbol{k}}
+  =
+  \tfrac{k^{2}}{2}
+  \ket{\boldsymbol{k}}
+  .
+\end{equation}
+It follows that the projectile states are plane waves, for which the
+coordinate-space representation is of the form
+\begin{equation}
+  \label{eq:projectile-states}
+  \bra{\boldsymbol{r}}
+  \ket{\boldsymbol{k}}
+  =
+  \lr{2 \pi}^{-\tfrac{3}{2}}
+  \exponential\lr
+  {
+    \imath
+    \boldsymbol{k}
+    \vdot
+    \boldsymbol{r}
+  }
+  .
+\end{equation}
+
+\paragraph{Target Structure}
+
+The target states, $\ket{\phi}$ are constructed by expanding the target
+Hamiltonian,
+\begin{equation}
+  \label{eq:target-hamiltonian}
+  \hat{H}_{2}
+  \ket{\phi}
+  =
+  \lrsq
+  {
+    \hat{K}_{2}
+    +
+    \hat{V}_{2}
+  }
+  \ket{\phi}
+\end{equation}
+in a Laguerre basis, and diagonalising to yield the target pseudostates
+$\lrset{\ket{\phi_{i}}}_{i = 1}^{N}$
 
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}

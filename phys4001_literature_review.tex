@@ -454,12 +454,35 @@ $m$-th target electron state.
 We neglect to anti-symmetrise the target electrons with each other, since the
 target pseudostates, $\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{\infty}$ are
 already anti-symmetric by construction.
-Furthermore, we observe that the multichannel expansion is not uniquely defined,
+However, we observe that the multichannel expansion is not uniquely defined,
 since for any state in the kernel of the multichannel operator,
-$\ket*{\omega} \in \ker\lr{1 - \sum_{m = 1}^{n_{\mathrm{e}}}\hat{P}_{0, m}}$,
+$\ket*{\omega^{\lr{N, +}}} \in
+\ker\lr{1 - \sum_{m = 1}^{n_{\mathrm{e}}}\hat{P}_{0, m}}$,
 and constant $\theta$, the multichannel expansion of
-$\ket*{\psi^{\lr{N, +}}} + \theta\ket*{\omega}$ will be identical to that of
-$\ket*{\psi^{\lr{N, +}}}$.
+$\ket*{\psi^{\lr{N, +}}} + \theta\ket*{\omega^{\lr{N, +}}}$ will be identical to
+that of $\ket*{\psi^{\lr{N, +}}}$.
+This dilemma can be resolved in the following
+To resolve this dilemma, we impose the constraint that for any of the
+one-electron states, $\ket*{\eta}$, used to construct the target state,
+$\ket*{\phi_{i}^{\lr{N}}}$, that
+\begin{equation}
+  \label{eq:multichannel-constraint}
+  \bra*{\eta, \phi_{i}^{\lr{N}}}
+  \hat{P}_{0, m}
+  \ket*{\gamma^{\lr{N, +}}}
+  =
+  -
+  \bra*{\eta, \phi_{i}^{\lr{N}}}
+  \ket*{\gamma^{\lr{N, +}}}
+  \qq{for all}
+  \ket*{\gamma^{\lr{N, +}}}
+  .
+\end{equation}
+Whence it follows that the multichannel expansion of
+$\ket*{\psi^{\lr{N, +}}} + \theta\ket*{\omega^{\lr{N, +}}}$ will be identical to
+that of $\ket*{\psi^{\lr{N, +}}}$, only in the case where $\theta = 0$, or
+$\ket*{\omega} = \ket{0}$; that is to say that $\ket*{\psi^{\lr{N, +}}}$ will
+now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}

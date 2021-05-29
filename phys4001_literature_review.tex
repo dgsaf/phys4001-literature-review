@@ -271,8 +271,59 @@ pseudoenergies are dependent on the size of the Laguerre basis utilised.
 The procedure of diagonalising the target Hamiltonian is discussed in further
 detail in \autoref{app:diagonalisation}.
 
-Lastly, we note that where $\hat{I}_{2}^{\lr{N}}$ is the projection operator for
-the orthnormal target states, which is of the form,
+As a result of the completeness of the Laguerre basis, the set of target
+pseudostates will be separable into a set of bounded pseudostates which will
+form an approximation of the true target discrete spectrum, and a set of
+unbounded pseudostates which will provide a discretisation of the true continuum
+of unbounded states.
+In general, bounded states have negative energy and unbounded states have
+positive energy, however this is not necessarily the case - a note which will be
+relevant in the treatment of the meta-stable positive-energy discrete states of
+helium.
+\todo{How to handle positive energy discrete states?}
+\todo{Do positive energy discrete states overlap with the continuum?}
+For clarity, we shall adjourn the treatment of these meta-stable states until
+required, and proceed with the assumption that bounded states have negative
+energy.
+We order the target pseudostates by increasing pseudoenergy,
+$\epsilon_{1}^{\lr{N}} < \dotsc < \epsilon_{N}^{\lr{N}}$, which allows us to
+express the separability of the spectrum in the form
+\begin{equation}
+  \label{eq:target-spectrum-separable}
+  \lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}
+  =
+  \lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N_{B}}
+  \cup
+  \lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = N_{B} + 1}^{N}
+\end{equation}
+where $\epsilon_{i}^{\lr{N}} < 0$ for $i = 1, \dotsc, N_{B}$, and where
+$\epsilon_{i}^{\lr{N}} \geq 0$ for $i = N_{B} + 1, \dotsc, N$.
+Note that $N_{B}$ is the number of bounded pseudostates, and we write
+$N_{U} = N - N_{B}$ to represent the number of unbounded pseudostates, both of
+which are dependent on $N$ by consequence of the diagonalisation procedure.
+
+We note that the identity operator for the space of target states can be
+represented in the form
+\begin{equation}
+  \label{eq:target-identity}
+  \hat{I}_{2}
+  =
+  \sum_{i = 1}^{\infty}
+  \ket*{\phi_{i}}
+  \bra*{\phi_{i}}
+  +
+  \int_{\boldsymbol{q} : q^{2} \geq 0}
+  \dd{\boldsymbol{q}}
+  \ket*{\boldsymbol{q}}
+  \bra*{\boldsymbol{q}}
+\end{equation}
+where $\lrset{\ket*{\phi_{i}}}_{i = 1}^{\infty}$ is the true target discrete
+spectrum and where $\lrset{\ket*{\boldsymbol{q}} : q^{2} \geq 0}$ is the true
+continuum spectrum.
+\todo{Do we simply include the positive energy discrete states in the continuum
+  with a Dirac mass function?}
+Furthermore, we note that the projection operator for the target pseudostates,
+$\hat{I}_{2}^{\lr{N}}$, is of the form
 \begin{equation}
   \label{eq:target-projection}
   \hat{I}_{2}^{\lr{N}}
@@ -280,14 +331,53 @@ the orthnormal target states, which is of the form,
   \sum_{i = 1}^{N}
   \ket*{\phi_{i}^{\lr{N}}}
   \bra*{\phi_{i}^{\lr{N}}}
+  =
+  \sum_{i = 1}^{N_{B}}
+  \ket*{\phi_{i}^{\lr{N}}}
+  \bra*{\phi_{i}^{\lr{N}}}
+  +
+  \sum_{i = N_{B} + 1}^{N}
+  \ket*{\phi_{i}^{\lr{N}}}
+  \bra*{\phi_{i}^{\lr{N}}}
 \end{equation}
-that it will converge to the identity operator in the limit as $N \to \infty$,
+and so in the limit as $N \to \infty$, the sum over the bounded pseudostates
+will converge to the sum over the true target discrete states
+\begin{equation}
+  \label{eq:target-projection-discrete}
+  \lim_{N \to \infty}
+  \sum_{i = 1}^{N_{B}}
+  \ket*{\phi_{i}^{\lr{N}}}
+  \bra*{\phi_{i}^{\lr{N}}}
+  =
+  \sum_{i = 1}^{\infty}
+  \ket*{\phi_{i}}
+  \bra*{\phi_{i}}
+\end{equation}
+and the sum over the unbounded pseudostates will converge to a discretisation of
+the integral over the true continuum spectrum
+\begin{equation}
+  \label{eq:target-projection-continuum}
+  \lim_{N \to \infty}
+  \sum_{i = N_{B} + 1}^{N}
+  \ket*{\phi_{i}^{\lr{N}}}
+  \bra*{\phi_{i}^{\lr{N}}}
+  =
+  \int_{\boldsymbol{q} : q^{2} \geq 0}
+  \dd{\boldsymbol{q}}
+  \ket*{\boldsymbol{q}}
+  \bra*{\boldsymbol{q}}
+  .
+\end{equation}
+Whence, it follows that projection operator for the target pseudostates
+converges to the identity operator, for the space of target states,
+in the limit as $N \to \infty$; that is,
 \begin{equation}
   \label{eq:target-projection-convergence}
   \lim_{N \to \infty}
   I_{2}^{\lr{N}}
   =
   I_{2}
+  .
 \end{equation}
 
 \paragraph{Total State}
@@ -349,8 +439,8 @@ $\ket*{\Psi_{i}^{\lr{S, +}}}$, in the form
   \ket*{\psi_{i}^{\lr{S, +}}}
 \end{equation}
 where $\hat{P}_{r}$ is the spatial exchange operator, and where
-$\ket*{\psi_{i}^{\lr{S, +}}}$ is a two-fermion state, for which it follows that the
-total state is guaranteed to possess the proper symmetry properties.
+$\ket*{\psi_{i}^{\lr{S, +}}}$ is a two-fermion state, for which it follows that
+the total state is guaranteed to possess the proper symmetry properties.
 It then remains to determine the form of $\ket*{\psi_{i}^{\lr{S, +}}}$.
 We note that by expanding this two-fermion state in the set of target states, we
 have that
@@ -370,7 +460,7 @@ have that
 \end{equation}
 where
 \begin{equation}
-  \label{eq:2}
+  \label{eq:target-expansion-2}
   \ket*{\psi_{i}^{\lr{N, S, +}}}
   =
   \hat{I}_{2}^{\lr{N}}

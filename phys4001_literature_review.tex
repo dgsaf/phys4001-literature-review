@@ -86,6 +86,8 @@ to the cases of: electron-impact hydrogen (e-H) scattering, and electron-impact
 helium (e-He) scattering.
 In particular, we shall explore the treatment of target ionisation within the CCC
 method.
+Note that in the general treatment, we restrict our attention to electron
+projectiles and atomic/ionic targets.
 
 \subsection{Convergent Close-Coupling Method}
 \label{sec:ccc-method}
@@ -146,8 +148,8 @@ $l_{i} \in \lrset{0, 1, \dotsc}$ and
 $m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
 $i \in \lrset{1, 2, \dotsc}$.
 
-It is shown in \autoref{app:laguerre-completeness}, for each $l$, that the
-Laguerre radial basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$,
+It is shown in \autoref{app:laguerre-completeness}, that the Laguerre radial
+basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each $l$,
 forms a complete basis for the Hilbert space $L_{\complex}^{2}\lr{[0, \infty)}$.
 Similarly, it is also shown in \autoref{app:spherical-harmonic-completeness},
 that the set of spherical harmonics,
@@ -191,14 +193,19 @@ Possessing now a suitable basis to work with, we proceed to represent the
 projectile-target system in this basis by the method of basis expansion.
 We first construct the projectile states, and the target states, before
 considering how to combine the two into a set of total states.
+Recall that we restrict our attention to the case of an electron projectile, and
+an atomic/ionic target consisting of $n_{\mathrm{e}}$ electrons.
+We shall adopt the convention that the projectile electron space is acted on by
+operators indexed by $0$, and the m-th target electron space is acted on by
+operators indexed by $m$.
 
 \paragraph{Projectile States}
 
 The projectile states, $\ket{\boldsymbol{k}}$, are defined to be eigenstates of
 the free Hamiltonian; that is,
 \begin{equation}
-  \label{eq:projectile-free-hamiltonian}
-  \hat{K}_{1}
+  \label{eq:projectile-hamiltonian}
+  \hat{K}_{0}
   \ket{\boldsymbol{k}}
   =
   \tfrac{k^{2}}{2}
@@ -222,48 +229,47 @@ coordinate-space representation is of the form
   }
   .
 \end{equation}
-Note that the Hamiltonian for the projectile, in the projectile-target system,
-is of the form
-\begin{equation}
-  \label{eq:projectile-hamiltonian}
-  \hat{H}_{1}
-  \ket{\boldsymbol{k}}
-  =
-  \lrsq
-  {
-    \hat{K}_{1}
-    +
-    \hat{V}_{1}
-  }
-  \ket{\boldsymbol{k}}
-  =
-  \lrsq
-  {
-    \tfrac{k^{2}}{2}
-    +
-    \hat{V}_{1}
-  }
-  \ket{\boldsymbol{k}}
-  .
-\end{equation}
 
 \paragraph{Target States}
 
-The target states, $\ket{\phi}$ are constructed by expanding the target
-Hamiltonian, $\hat{H}_{2} = \hat{K}_{2} + \hat{V}_{2}$,
-in a Laguerre basis, $\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and diagonalising
-to yield the target pseudostates
-$\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$, which are orthonormal and satisfy
+The target Hamiltonian, for an atomic/ionic target with $n_{\mathrm{e}}$
+electrons, is of the form
 \begin{equation}
   \label{eq:target-hamiltonian}
+  \hat{H}_{T}
+  =
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{K}_{m}
+  +
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{V}_{m}
+  +
+  \tfrac{1}{2}
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \sum_{n = 1}^{n_{\mathrm{e}}}
+  \hat{V}_{m, n}
+\end{equation}
+where $\hat{K}_{m}$ and $\hat{V}_{m}$ are the target electron kinetic and
+electron-nuclei potential operators, for $m = 1, \dotsc, n_{\mathrm{e}}$, and
+where $\hat{V}_{m, n}$ are the electron-electron potential operators, for
+$m, n = 1, \dotsc, n_{\mathrm{e}}$.
+The target states, $\ket{\phi}$, are constructed by expanding the target
+Hamiltonian, $\hat{H}_{T}$, in a Laguerre basis,
+$\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and diagonalising to yield the target
+pseudostates $\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$, which are
+orthonormal and satisfy
+\begin{equation}
+  \label{eq:target-states}
   \bra*{\phi_{i}^{\lr{N}}}
-  \hat{H}_{2}
+  \hat{H}_{T}
   \ket*{\phi_{j}^{\lr{N}}}
   =
   \epsilon_{i}^{\lr{N}}
   \delta_{i, j}
   .
 \end{equation}
+Furthermore, the target pseudostates are anti-symmetric under pairwise electron
+exchange.
 Note that the $\lr{N}$ superscript has been introduced to indicate that these
 are not true eigenstates of the target Hamiltonian, only of its representation
 in the truncated Laguerrre basis, and that these pseudostates and their
@@ -382,96 +388,78 @@ in the limit as $N \to \infty$; that is,
 
 \paragraph{Total State}
 
-The total state, $\ket*{\Psi^{\lr{S}}}$, with a given total spin $S$, are
-eigenstates of the total Hamiltonian,
-$\hat{H} = \hat{H}_{1} + \hat{H}_{2} + \hat{V}_{1, 2}$; that is,
+The total Hamiltonian of the projectile-target system, $\hat{H}$, is of the form
 \begin{equation}
   \label{eq:total-hamiltonian}
   \hat{H}
-  \ket*{\Psi^{\lr{S}}}
+  =
+  \hat{H}_{T}
+  +
+  \hat{K}_{0}
+  +
+  \hat{V}_{0}
+  +
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{V}_{0, m}
+\end{equation}
+where $\hat{H}_{T}$ is the target Hamiltonian, defined in
+\autoref{eq:target-hamiltonian}, $\hat{K}_{0}$ is the projectile electron
+kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
+operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
+potential operators.
+The total state of the projectile-target system, $\ket*{\Psi^{\lr{+}}}$,
+specified to have outgoing spherical-wave boundary conditions, is an eigenstate
+of the total Hamiltonian, $\hat{H}$,
+\begin{equation}
+  \label{eq:total-state}
+  \hat{H}
+  \ket*{\Psi^{\lr{+}}}
   =
   E
-  \ket*{\Psi^{\lr{S}}}
+  \ket*{\Psi^{\lr{+}}}
+\end{equation}
+with total energy $E$.
+Since the construction of the total state will depend upon the target
+pseudostates, $\lrset{\ket*{\psi_{i}^{\lr{N}}}}_{i = 1}^{N}$, obtained by the
+diagonalisation of the target hamiltonian, \autoref{eq:target-states}, we shall
+make explicit it's dependence on the size of the basis by writing,
+$\ket*{\Psi^{\lr{N, +}}}$, and note that
+\begin{equation}
+  \label{eq:total-state-expansion}
+  \ket*{\Psi^{\lr{+}}}
+  =
+  \lim_{N \to \infty}
+  \ket*{\Psi^{\lr{N, +}}}
   .
 \end{equation}
-As a result of the asymptotic initial conditions, in which the projectile and
-the target are assumed to be sufficiently far apart as to be non-interacting,
-the asymptotic Hamiltonian, $\hat{H}_{\lr{+}} = \hat{K}_{1} + \hat{H}_{2}$,
-satisfies
+To ensure that the total state is anti-symmetric (that is, that it respects the
+indistinguishableness of individual electrons, as well as Pauli's exclusion
+principle), we construct it using a multichannel expansion of the form
 \begin{equation}
-  \label{eq:total-asymptotic-hamiltonian}
-  \hat{H}_{\lr{+}}
-  \ket*{\phi_{i}^{\lr{N}}, \boldsymbol{k}}
+  \label{eq:total-state-multichannel}
+  \ket*{\Psi^{\lr{N, +}}}
   =
-  \lr
-  {
-    \epsilon_{i}^{\lr{N}}
-    +
-    \tfrac{k^{2}}{2}
-  }
-  \ket*{\phi_{i}^{\lr{N}}, \boldsymbol{k}}
-  .
-\end{equation}
-Naively, we might suppose that the total asymptotic state,
-$\ket*{\Psi_{i}^{\lr{S, +}}}$, may be written in the form
-$\ket*{\Psi_{i}^{\lr{S, +}}} = \ket{\phi_{i}, \boldsymbol{k}_{i}}$,
-however, this does not account for the effects of spin and Pauli's exclusion
-principle, or more generally symmetrisation / anti-symmetrisation.
-For the case where the projectile is a fermion, and the target contains one such
-fermion, then the fermions are necessarily indistinguishable.
-Additionally, Pauli's exclusion principle states that two fermions cannot occupy
-the same state (including spin) within a system.
-This case is applicable for both e-H scattering and e-He scattering with a
-frozen core model for He.
-To account for this principle, we write the total state,
-$\ket*{\Psi_{i}^{\lr{S, +}}}$, in the form
-\begin{equation}
-  \label{eq:total-state-symmetrisation}
-  \ket*{\Psi_{i}^{\lr{S, +}}}
-  =
-  \lrsq
+  \lrsq[\bigg]
   {
     1
-    +
-    \lr{-1}^{S}
-    \hat{P}_{r}
+    -
+    \sum_{m = 1}^{n_{\mathrm{e}}}
+    \hat{P}_{0, m}
   }
-  \ket*{\psi_{i}^{\lr{S, +}}}
+  \ket*{\psi^{\lr{N, +}}}
 \end{equation}
-where $\hat{P}_{r}$ is the spatial exchange operator, and where
-$\ket*{\psi_{i}^{\lr{S, +}}}$ is a two-fermion state, for which it follows that
-the total state is guaranteed to possess the proper symmetry properties.
-It then remains to determine the form of $\ket*{\psi_{i}^{\lr{S, +}}}$.
-We note that by expanding this two-fermion state in the set of target states, we
-have that
-\begin{equation}
-  \label{eq:target-expansion}
-  \ket*{\psi_{i}^{\lr{S, +}}}
-  =
-  \hat{I}_{2}
-  \ket*{\psi_{i}^{\lr{S, +}}}
-  =
-  \lim_{N \to \infty}
-  \hat{I}_{2}^{\lr{N}}
-  \ket*{\psi_{i}^{\lr{S, +}}}
-  =
-  \lim_{N \to \infty}
-  \ket*{\psi_{i}^{\lr{N, S, +}}}
-\end{equation}
-where
-\begin{equation}
-  \label{eq:target-expansion-2}
-  \ket*{\psi_{i}^{\lr{N, S, +}}}
-  =
-  \hat{I}_{2}^{\lr{N}}
-  \ket*{\psi_{i}^{\lr{S, +}}}
-  =
-  \sum_{j = 1}^{N}
-  \ket*{\phi_{j}^{\lr{N}}}
-  \bra*{\phi_{j}^{\lr{N}}}
-  \ket*{\psi_{i}^{\lr{S, +}}}
-  .
-\end{equation}
+where $\hat{P}_{0, m}$ are the electron exchange operators, for
+$m = 1, \dotsc, n_{\mathrm{e}}$, exchanging the projectile electron state and
+$m$-th target electron state.
+We neglect to anti-symmetrise the target electrons with each other, since the
+target pseudostates, $\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{\infty}$ are
+already anti-symmetric by construction.
+Furthermore, we observe that the multichannel expansion is not uniquely defined,
+since for any state in the kernel of the multichannel operator,
+$\ket*{\omega} \in \ker\lr{1 - \sum_{m = 1}^{n_{\mathrm{e}}}\hat{P}_{0, m}}$,
+and constant $\theta$, the multichannel expansion of
+$\ket*{\psi^{\lr{N, +}}} + \theta\ket*{\omega}$ will be identical to that of
+$\ket*{\psi^{\lr{N, +}}}$.
 
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}

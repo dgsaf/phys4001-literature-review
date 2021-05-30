@@ -80,13 +80,15 @@
 \section{Theory}
 \label{sec:theory}
 
+\todo{Remove unnecessary commas.}
+
 We shall describe the development of the Convergent Close-Coupling (CCC) method
 for generalised projectile-target scattering, before describing its application
 to the cases of: electron-impact hydrogen (e-H) scattering, and electron-impact
 helium (e-He) scattering.
 In particular, we shall explore the treatment of target ionisation within the CCC
 method.
-Note that in the general treatment, we restrict our attention to electron
+Note that in the general treatment, we shall restrict our attention to electron
 projectiles and atomic/ionic targets.
 
 \subsection{Convergent Close-Coupling Method}
@@ -107,12 +109,15 @@ be treated in a similar manner to discrete excitation transition amplitudes.
 \label{sec:laguerre-basis}
 
 To describe the target structure, the CCC method utilises a Laguerre basis,
-$\lrset{\ket{\varphi_{i}}}_{i = 1}^{\infty}$, for which the coordinate-space
-representation is of the form
+$\lrset{\ket{\varphi_{i}}}_{i = 1}^{\infty}$, for the Hilbert space
+$L^{2}\lr{\real^{3}}$, for which the coordinate-space representation is of the
+form
 \begin{equation}
   \label{eq:laguerre-basis}
   \bra{\boldsymbol{r}}
   \ket{\varphi_{i}}
+  =
+  \varphi_{i}\lr{r, \Omega}
   =
   \tfrac{1}{r}
   \xi_{k_{i}, l{i}}\lr{r}
@@ -148,21 +153,10 @@ $l_{i} \in \lrset{0, 1, \dotsc}$ and
 $m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
 $i \in \lrset{1, 2, \dotsc}$.
 
-It is shown in \autoref{app:laguerre-completeness}, that the Laguerre radial
-basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each $l$,
-forms a complete basis for the Hilbert space $L_{\complex}^{2}\lr{[0, \infty)}$.
-Similarly, it is also shown in \autoref{app:spherical-harmonic-completeness},
-that the set of spherical harmonics,
-$\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
-forms a orthonormal, complete basis for the Hilbert space
-$L_{\complex}^{2}\lr{S^{2}}$.
-Hence, the Laguerre basis functions
-$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forms a complete basis
-for the Hilbert space $L_{\complex}^{2}\lr{\real^{3}}$ space.
-
-This Laguerre basis is utilised due to being a complete basis, the short-range
-and long-range behaviour of the radial basis functions, and because it allows
-the matrix elements of certain operators to be calculated analytically.
+This Laguerre basis is utilised due to being a complete basis, shown in
+\autoref{app:laguerre-completeness}, the short-range and long-range behaviour of
+the radial basis functions, and because it allows the matrix elements of certain
+operators to be calculated analytically.
 
 Practically, we cannot utilise a a basis of infinite size.
 Hence, we truncate the Laguerre radial basis,
@@ -183,7 +177,7 @@ In the limit as $N \to \infty$, the truncated basis will tend towards
 completeness, and it is in this limit that we discuss the convergence of the
 Convergent Close-Coupling method.
 
-Further properties of the Laguerre basis are provided in
+Further properties of the Laguerre basis are discussed in
 \autoref{app:laguerre-basis}.
 
 \subsubsection{Projectile-Target System}
@@ -200,9 +194,11 @@ operators indexed by $0$, and the m-th target electron space is acted on by
 operators indexed by $m$.
 
 \paragraph{Projectile States}
+\label{sec:projectile-states}
 
-The projectile states, $\ket{\boldsymbol{k}}$, are defined to be eigenstates of
-the free Hamiltonian; that is,
+The projectile states, $\ket{\boldsymbol{k}} \in \mathcal{H}_{P}$, where
+$\mathcal{H}_{P} = \mathcal{H}_{0}$ is the projectile electron space, are
+defined to be eigenstates of the free Hamiltonian; that is,
 \begin{equation}
   \label{eq:projectile-hamiltonian}
   \hat{K}_{0}
@@ -212,8 +208,8 @@ the free Hamiltonian; that is,
   \ket{\boldsymbol{k}}
   .
 \end{equation}
-It follows that the projectile states are plane waves, for which the
-coordinate-space representation is of the form
+It follows that the coordinate-space representation of projectile states are
+plane waves; that is,
 \begin{equation}
   \label{eq:projectile-states}
   \bra{\boldsymbol{r}}
@@ -230,7 +226,61 @@ coordinate-space representation is of the form
   .
 \end{equation}
 
+Further properties of the plane waves are discussed in
+\autoref{app:plane-waves}.
+
 \paragraph{Target States}
+\label{sec:target-states}
+
+\subparagraph{Target Space}
+\label{sec:target-space}
+
+\todo[target electron Hilbert spaces]{
+  Introduce the target electron Hilbert spaces.
+}
+\todo[many-electron target Hilbert space]{
+  Introduce the many-electron target Hilbert space.
+}
+
+For a one-electron atomic/ionic target (such as H, $\mathrm{He}^{+}, \dotsc$),
+the space of target states, $\mathcal{H}_{T}$, is simply constructed from the
+one-electron space of the target electron,
+$\mathcal{H}_{1} = \mathcal{H}_{\mathrm{e}}$.
+However, for a many-electron atomic/ionic target (such as He), the construction
+of the space of target states requires a more nuanced approach.
+
+Firstly, we note that as electrons are indistinguishable, the one-electron space
+of each target electron must be identical; that is,
+$\mathcal{H}_{m} = \mathcal{H}_{\mathrm{e}}$ for
+$m = 1, \dotsc, n_{\mathrm{e}}$ where $n_{\mathrm{e}}$ is the number of target
+electrons.
+Furthermore, the space of target states, $\mathcal{H}_{T}$, must be constructed
+from the spaces of target electron in a way which preserves the
+indistinguishableness of each electron, and which adheres to Pauli's exclusion
+principle - that no more than one electron can occupy a given state (including
+spin).
+This is achieved by constructing the space of target states from the
+anti-symmetrised tensor product of the spaces of the target electrons,
+\begin{equation}
+  \label{eq:target-space}
+  \mathcal{H}_{T}
+  =
+  \lrset[\Bigg]
+  {
+    \hat{A}
+    \ket{\psi}
+    :
+    \ket{\psi}
+    \in
+    \bigotimes_{m = 1}^{n_{\mathrm{e}}}
+    \mathcal{H}_{\mathrm{e}}
+  }
+\end{equation}
+where the operator, $\hat{A}$, anti-symmetrises tensor products.
+
+
+\subparagraph{Target Hamiltonian}
+\label{sec:target-hamiltonian}
 
 The target Hamiltonian, for an atomic/ionic target with $n_{\mathrm{e}}$
 electrons, is of the form
@@ -244,19 +294,22 @@ electrons, is of the form
   \sum_{m = 1}^{n_{\mathrm{e}}}
   \hat{V}_{m}
   +
-  \tfrac{1}{2}
   \sum_{m = 1}^{n_{\mathrm{e}}}
-  \sum_{n = 1}^{n_{\mathrm{e}}}
+  \sum_{n = m + 1}^{n_{\mathrm{e}}}
   \hat{V}_{m, n}
 \end{equation}
 where $\hat{K}_{m}$ and $\hat{V}_{m}$ are the target electron kinetic and
 electron-nuclei potential operators, for $m = 1, \dotsc, n_{\mathrm{e}}$, and
 where $\hat{V}_{m, n}$ are the electron-electron potential operators, for
 $m, n = 1, \dotsc, n_{\mathrm{e}}$.
-The target states, $\ket{\phi}$, are constructed by expanding the target
+
+\subparagraph{Target Diagonalisation}
+\label{sec:target-diagonalisation}
+
+The true target states, $\ket{\phi}$, are approximated by expanding the target
 Hamiltonian, $\hat{H}_{T}$, in a Laguerre basis,
-$\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and diagonalising to yield the target
-pseudostates $\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$, which are
+$\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and diagonalising to yield a set of
+target pseudostates $\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$, which are
 orthonormal and satisfy
 \begin{equation}
   \label{eq:target-states}
@@ -266,16 +319,17 @@ orthonormal and satisfy
   =
   \epsilon_{i}^{\lr{N}}
   \delta_{i, j}
-  .
 \end{equation}
-Furthermore, the target pseudostates are anti-symmetric under pairwise electron
-exchange.
+as well as being anti-symmetric under pairwise electron exchange.
 Note that the $\lr{N}$ superscript has been introduced to indicate that these
 are not true eigenstates of the target Hamiltonian, only of its representation
 in the truncated Laguerrre basis, and that these pseudostates and their
 pseudoenergies are dependent on the size of the Laguerre basis utilised.
 The procedure of diagonalising the target Hamiltonian is discussed in further
 detail in \autoref{app:diagonalisation}.
+
+\subparagraph{Span of Target States}
+\label{sec:target-states-span}
 
 As a result of the completeness of the Laguerre basis, the set of target
 pseudostates will be separable into a set of bounded pseudostates which will
@@ -286,8 +340,12 @@ In general, bounded states have negative energy and unbounded states have
 positive energy, however this is not necessarily the case - a note which will be
 relevant in the treatment of the meta-stable positive-energy discrete states of
 helium.
-\todo{How to handle positive energy discrete states?}
-\todo{Do positive energy discrete states overlap with the continuum?}
+\todo[meta-stable states]{
+  How are positive energy discrete states handled?
+  Do positive energy discrete states overlap with the continuum?
+  Do we simply include the positive energy discrete states in the continuum with
+  a Dirac mass function?
+}
 For clarity, we shall adjourn the treatment of these meta-stable states until
 required, and proceed with the assumption that bounded states have negative
 energy.
@@ -326,8 +384,6 @@ represented in the form
 where $\lrset{\ket*{\phi_{i}}}_{i = 1}^{\infty}$ is the true target discrete
 spectrum and where $\lrset{\ket*{\boldsymbol{q}} : q^{2} \geq 0}$ is the true
 continuum spectrum.
-\todo{Do we simply include the positive energy discrete states in the continuum
-  with a Dirac mass function?}
 Furthermore, we note that the projection operator for the target pseudostates,
 $\hat{I}_{2}^{\lr{N}}$, is of the form
 \begin{equation}
@@ -385,8 +441,13 @@ in the limit as $N \to \infty$; that is,
   I_{2}
   .
 \end{equation}
+\todo[target states span]{
+  Mention that the span of the set of target states convergese to the total
+  target Hilbert space.
+}
 
 \paragraph{Total State}
+\label{sec:total-state}
 
 The total Hamiltonian of the projectile-target system, $\hat{H}$, is of the form
 \begin{equation}
@@ -589,14 +650,41 @@ now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 \subsubsection{Completeness}
 \label{app:spherical-harmonic-completeness}
 
+\todo[spherical harmonic completeness]{
+  Prove that the set of spherical harmonics forms,
+  $\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
+  forms an orthonormal, complete basis for the Hilbert space
+  $L^{2}\lr{S^{2}}$.
+}
+
 \subsection{Laguerre Radial Basis}
 \label{app:laguerre-radial-basis}
 
 \subsubsection{Completeness}
-\label{app:laguerre-completeness}
+\label{app:laguerre-radial-completeness}
+
+\todo[laguerre radial completeness]{
+  Prove that the Laguerre radial basis functions,
+  $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each $l$, forms a complete
+  basis for the Hilbert space $L^{2}\lr{[0, \infty)}$.
+}
 
 \subsection{Laguerre Basis}
 \label{app:laguerre-basis}
+
+\subsubsection{Completeness}
+\label{app:laguerre-completeness}
+
+It is shown in \autoref{app:laguerre-radial-completeness}, that the Laguerre
+radial basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each
+$l$, forms a complete basis for the Hilbert space $L^{2}\lr{[0, \infty)}$.
+Similarly, it is also shown in \autoref{app:spherical-harmonic-completeness},
+that the set of spherical harmonics,
+$\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
+forms an orthonormal, complete basis for the Hilbert space $L^{2}\lr{S^{2}}$.
+Hence, the Laguerre basis functions
+$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, form a complete basis
+for the Hilbert space $L^{2}\lr{\real^{3}}$.
 
 \subsection{Plane Waves}
 \label{app:plane-waves}
@@ -607,7 +695,19 @@ now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 \subsection{Basis Expansion}
 \label{app:basis-expansion}
 
+\todo[basis expansion]{
+  Elaborate on the method of basis expansion for Hilbert spaces.
+}
+
 \subsection{Diagonalisation}
 \label{app:diagonalisation}
+
+\todo[target diagonalisation]{
+  Elaborate on the diagonalisation procedure for the target states.
+}
+
+\clearpage
+
+\todos
 
 \end{document}

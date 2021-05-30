@@ -156,7 +156,7 @@ $m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
 $i \in \lrset{1, 2, \dotsc}$.
 
 This Laguerre basis is utilised due to: the Laguerre basis functions,
-$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$,forming a complete basis
+$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forming a complete basis
 for the Hilbert space $L^{2}\lr{\real^{3}}$ - shown in
 \autoref{app:laguerre-completeness}, the short-range and long-range behaviour of
 the radial basis functions being well suited to describing both target states
@@ -366,7 +366,8 @@ where $S_{n_{\mathrm{e}}}$ is the symmetric group on $n_{\mathrm{e}}$ elements,
 the sum is taken over all permutations, $\sigma \in S_{n_{\mathrm{e}}}$, and
 where $\mathrm{sgn}\lr{\sigma}$ is the sign of the permutation $\sigma$.
 We note that Slater determinants are anti-symmetric under pairwise exchange of
-any two orbitals, and hence adhere to Pauli's exclusion principle.
+any two orbitals, and are zero if constructed with two spin orbitals in the same
+state, and hence adhere to Pauli's exclusion principle.
 
 The true target states,
 $\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty} \in \mathcal{H}_{T}$, are then
@@ -720,15 +721,15 @@ that
   \otimes
   \bra*{\Phi_{i}^{\lr{N}}}
   \hat{P}_{0, m}
-  \ket*{\gamma^{\lr{N, +}}}
+  \ket*{\Gamma^{\lr{N, +}}}
   =
   -
   \bra*{\phi_{j}^{\lr{N}}}
   \otimes
   \bra*{\Phi_{i}^{\lr{N}}}
-  \ket*{\gamma^{\lr{N, +}}}
+  \ket*{\Gamma^{\lr{N, +}}}
 \end{equation}
-for all $\ket*{\gamma^{\lr{N, +}}}
+for all $\ket*{\Gamma^{\lr{N, +}}}
 \in \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$.
 \todo[multichannel constraint]{Is the ket in this constraint correct?}
 Whence it follows that the multichannel expansion of

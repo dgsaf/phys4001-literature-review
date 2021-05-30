@@ -153,10 +153,13 @@ $l_{i} \in \lrset{0, 1, \dotsc}$ and
 $m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
 $i \in \lrset{1, 2, \dotsc}$.
 
-This Laguerre basis is utilised due to being a complete basis, shown in
+This Laguerre basis is utilised due to: the Laguerre basis functions,
+$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$,forming a complete basis
+for the Hilbert space $L^{2}\lr{\real^{3}}$ - shown in
 \autoref{app:laguerre-completeness}, the short-range and long-range behaviour of
-the radial basis functions, and because it allows the matrix elements of certain
-operators to be calculated analytically.
+the radial basis functions being well suited to describing both target states
+and providing a basis for expanding continuum states in, and because it allows
+the matrix elements of certain operators to be calculated analytically.
 
 Practically, we cannot utilise a a basis of infinite size.
 Hence, we truncate the Laguerre radial basis,
@@ -235,13 +238,6 @@ Further properties of the plane waves are discussed in
 \subparagraph{Target Space}
 \label{sec:target-space}
 
-\todo[target electron Hilbert spaces]{
-  Introduce the target electron Hilbert spaces.
-}
-\todo[many-electron target Hilbert space]{
-  Introduce the many-electron target Hilbert space.
-}
-
 For a one-electron atomic/ionic target (such as H, $\mathrm{He}^{+}, \dotsc$),
 the space of target states, $\mathcal{H}_{T}$, is simply constructed from the
 one-electron space of the target electron,
@@ -267,7 +263,7 @@ anti-symmetrised tensor product of the spaces of the target electrons,
   =
   \lrset[\Bigg]
   {
-    \hat{A}
+    \hat{A}_{n_{\mathrm{e}}}
     \ket{\psi}
     :
     \ket{\psi}
@@ -276,8 +272,8 @@ anti-symmetrised tensor product of the spaces of the target electrons,
     \mathcal{H}_{\mathrm{e}}
   }
 \end{equation}
-where the operator, $\hat{A}$, anti-symmetrises tensor products.
-
+where the operator, $\hat{A}_{n_{\mathrm{e}}}$, anti-symmetrises the tensor
+product of $n_{\mathrm{e}}$ indistinguishable electron states.
 
 \subparagraph{Target Hamiltonian}
 \label{sec:target-hamiltonian}

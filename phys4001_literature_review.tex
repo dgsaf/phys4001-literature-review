@@ -465,6 +465,7 @@ $\mathcal{H}_{T}$, can be represented in the form
 where $\lrset{\ket*{\Phi_{i}}}_{i = 1}^{\infty}$ is the true target discrete
 spectrum and where $\lrset{\ket*{\boldsymbol{q}} : q^{2} \geq 0}$ is the true
 continuum spectrum, of singly ionised target states.
+\todo[continuum spectrum notation]{Is this notation sufficient?}
 Furthermore, we note that the projection operator for the target pseudostates,
 $\hat{I}_{T}^{\lr{N}}$, is of the form
 \begin{equation}
@@ -627,11 +628,11 @@ $m$-th target electron state, and where
 $\ket*{\psi^{\lr{+}}} \in
 \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$ is the
 un-symmetrised total state.
-We neglect to anti-symmetrise the target electrons with each other, since both
-the true target states, and the target pseudostates, are already anti-symmetric.
+We neglect to anti-symmetrise the target electrons with each other, since states
+in the target space are already anti-symmetric by construction.
 
 To construct the un-symmetrised total state, $\ket*{\psi^{\lr{+}}}$, we
-observe that,
+observe, as a result of \autoref{eq:target-projection-convergence}, that
 \begin{equation}
   \label{eq:total-state-un-symmetrised-convergence}
   \ket*{\psi^{\lr{+}}}
@@ -643,7 +644,6 @@ observe that,
   \lim_{N \to \infty}
   \ket*{\psi^{\lr{N, +}}}
 \end{equation}
-as a result of \autoref{eq:target-projection-convergence},
 where we have defined
 \begin{equation}
   \label{eq:total-state-un-symmetrised-n}
@@ -730,6 +730,7 @@ that
 \end{equation}
 for all $\ket*{\gamma^{\lr{N, +}}}
 \in \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$.
+\todo[multichannel constraint]{Is the ket in this constraint correct?}
 Whence it follows that the multichannel expansion of
 $\ket*{\psi^{\lr{N, +}}}
 + \theta \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N, +}}}$ will be identical to

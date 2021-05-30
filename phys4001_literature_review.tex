@@ -368,7 +368,8 @@ where $\mathrm{sgn}\lr{\sigma}$ is the sign of the permutation $\sigma$.
 We note that Slater determinants are anti-symmetric under pairwise exchange of
 any two orbitals, and hence adhere to Pauli's exclusion principle.
 
-The true target states, $\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty}$, are then
+The true target states,
+$\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty} \in \mathcal{H}_{T}$, are then
 approximated by expanding the many-electron target Hamiltonian, $\hat{H}_{T}$,
 in a basis of Slater determinants,
 \begin{equation}
@@ -391,7 +392,7 @@ and diagonalising to yield a set of target pseudostates,
 $\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$, which are orthonormal and
 satisfy
 \begin{equation}
-  \label{eq:target-one-electron-states}
+  \label{eq:target-states}
   \bra*{\Phi_{i}^{\lr{N}}}
   \hat{H}_{T}
   \ket*{\Phi_{j}^{\lr{N}}}
@@ -508,8 +509,8 @@ the integral over the true continuum spectrum
   \dd{\boldsymbol{q}}
   \ket*{\boldsymbol{q}}
   \bra*{\boldsymbol{q}}
+  .
 \end{equation}
-recalling that $N_{T}$, and $N_{B}$ are both dependent on $N$.
 Whence, it follows that projection operator for the target pseudostates
 converges to the identity operator, for $\mathcal{H}_{T}$,
 in the limit as $N \to \infty$; that is,
@@ -536,6 +537,39 @@ which can be equivalently stated as
 \paragraph{Total State}
 \label{sec:total-state}
 
+\subparagraph{Total Space}
+\label{sec:total-space}
+
+The construction of the total space for an electron projectile and an
+atomic/ionic target, with $n_{\mathrm{e}}$ electrons, echoes the considerations
+and process of constructing the target space for the many-electron target,
+presented in \autoref{sec:target-space}.
+In brief, the projectile electron and target electron(s) are indistinguishable,
+and thus have the same one-electron space, $\mathcal{H}_{\mathrm{e}}$.
+Hence, the space of projectile-target states, $\mathcal{H}$, is constructed from
+the anti-symmetrised tensor product of the projectile electron space, and the
+spaces of the target electrons,
+\begin{equation}
+  \label{eq:total-space}
+  \mathcal{H}
+  =
+  \lrset[\Bigg]
+  {
+    \hat{A}_{1 + n_{\mathrm{e}}}
+    \ket{\psi}
+    :
+    \ket{\psi}
+    \in
+    \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}}
+    \mathcal{H}_{\mathrm{e}}
+  }
+\end{equation}
+where the operator, $\hat{A}_{1 + n_{\mathrm{e}}}$, anti-symmetrises the tensor
+product of $1 + n_{\mathrm{e}}$ indistinguishable electron states.
+
+\subparagraph{Total Hamiltonian}
+\label{sec:total-hamiltonian}
+
 The total Hamiltonian of the projectile-target system, $\hat{H}$, is of the form
 \begin{equation}
   \label{eq:total-hamiltonian}
@@ -555,9 +589,14 @@ where $\hat{H}_{T}$ is the target Hamiltonian, defined in
 kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
 operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
-The total state of the projectile-target system, $\ket*{\Psi^{\lr{+}}}$,
-specified to have outgoing spherical-wave boundary conditions, is an eigenstate
-of the total Hamiltonian, $\hat{H}$,
+
+\subparagraph{Total State Construction}
+\label{sec:total-state-construction}
+
+The total state of the projectile-target system,
+$\ket*{\Psi^{\lr{+}}} \in \mathcal{H}$, specified to have outgoing
+spherical-wave boundary conditions, is defined to be an eigenstate of the total
+Hamiltonian, $\hat{H}$,
 \begin{equation}
   \label{eq:total-state}
   \hat{H}
@@ -567,24 +606,76 @@ of the total Hamiltonian, $\hat{H}$,
   \ket*{\Psi^{\lr{+}}}
 \end{equation}
 with total energy $E$.
-Since the construction of the total state will depend upon the target
-pseudostates, $\lrset{\ket*{\psi_{i}^{\lr{N}}}}_{i = 1}^{N}$, obtained by the
-diagonalisation of the target hamiltonian, \autoref{eq:target-states}, we shall
-make explicit it's dependence on the size of the basis by writing,
-$\ket*{\Psi^{\lr{N, +}}}$, and note that
+To ensure that the total state is anti-symmetric, we construct it using a
+multichannel expansion of the form
 \begin{equation}
-  \label{eq:total-state-expansion}
+  \label{eq:total-state-multichannel}
+  \ket*{\Psi^{\lr{+}}}
+  =
+  \lrsq[\bigg]
+  {
+    1
+    -
+    \sum_{m = 1}^{n_{\mathrm{e}}}
+    \hat{P}_{0, m}
+  }
+  \ket*{\psi^{\lr{+}}}
+\end{equation}
+where $\hat{P}_{0, m}$ are the pairwise electron exchange operators, for
+$m = 1, \dotsc, n_{\mathrm{e}}$, exchanging the projectile electron state and
+$m$-th target electron state, and where
+$\ket*{\psi^{\lr{+}}} \in
+\bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$ is the
+un-symmetrised total state.
+We neglect to anti-symmetrise the target electrons with each other, since both
+the true target states, and the target pseudostates, are already anti-symmetric.
+
+To construct the un-symmetrised total state, $\ket*{\psi^{\lr{+}}}$, we
+observe that,
+\begin{equation}
+  \label{eq:total-state-un-symmetrised-convergence}
+  \ket*{\psi^{\lr{+}}}
+  =
+  \lim_{N \to \infty}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi^{\lr{+}}}
+  =
+  \lim_{N \to \infty}
+  \ket*{\psi^{\lr{N, +}}}
+\end{equation}
+as a result of \autoref{eq:target-projection-convergence},
+where we have defined
+\begin{equation}
+  \label{eq:total-state-un-symmetrised-n}
+  \ket*{\psi^{\lr{N, +}}}
+  =
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi^{\lr{+}}}
+  =
+  \sum_{i = 1}^{N_{T}}
+  \ket*{\Phi_{i}^{\lr{N, +}}}
+  \bra*{\Phi_{i}^{\lr{N, +}}}
+  \ket*{\psi^{\lr{+}}}
+  =
+  \sum_{i = 1}^{N_{T}}
+  \ket*{\Phi_{i}^{\lr{N, +}}}
+  \otimes
+  \ket*{F_{i}^{\lr{N, +}}}
+\end{equation}
+where $\ket*{F_{i}^{\lr{N, +}}}
+= \bra*{\Phi_{i}^{\lr{N, +}}}\ket*{\psi^{\lr{+}}}
+\in \mathcal{H}_{\mathrm{e}}$.
+Similarly, we observe that
+\begin{equation}
+  \label{eq:total-state-multichannel-convergence}
   \ket*{\Psi^{\lr{+}}}
   =
   \lim_{N \to \infty}
   \ket*{\Psi^{\lr{N, +}}}
-  .
 \end{equation}
-To ensure that the total state is anti-symmetric (that is, that it respects the
-indistinguishableness of individual electrons, as well as Pauli's exclusion
-principle), we construct it using a multichannel expansion of the form
+where we have defined
 \begin{equation}
-  \label{eq:total-state-multichannel}
+  \label{eq:total-state-multichannel-n}
   \ket*{\Psi^{\lr{N, +}}}
   =
   \lrsq[\bigg]
@@ -595,42 +686,56 @@ principle), we construct it using a multichannel expansion of the form
     \hat{P}_{0, m}
   }
   \ket*{\psi^{\lr{N, +}}}
+  .
 \end{equation}
-where $\hat{P}_{0, m}$ are the electron exchange operators, for
-$m = 1, \dotsc, n_{\mathrm{e}}$, exchanging the projectile electron state and
-$m$-th target electron state.
-We neglect to anti-symmetrise the target electrons with each other, since the
-target pseudostates, $\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{\infty}$ are
-already anti-symmetric by construction.
-However, we observe that the multichannel expansion is not uniquely defined,
-since for any state in the kernel of the multichannel operator,
-$\ket*{\omega^{\lr{N, +}}} \in
-\ker\lr{1 - \sum_{m = 1}^{n_{\mathrm{e}}}\hat{P}_{0, m}}$,
+
+However, after projecting the un-symmetrised total state with the projection
+operator for the target pseudostates, the multichannel expansion is not uniquely
+defined, since for any state, $\ket*{\omega^{\lr{N, +}}}$, such that
+\begin{equation}
+  \label{eq:multichannel-kernel}
+  \ket*{\omega^{\lr{N, +}}}
+  \in
+  \ker\lr[\bigg]
+  {
+    \lrsq[\bigg]
+    {
+      1 - \sum_{m = 1}^{n_{\mathrm{e}}}\hat{P}_{0, m}
+    }
+    \hat{I}_{T}^{\lr{N}}
+  }
+\end{equation}
 and constant $\theta$, the multichannel expansion of
-$\ket*{\psi^{\lr{N, +}}} + \theta\ket*{\omega^{\lr{N, +}}}$ will be identical to
+$\ket*{\psi^{\lr{N, +}}}
++ \theta \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N, +}}}$ will be identical to
 that of $\ket*{\psi^{\lr{N, +}}}$.
-This dilemma can be resolved in the following
 To resolve this dilemma, we impose the constraint that for any of the
-one-electron states, $\ket*{\eta}$, used to construct the target state,
-$\ket*{\phi_{i}^{\lr{N}}}$, that
+one-electron atomic orbitals,
+$\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}_{\mathrm{e}}$, used in the
+construction of the target pseudostates in \autoref{eq:target-1e-hamiltonian},
+that
 \begin{equation}
   \label{eq:multichannel-constraint}
-  \bra*{\eta, \phi_{i}^{\lr{N}}}
+  \bra*{\phi_{j}^{\lr{N}}}
+  \otimes
+  \bra*{\Phi_{i}^{\lr{N}}}
   \hat{P}_{0, m}
   \ket*{\gamma^{\lr{N, +}}}
   =
   -
-  \bra*{\eta, \phi_{i}^{\lr{N}}}
+  \bra*{\phi_{j}^{\lr{N}}}
+  \otimes
+  \bra*{\Phi_{i}^{\lr{N}}}
   \ket*{\gamma^{\lr{N, +}}}
-  \qq{for all}
-  \ket*{\gamma^{\lr{N, +}}}
-  .
 \end{equation}
+for all $\ket*{\gamma^{\lr{N, +}}}
+\in \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$.
 Whence it follows that the multichannel expansion of
-$\ket*{\psi^{\lr{N, +}}} + \theta\ket*{\omega^{\lr{N, +}}}$ will be identical to
-that of $\ket*{\psi^{\lr{N, +}}}$, only in the case where $\theta = 0$, or
-$\ket*{\omega} = \ket{0}$; that is to say that $\ket*{\psi^{\lr{N, +}}}$ will
-now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
+$\ket*{\psi^{\lr{N, +}}}
++ \theta \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N, +}}}$ will be identical to
+that of $\ket*{\psi^{\lr{N, +}}}$ only in the case where $\theta = 0$, or
+$\ket*{\omega^{\lr{N, +}}} = \ket*{0}$; that is to say,
+$\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}

@@ -24,6 +24,9 @@
 \cfoot{}
 \lfoot{}
 
+%
+\setcounter{secnumdepth}{3}
+
 % document
 
 \begin{document}
@@ -90,8 +93,8 @@ to the cases of: electron-impact hydrogen (e-H) scattering, and electron-impact
 helium (e-He) scattering.
 In particular, we shall explore the treatment of target ionisation within the CCC
 method.
-Note that in the general treatment, we shall restrict our attention to electron
-projectiles and atomic/ionic targets.
+Note that in the general treatment, we restrict our attention to electron
+projectiles and atomic/ionic targets consisting of $n_{\mathrm{e}}$ electrons.
 
 \subsection{Convergent Close-Coupling Method}
 \label{sec:ccc-method}
@@ -124,6 +127,7 @@ form
   \tfrac{1}{r}
   \xi_{k_{i}, l{i}}\lr{r}
   Y_{l_{i}}^{m_{i}}\lr{\Omega}
+  ,
 \end{equation}
 where $Y_{l_{i}}^{m_{i}}\lr{\Omega}$ are the spherical harmonics, and where
 $\xi_{k_{i}, l_{i}}\lr{r}$ are the Laguerre radial basis functions, which are of
@@ -146,6 +150,7 @@ the form
   \lr{\lambda_{l} r}^{l + 1}
   \exponential\lr[\big]{- \tfrac{1}{2} \lambda_{l} r}
   L_{k - 1}^{2l + 2}\lr{\lambda_{l} r}
+  ,
 \end{equation}
 where $\lambda_{l}$ is the exponential fall-off, for each $l$, and where
 $L_{k - 1}^{2l + 2}\lr{\lambda_{l} r}$ are the associated Laguerre polynomials.
@@ -159,22 +164,22 @@ This Laguerre basis is utilised due to: the Laguerre basis functions,
 $\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forming a complete basis
 for the Hilbert space $L^{2}\lr{\real^{3}}$ - shown in
 \autoref{app:laguerre-completeness}, the short-range and long-range behaviour of
-the radial basis functions being well suited to describing both target states
+the radial basis functions being well suited to describing bound target states
 and providing a basis for expanding continuum states in, and because it allows
 the matrix elements of certain operators to be calculated analytically.
 
-Practically, we cannot utilise a a basis of infinite size.
+Practically, we cannot utilise a basis of infinite size.
 Hence, we truncate the Laguerre radial basis,
 $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{N_{l}}$, to a certain number of radial basis
 functions, $N_{l}$, for each $l$, and we also truncate
-$l \in \lrset{0, \dotsc, l_{max}}$,
+$l \in \lrset{0, \dotsc, l_{\max}}$,
 limiting the maximum angular momentum we consider in our basis.
 Hence, for a given value of $m$, we have a basis size of
 \begin{equation}
   \label{eq:basis-size}
   N
   =
-  \sum_{l = 0}^{l_{max}}
+  \sum_{l = 0}^{l_{\max}}
   N_{l}
   .
 \end{equation}
@@ -185,104 +190,69 @@ Convergent Close-Coupling method.
 Further properties of the Laguerre basis are discussed in
 \autoref{app:laguerre-basis}.
 
-\subsubsection{Projectile-Target System}
-\label{sec:projectile-target}
+\subsubsection{Target States}
+\label{sec:target-states}
 
 Possessing now a suitable basis to work with, we proceed to represent the
-projectile-target system in this basis by the method of basis expansion.
-We first construct the projectile states, and the target states, before
-considering how to combine the two into a set of total states.
+target in this basis by the method of basis expansion.
+Firstly, we note that electrons are indistinguishable fermionic particles; that
+is, no two electrons can be distinguished from each other, and they must satisfy
+Pauli's exclusion principle - that an electron state cannot be occupied by more
+than one electron.
+Since electrons are indistinguishable, we might naively suppose that the space
+of states consisting of $n$ electrons is simply the $n$-th tensor power of the
+one-electron space, $T^{n}\lr{\mathcal{H}}$, defined by
+\begin{equation}
+  \label{eq:tensor-power}
+  T^{n}\lr{\mathcal{H}}
+  =
+  \lrset
+  {
+    \ket{\psi_{1}}
+    \otimes
+    \dots
+    \otimes
+    \ket{\psi_{n}}
+    :
+    \ket{\psi_{1}},
+    \dotsc,
+    \ket{\psi_{n}}
+    \in \mathcal{H}
+  }
+  ,
+\end{equation}
+where $\mathcal{H}$ is the space of one-electron states.
+However this fails to account for Pauli's exclusion principle, since any
+one-electron state may be occupied up to $n$ times.
+Hence, the space of states consisting of $n$ electrons is instead defined to be
+the quotient space $\Lambda^{n}\lr{\mathcal{H}}$ of $T^{n}\lr{\mathcal{H}}$ by
+$\mathcal{D}^{n}$,
+\begin{equation}
+  \label{eq:exterior-power}
+  \Lambda^{n}\lr{\mathcal{H}}
+  =
+  T^{n}\lr{\mathcal{H}}
+  /
+  \mathcal{D}^{n}
+  ,
+\end{equation}
+where $\mathcal{D}^{n} \subset T^{n}\lr{\mathcal{H}}$ is the subspace of tensor
+products which contain any one-electron state more than once.
+The space $\Lambda^{n}\lr{\mathcal{H}}$ is known as the $n$-th exterior power of
+$\mathcal{H}$, and is identifiable as the subspace of $T^{n}\lr{\mathcal{H}}$
+consisting of anti-symmetric tensors.
 
-Recall that we restrict our attention to the case of an electron projectile, and
-an atomic/ionic target consisting of $n_{\mathrm{e}}$ electrons.
-We shall adopt the convention that the projectile electron space is denoted by
-$\mathcal{H}_{0}$, the $m$-th target electron space by $\mathcal{H}_{m}$, for
-$m = 1, \dotsc, n_{\mathrm{e}}$, and a one-electron space by
-$\mathcal{H}_{\mathrm{e}}$.
+It follows that for an atomic/ionic target, consisting of $n_{\mathrm{e}}$
+electrons, the space of target states is of the form
+$\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
+Note that we shall adopt the convention that the projectile electron space is
+denoted by $\mathcal{H}_{0}$, and the $m$-th target electron space by
+$\mathcal{H}_{m}$, for $m = 1, \dotsc, n_{\mathrm{e}}$.
 Furthermore, operators which act on the $m$-th electron space (including the
 projectile electron), will be indexed by $m$, for
 $m = 0, 1, \dotsc, n_{\mathrm{e}}$.
 
-\paragraph{Projectile States}
-\label{sec:projectile-states}
-
-The projectile states, $\ket{\boldsymbol{k}} \in \mathcal{H}_{P}$, where
-$\mathcal{H}_{P} = \mathcal{H}_{0} = \mathcal{H}_{\mathrm{e}}$ is the projectile
-electron space, are defined to be eigenstates of the free Hamiltonian; that is,
-\begin{equation}
-  \label{eq:projectile-hamiltonian}
-  \hat{K}_{0}
-  \ket{\boldsymbol{k}}
-  =
-  \tfrac{k^{2}}{2}
-  \ket{\boldsymbol{k}}
-  .
-\end{equation}
-It follows that the coordinate-space representation of projectile states are
-plane waves; that is,
-\begin{equation}
-  \label{eq:projectile-states}
-  \bra{\boldsymbol{r}}
-  \ket{\boldsymbol{k}}
-  =
-  \lr{2 \pi}^{-\tfrac{3}{2}}
-  \exponential\lr
-  {
-    \imath
-    \boldsymbol{k}
-    \vdot
-    \boldsymbol{r}
-  }
-  .
-\end{equation}
-
-Further properties of the plane waves are discussed in
-\autoref{app:plane-waves}.
-
-\paragraph{Target States}
-\label{sec:target-states}
-
-\subparagraph{Target Space}
-\label{sec:target-space}
-
-For a one-electron atomic/ionic target (such as H, $\mathrm{He}^{+}, \dotsc$),
-the space of target states, $\mathcal{H}_{T}$, is simply constructed from the
-one-electron space of the target electron,
-$\mathcal{H}_{1} = \mathcal{H}_{\mathrm{e}}$.
-However, for a many-electron atomic/ionic target (such as He), the construction
-of the space of target states requires a more nuanced approach.
-
-Firstly, we note that as electrons are indistinguishable, the one-electron space
-of each target electron must be identical; that is,
-$\mathcal{H}_{m} = \mathcal{H}_{\mathrm{e}}$ for
-$m = 1, \dotsc, n_{\mathrm{e}}$ where $n_{\mathrm{e}}$ is the number of target
-electrons.
-Furthermore, the space of target states, $\mathcal{H}_{T}$, must be constructed
-from the spaces of target electron in a way which preserves the
-indistinguishableness of each electron, and which adheres to Pauli's exclusion
-principle - that no more than one electron can occupy a given state (including
-spin).
-This is achieved by constructing the space of target states from the
-anti-symmetrised tensor product of the spaces of the target electrons,
-\begin{equation}
-  \label{eq:target-space}
-  \mathcal{H}_{T}
-  =
-  \lrset[\Bigg]
-  {
-    \hat{A}_{n_{\mathrm{e}}}
-    \ket{\psi}
-    :
-    \ket{\psi}
-    \in
-    \bigotimes_{m = 1}^{n_{\mathrm{e}}}
-    \mathcal{H}_{\mathrm{e}}
-  }
-\end{equation}
-where the operator, $\hat{A}_{n_{\mathrm{e}}}$, anti-symmetrises the tensor
-product of $n_{\mathrm{e}}$ indistinguishable electron states.
-
-\subparagraph{Target Hamiltonian}
+\paragraph{Target Hamiltonian}
 \label{sec:target-hamiltonian}
 
 The target Hamiltonian, for an atomic/ionic target with $n_{\mathrm{e}}$
@@ -300,13 +270,14 @@ electrons, is of the form
   \sum_{m = 1}^{n_{\mathrm{e}}}
   \sum_{n = m + 1}^{n_{\mathrm{e}}}
   \hat{V}_{m, n}
+  ,
 \end{equation}
 where $\hat{K}_{m}$ and $\hat{V}_{m}$ are the target electron kinetic and
 electron-nuclei potential operators, for $m = 1, \dotsc, n_{\mathrm{e}}$, and
 where $\hat{V}_{m, n}$ are the electron-electron potential operators, for
 $m, n = 1, \dotsc, n_{\mathrm{e}}$.
 
-\subparagraph{Target Diagonalisation}
+\paragraph{Target Diagonalisation}
 \label{sec:target-diagonalisation}
 
 The target Hamiltonian, restricted to just one target electron,
@@ -317,6 +288,7 @@ The target Hamiltonian, restricted to just one target electron,
   \hat{K}_{1}
   +
   \hat{V}_{1}
+  ,
 \end{equation}
 is expanded in a Laguerre basis, $\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and
 diagonalised to yield a set of one-electron atomic orbitals
@@ -361,13 +333,15 @@ these spin orbitals is of the form
   \ket*{\chi_{a_{\sigma\lr{n_{\mathrm{e}}}}}^{\lr{N}}}
   \in
   \mathcal{H}_{T}
+  ,
 \end{equation}
 where $S_{n_{\mathrm{e}}}$ is the symmetric group on $n_{\mathrm{e}}$ elements,
 the sum is taken over all permutations, $\sigma \in S_{n_{\mathrm{e}}}$, and
-where $\mathrm{sgn}\lr{\sigma}$ is the sign of the permutation $\sigma$.
+where $\mathrm{sgn}\lr{\sigma}$ is the signature of the permutation $\sigma$.
 We note that Slater determinants are anti-symmetric under pairwise exchange of
 any two orbitals, and are zero if constructed with two spin orbitals in the same
-state, and hence adhere to Pauli's exclusion principle.
+state, and hence adhere to Pauli's exclusion principle and are indeed elements
+of $\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
 
 The true target states,
 $\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty} \in \mathcal{H}_{T}$, are then
@@ -388,6 +362,7 @@ in a basis of Slater determinants,
     \in
     \lrset{1, \dotsc, 2N}
   }
+  ,
 \end{equation}
 and diagonalising to yield a set of target pseudostates,
 $\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$, which are orthonormal and
@@ -415,7 +390,7 @@ their pseudoenergies are dependent on the size of the Laguerre basis utilised.
 The diagonalisation procedure is discussed in further detail in
 \autoref{app:diagonalisation}.
 
-\subparagraph{Completeness of Target Pseudostates}
+\paragraph{Completeness of Target Pseudostates}
 \label{sec:target-states-completeness}
 
 As a result of the completeness of the Laguerre basis, the set of target
@@ -423,13 +398,6 @@ pseudostates will be separable into a set of bounded pseudostates which will
 form an approximation of the true target discrete spectrum, and a set of
 unbounded pseudostates which will provide a discretisation of the true continuum
 of unbounded states.
-In general, bounded states have negative energy and unbounded states have
-positive energy, however this is not necessarily the case - a note which will be
-relevant in the treatment of the meta-stable positive-energy discrete states of
-helium.
-The treatment of these meta-stable states of helium will be discussed in further
-detail in \autoref{sec:he-meta-stable}, while for now we shall simply
-distinguish bounded and unbounded states by the sign of their energy.
 We order the target pseudostates by increasing pseudoenergy,
 $\epsilon_{1}^{\lr{N}} < \dotsc < \epsilon_{N_{T}}^{\lr{N}}$, which allows us to
 express the separability of the spectrum in the form
@@ -440,6 +408,7 @@ express the separability of the spectrum in the form
   \lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{B}}
   \cup
   \lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = N_{B} + 1}^{N_{T}}
+  ,
 \end{equation}
 where $\epsilon_{i}^{\lr{N}} < 0$ for $i = 1, \dotsc, N_{B}$, and where
 $\epsilon_{i}^{\lr{N}} \geq 0$ for $i = N_{B} + 1, \dotsc, N_{T}$.
@@ -448,26 +417,7 @@ $N_{U} = N_{T} - N_{B}$ to represent the number of unbounded pseudostates, both 
 which are dependent on $N$ by consequence of the construction of the target
 pseudostates.
 
-We note that the identity operator for the space of target states,
-$\mathcal{H}_{T}$, can be represented in the form
-\begin{equation}
-  \label{eq:target-identity}
-  \hat{I}_{T}
-  =
-  \sum_{i = 1}^{\infty}
-  \ket*{\Phi_{i}}
-  \bra*{\Phi_{i}}
-  +
-  \int_{\boldsymbol{q} : q^{2} \geq 0}
-  \dd{\boldsymbol{q}}
-  \ket*{\boldsymbol{q}}
-  \bra*{\boldsymbol{q}}
-\end{equation}
-where $\lrset{\ket*{\Phi_{i}}}_{i = 1}^{\infty}$ is the true target discrete
-spectrum and where $\lrset{\ket*{\boldsymbol{q}} : q^{2} \geq 0}$ is the true
-continuum spectrum, of singly ionised target states.
-\todo[continuum spectrum notation]{Is this notation sufficient?}
-Furthermore, we note that the projection operator for the target pseudostates,
+We note that the projection operator for the target pseudostates,
 $\hat{I}_{T}^{\lr{N}}$, is of the form
 \begin{equation}
   \label{eq:target-projection}
@@ -484,35 +434,12 @@ $\hat{I}_{T}^{\lr{N}}$, is of the form
   \sum_{i = N_{B} + 1}^{N_{T}}
   \ket*{\Phi_{i}^{\lr{N}}}
   \bra*{\Phi_{i}^{\lr{N}}}
+  ,
 \end{equation}
 and so in the limit as $N \to \infty$, the sum over the bounded pseudostates
 will converge to the sum over the true target discrete states
-\begin{equation}
-  \label{eq:target-projection-discrete}
-  \lim_{N \to \infty}
-  \sum_{i = 1}^{N_{B}}
-  \ket*{\Phi_{i}^{\lr{N}}}
-  \bra*{\Phi_{i}^{\lr{N}}}
-  =
-  \sum_{i = 1}^{\infty}
-  \ket*{\Phi_{i}}
-  \bra*{\Phi_{i}}
-\end{equation}
 and the sum over the unbounded pseudostates will converge to a discretisation of
-the integral over the true continuum spectrum
-\begin{equation}
-  \label{eq:target-projection-continuum}
-  \lim_{N \to \infty}
-  \sum_{i = N_{B} + 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N}}}
-  \bra*{\Phi_{i}^{\lr{N}}}
-  =
-  \int_{\boldsymbol{q} : q^{2} \geq 0}
-  \dd{\boldsymbol{q}}
-  \ket*{\boldsymbol{q}}
-  \bra*{\boldsymbol{q}}
-  .
-\end{equation}
+the integral over the true continuum spectrum.
 Whence, it follows that projection operator for the target pseudostates
 converges to the identity operator, for $\mathcal{H}_{T}$,
 in the limit as $N \to \infty$; that is,
@@ -522,57 +449,60 @@ in the limit as $N \to \infty$; that is,
   \hat{I}_{T}^{\lr{N}}
   =
   \hat{I}_{T}
-\end{equation}
-which can be equivalently stated as
-\begin{equation}
-  \label{eq:target-state-completeness}
-  \lim_{N \to \infty}
-  \mathrm{span}\lrset
-  {
-    \ket*{\Phi_{i}^{\lr{N}}}
-  }_{i = 1}^{N_{T}}
-  =
-  \mathcal{H}_{T}
   .
 \end{equation}
 
-\paragraph{Total State}
-\label{sec:total-state}
+\subsubsection{Projectile States}
+\label{sec:projectile-states}
 
-\subparagraph{Total Space}
-\label{sec:total-space}
-
-The construction of the total space for an electron projectile and an
-atomic/ionic target, with $n_{\mathrm{e}}$ electrons, echoes the considerations
-and process of constructing the target space for the many-electron target,
-presented in \autoref{sec:target-space}.
-In brief, the projectile electron and target electron(s) are indistinguishable,
-and thus have the same one-electron space, $\mathcal{H}_{\mathrm{e}}$.
-Hence, the space of projectile-target states, $\mathcal{H}$, is constructed from
-the anti-symmetrised tensor product of the projectile electron space, and the
-spaces of the target electrons,
+The projectile states, $\ket{\boldsymbol{k}} \in \mathcal{H}$, are defined to be
+eigenstates of the free Hamiltonian; that is,
 \begin{equation}
-  \label{eq:total-space}
-  \mathcal{H}
+  \label{eq:projectile-hamiltonian}
+  \hat{K}_{0}
+  \ket{\boldsymbol{k}}
   =
-  \lrset[\Bigg]
-  {
-    \hat{A}_{1 + n_{\mathrm{e}}}
-    \ket{\psi}
-    :
-    \ket{\psi}
-    \in
-    \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}}
-    \mathcal{H}_{\mathrm{e}}
-  }
+  \tfrac{k^{2}}{2}
+  \ket{\boldsymbol{k}}
+  .
 \end{equation}
-where the operator, $\hat{A}_{1 + n_{\mathrm{e}}}$, anti-symmetrises the tensor
-product of $1 + n_{\mathrm{e}}$ indistinguishable electron states.
+It follows that the coordinate-space representation of projectile states are
+plane waves; that is,
+\begin{equation}
+  \label{eq:projectile-states}
+  \bra{\boldsymbol{r}}
+  \ket{\boldsymbol{k}}
+  =
+  \lr{2 \pi}^{-\tfrac{3}{2}}
+  \exponential\lr
+  {
+    \imath
+    \boldsymbol{k}
+    \vdot
+    \boldsymbol{r}
+  }
+  .
+\end{equation}
+Further properties of the plane waves are discussed in
+\autoref{app:plane-waves}.
 
-\subparagraph{Total Hamiltonian}
-\label{sec:total-hamiltonian}
+\subsubsection{Total Wavefunction}
+\label{sec:total-wavefunction}
 
-The total Hamiltonian of the projectile-target system, $\hat{H}$, is of the form
+The total wavefunction
+$\ket*{\Psi^{\lr{+}}} \in \Lambda^{1 + n_{\mathrm{e}}}\lr{\mathcal{H}}$ is
+defined to be an eigenstate of the total Hamiltonian $\hat{H}$ with total
+energy $E$ and specified to have outgoing spherical-wave boundary conditions,
+\begin{equation}
+  \label{eq:total-state}
+  \hat{H}
+  \ket*{\Psi^{\lr{+}}}
+  =
+  E
+  \ket*{\Psi^{\lr{+}}}
+  ,
+\end{equation}
+where $\hat{H}$ is of the form
 \begin{equation}
   \label{eq:total-hamiltonian}
   \hat{H}
@@ -585,6 +515,7 @@ The total Hamiltonian of the projectile-target system, $\hat{H}$, is of the form
   +
   \sum_{m = 1}^{n_{\mathrm{e}}}
   \hat{V}_{0, m}
+  ,
 \end{equation}
 where $\hat{H}_{T}$ is the target Hamiltonian, defined in
 \autoref{eq:target-hamiltonian}, $\hat{K}_{0}$ is the projectile electron
@@ -592,22 +523,6 @@ kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
 operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
 
-\subparagraph{Total State Construction}
-\label{sec:total-state-construction}
-
-The total state of the projectile-target system,
-$\ket*{\Psi^{\lr{+}}} \in \mathcal{H}$, specified to have outgoing
-spherical-wave boundary conditions, is defined to be an eigenstate of the total
-Hamiltonian, $\hat{H}$,
-\begin{equation}
-  \label{eq:total-state}
-  \hat{H}
-  \ket*{\Psi^{\lr{+}}}
-  =
-  E
-  \ket*{\Psi^{\lr{+}}}
-\end{equation}
-with total energy $E$.
 To ensure that the total state is anti-symmetric, we construct it using a
 multichannel expansion of the form
 \begin{equation}

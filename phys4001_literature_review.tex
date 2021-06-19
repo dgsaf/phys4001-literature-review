@@ -649,6 +649,199 @@ $\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 \subsubsection{Close-Coupling Equations}
 \label{sec:cc-equations}
 
+We present a derivation for the Convergent Close-Coupling (CCC) equations,
+beginning with the Schr\"odinger equation for the total wavefunction
+$\ket*{\Psi^{\lr{+}}}$ presented in \autoref{eq:total-wavefunction}.
+However, we shall present the derivation in more general terms initially,
+narrowing the scope as we progress.
+We consider an eigenstate $\ket*{\Psi}$ of a Hamiltonian $\hat{H}$, with
+eigen-energy $E$, for which the Schr\"odinger equation is of the form
+\begin{equation*}
+  \hat{H}
+  \ket{\Psi}
+  =
+  \hat{H}_{\rm{A}}
+  \ket{\Psi}
+  +
+  \hat{V}
+  \ket{\Psi}
+  =
+  E
+  \ket{\Psi}
+  ,
+\end{equation*}
+where $\hat{H}_{\rm{A}}$ is the unbounded asymptotic Hamiltonian and $\hat{V}$
+is a potential.
+This expression can be rearranged to the form
+\begin{equation*}
+  \lrsq
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+  }
+  \ket{\Psi}
+  =
+  \hat{V}
+  \ket{\Psi}
+  .
+\end{equation*}
+Suppose that $\lrset{\ket*{\Omega_{\alpha}}}$ are the (countably and
+uncountably infinite) eigenstates of the asymptotic Hamiltonian, with
+corresponding eigenvalues
+$\varepsilon_{\alpha}$,
+\begin{equation*}
+  \hat{H}_{\rm{A}}
+  \ket{\Omega_{\alpha}}
+  =
+  \varepsilon_{\alpha}
+  \ket{\Omega_{\alpha}}
+  ,
+\end{equation*}
+and note that where $\varepsilon_{\alpha} = E$, it follows that
+$\ket*{\Omega_{\alpha}} \in \ker\lr{E - \hat{H}_{\rm{A}}}$.
+We now define the Green's operator $\hat{G}_{\lr{E}}$, to be such that
+\begin{equation*}
+  \hat{G}_{\lr{E}}
+  \lrsq
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+  }
+  =
+  \hat{I}
+  =
+  \lrsq
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+  }
+  \hat{G}_{\lr{E}}
+  ,
+\end{equation*}
+whence it follows that
+\begin{equation*}
+  \ket{\Psi}
+  =
+  \sum_{\alpha : \varepsilon_{\alpha} = E}
+  C_{\alpha}
+  \ket{\Omega_{\alpha}}
+  +
+  \hat{G}_{\lr{E}}
+  \hat{V}
+  \ket{\Psi}
+  ,
+\end{equation*}
+where $C_{\alpha}$ are arbitrary scalar coefficients, and where the sum taken
+over the indexes of the asymptotic eigenstates represents a sum over the
+countably infinite states, and an integration over the uncountably infinite
+states, for which the eigen-energy $\varepsilon_{\alpha}$ is equal to $E$.
+The inclusion of the asymptotic eigenstates is required, as can be seen by
+applying the operator $\lrsq{E - \hat{H}_{\rm{A}}}$ on the left,
+\begin{equation*}
+  \lrsq
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+  }
+  \ket{\Psi}
+  =
+  \sum_{\alpha : \varepsilon_{\alpha} = E}
+  C_{\alpha}
+  \lrsq
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+  }
+  \ket{\Omega_{\alpha}}
+  +
+  \lrsq
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+  }
+  \hat{G}_{\lr{E}}
+  \hat{V}
+  \ket{\Psi}
+  =
+  \hat{V}
+  \ket{\Psi}
+  .
+\end{equation*}
+At this point, we note that selecting the values of the coefficients
+$C_{\alpha}$ amounts to specifying a boundary condition for the eigenstate
+$\ket{\Psi}$.
+Hence we may simplify the generalised sum/integral to a simpler form, without
+loss of generality, by writing
+\begin{equation*}
+  \ket{\Psi_{\alpha}}
+  =
+  \ket{\Omega_{\alpha}}
+  +
+  \hat{G}_{\lr{E}}
+  \hat{V}
+  \ket{\Psi_{\alpha}}
+\end{equation*}
+where $\ket*{\Omega_{\alpha}} \in \ker\lr{E - \hat{H}_{\rm{A}}}$.
+We now define the $\hat{T}$ operator, which is such that
+\begin{equation*}
+  \ket{\Psi_{\alpha}}
+  =
+  \lrsq
+  {
+    \hat{I}
+    +
+    \hat{G}_{\lr{E}}
+    \hat{T}
+  }
+  \ket{\Omega_{\alpha}}
+\end{equation*}
+for which it can be seen that
+\begin{alignat*}{2}
+  &
+  \ket{\Psi_{\alpha}}
+  &&
+  {}={}
+  &&
+  \ket{\Omega_{\alpha}}
+  +
+  \hat{G}_{\lr{E}}
+  \hat{V}
+  \ket{\Psi_{\alpha}}
+  =
+  \ket{\Omega_{\alpha}}
+  +
+  \hat{G}_{\lr{E}}
+  \hat{V}
+  \lrsq[\big]
+  {
+    \hat{I}
+    +
+    \hat{G}_{\lr{E}}
+    \hat{T}
+  }
+  \ket{\Omega_{\alpha}}
+  =
+  \lrsq[\big]
+  {
+    \hat{I}
+    +
+    \hat{G}_{\lr{E}}
+    \hat{V}
+    +
+    \hat{G}_{\lr{E}}
+    \hat{V}
+    \hat{G}_{\lr{E}}
+    \hat{T}
+  }
+  \ket{\Omega_{\alpha}}
+\end{alignat*}
+
 \subsubsection{Transition Amplitudes}
 \label{sec:transition-amplitudes}
 

@@ -119,7 +119,7 @@ $L^{2}\lr{\real^{3}}$, for which the coordinate-space representation is of the
 form
 \begin{equation}
   \label{eq:laguerre-basis}
-  \bra{\boldsymbol{r}}
+  \bra{\vb{r}}
   \ket{\varphi_{i}}
   =
   \varphi_{i}\lr{r, \Omega}
@@ -455,31 +455,31 @@ in the limit as $N \to \infty$; that is,
 \subsubsection{Projectile States}
 \label{sec:projectile-states}
 
-The projectile states, $\ket{\boldsymbol{k}} \in \mathcal{H}$, are defined to be
+The projectile states, $\ket{\vb{k}} \in \mathcal{H}$, are defined to be
 eigenstates of the free Hamiltonian; that is,
 \begin{equation}
   \label{eq:projectile-hamiltonian}
   \hat{K}_{0}
-  \ket{\boldsymbol{k}}
+  \ket{\vb{k}}
   =
   \tfrac{k^{2}}{2}
-  \ket{\boldsymbol{k}}
+  \ket{\vb{k}}
   .
 \end{equation}
 It follows that the coordinate-space representation of projectile states are
 plane waves; that is,
 \begin{equation}
   \label{eq:projectile-states}
-  \bra{\boldsymbol{r}}
-  \ket{\boldsymbol{k}}
+  \bra{\vb{r}}
+  \ket{\vb{k}}
   =
   \lr{2 \pi}^{-\tfrac{3}{2}}
   \exponential\lr
   {
     \imath
-    \boldsymbol{k}
+    \vb{k}
     \vdot
-    \boldsymbol{r}
+    \vb{r}
   }
   .
 \end{equation}
@@ -523,13 +523,13 @@ kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
 operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
 
-To ensure that the total wavefunction is anti-symmetric, we construct it using a
-multichannel expansion of the form
+To ensure that the total wavefunction is anti-symmetric, we construct by
+anti-symmetrising a multichannel expansion of the form
 \begin{equation}
-  \label{eq:total-wavefunction-multichannel}
+  \label{eq:total-wavefunction-antisymmetrisation}
   \ket*{\Psi^{\lr{+}}}
   =
-  \hat{M}
+  \hat{A}
   \ket*{\psi^{\lr{+}}}
   =
   \lrsq[\bigg]
@@ -587,10 +587,10 @@ and note that as a result of
 \end{equation}
 Similarly, we define
 \begin{equation}
-  \label{eq:total-wavefunction-multichannel-n}
+  \label{eq:total-wavefunction-antisymmetrisation-n}
   \ket*{\Psi^{\lr{N, +}}}
   =
-  \hat{M}
+  \hat{A}
   \ket*{\psi^{\lr{N, +}}}
   =
   \lrsq[\bigg]
@@ -605,7 +605,7 @@ Similarly, we define
 \end{equation}
 and observe that
 \begin{equation}
-  \label{eq:total-wavefunction-multichannel-convergence}
+  \label{eq:total-wavefunction-antisymmetrisation-convergence}
   \ket*{\Psi^{\lr{+}}}
   =
   \lim_{N \to \infty}
@@ -616,11 +616,10 @@ and observe that
 However, after projecting the un-symmetrised total wavefunction with the
 projection operator for the target pseudostates, the multichannel expansion is
 not uniquely defined, since for any state,
-$\ket*{\omega^{\lr{N}}} \in \ker\lr{\hat{M}\hat{I}_{T}^{\lr{N}}}$,
-and constant $\alpha \in \complex$, the multichannel expansion of
-$\ket*{\psi^{\lr{N, +}}}
-+ \alpha \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N}}}$ will be identical to
-that of $\ket*{\psi^{\lr{N, +}}}$.
+$\ket*{\omega^{\lr{N}}} = \hat{I}_{T}^{\lr{N}} \ket*{\omega} \in
+\ker\lr{\hat{A}}$, and constant $\alpha \in \complex$, the multichannel
+expansion of $\ket*{\psi^{\lr{N, +}}} + \alpha \ket*{\omega^{\lr{N}}}$ will be
+identical to that of $\ket*{\psi^{\lr{N, +}}}$.
 To resolve this dilemma, we impose the constraint that for any of the
 one-electron atomic orbitals,
 $\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}$, used in the
@@ -640,20 +639,23 @@ that
   .
 \end{equation}
 Whence it follows that the multichannel expansion of
-$\ket*{\psi^{\lr{N, +}}}
-+ \alpha \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N}}}$ will be identical to
+$\ket*{\psi^{\lr{N, +}}} + \alpha \ket*{\omega^{\lr{N}}}$ will be identical to
 that of $\ket*{\psi^{\lr{N, +}}}$ only in the case where $\alpha = 0$, or
 $\ket*{\omega^{\lr{N}}} = \ket*{0}$; that is to say,
 $\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 
-\subsubsection{Close-Coupling Equations}
-\label{sec:cc-equations}
+\subsubsection{Convergent Close-Coupling Equations}
+\label{sec:ccc-equations}
 
 We present a derivation for the Convergent Close-Coupling (CCC) equations,
 beginning with the Schr\"odinger equation for the total wavefunction
 $\ket*{\Psi^{\lr{+}}}$ presented in \autoref{eq:total-wavefunction}.
 This shall be re-arranged to yield the Lippmann-Schwinger equation, which will
 then be solved using the CCC formalism.
+
+\paragraph{Lippmann-Schwinger Equation}
+\label{sec:lippmann-schwinger}
+
 We consider an eigenstate $\ket*{\Psi}$ of a Hamiltonian $\hat{H}$, with
 eigen-energy $E$, for which the Schr\"odinger equation is of the form
 \begin{equation}
@@ -984,7 +986,17 @@ and so the Green's operator can be expanded in the set of asymptotic states to
 be written in the form
 \begin{equation}
   \label{eq:greens-operator-expansion}
-  \hat{G}_{\lr{E}}
+  \hat{G}_{\lr{E, \pm}}
+  =
+  \lim_{\eta \to 0}
+  \sum_{\gamma}\int
+  \dfrac
+  {
+    \ketbra*{\Omega_{\gamma}}{\Omega_{\gamma}}
+  }
+  {
+    E - \varepsilon_{\gamma} \pm \imath\eta
+  }
   =
   \sum_{\gamma}\int
   \dfrac
@@ -992,13 +1004,12 @@ be written in the form
     \ketbra*{\Omega_{\gamma}}{\Omega_{\gamma}}
   }
   {
-    E - \varepsilon_{\gamma}
+    E - \varepsilon_{\gamma} \pm \imath 0
   }
   ,
 \end{equation}
-where we note again that in this context the sum represents a sum over the
-countably infinite states, and an integration over the uncountably infinite
-states.
+where the imaginary limit exists to ensure the integral is well-defined for all
+$\varepsilon_{\gamma}$.
 With an expression for the Green's operator in hand, we can now re-write the
 Lippmann-Schwinger equation in the following form
 \begin{equation}
@@ -1006,7 +1017,7 @@ Lippmann-Schwinger equation in the following form
   \mel*
   {\Omega_{\alpha}}
   {\hat{T}}
-  {\Omega_{\alpha}}
+  {\Omega_{\beta}}
   =
   \mel*
   {\Omega_{\alpha}}
@@ -1026,10 +1037,150 @@ Lippmann-Schwinger equation in the following form
     {\Omega_{\beta}}
   }
   {
-    E - \varepsilon_{\gamma}
+    E - \varepsilon_{\gamma} \pm \imath 0
   }
+  ,
+\end{equation}
+which conveniently expresses all matrix elements in terms of the asymptotic
+eigenstates.
+
+\paragraph{Convergent Close-Coupling Formalism}
+\label{sec:ccc-formalism}
+
+In the Convergent Close-Coupling formalism, the Lippmann-Schwinger equation in
+terms of the $\hat{T}$ operator, \autoref{eq:ls-t}, is solved in momentum space.
+The asymptotic eigenstates taken to be of the form
+\begin{equation}
+  \label{eq:ccc-asymptotic-states}
+  \ket*{\Omega_{\alpha}}
+  =
+  \ket*{\Phi_{i_{\alpha}}}
+  \otimes
+  \ket*{\vb{k}_{\alpha}}
+  \approx
+  \ket*{\Phi_{i_{\alpha}}^{\lr{N}}}
+  \otimes
+  \ket*{\vb{k}_{\alpha}}
+  =
+  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
+  ,
+\end{equation}
+with corresponding asymptotic eigenenergies
+\begin{equation}
+  \label{eq:ccc-asymptotic-energy}
+  \varepsilon_{\alpha}
+  =
+  \epsilon_{i_{\alpha}}
+  +
+  \tfrac{1}{2}
+  k_{\alpha}^{2}
+  ,
+\end{equation}
+where $\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ are the target
+pseudostates, defined in \autoref{eq:target-states}, and where $\ket*{\vb{k}}$
+are plane waves, defined in \autoref{eq:projectile-states}.
+Furthermore, the total wavefunction is taken to be of the form
+\begin{equation}
+  \label{eq:ccc-total-wavefunction}
+  \ket*{\Psi_{\alpha}}
+  =
+  \hat{A}
+  \ket*{\psi_{\alpha}}
+  \approx
+  \hat{A}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi_{\alpha}}
+  ,
+\end{equation}
+as in \autoref{eq:total-wavefunction-antisymmetrisation}, where $\hat{A}$ is the
+anti-symmetrisation operator, and is subject to the constraints imposed in
+\autoref{eq:multichannel-constraint} to ensure uniqueness.
+We note that with these expressions for the asymptotic eigenstates and the total
+wavefunction, that the $\hat{T}$ operator is related to the potential $\hat{V}$
+by the expression
+\begin{equation}
+  \label{eq:ccc-t-v}
+  \hat{T}
+  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
+  =
+  \hat{V}
+  \hat{A}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi_{\alpha}}
   .
 \end{equation}
+However, in the case where the potential $\hat{V}$ can be re-written in a way
+which accounts for the anti-symmetrisation of the un-symmetrised wavefunction
+$\ket*{\psi_{\alpha}^{\lr{S}}}$ with total spin $S$, we may write
+\begin{equation}
+  \label{eq:ccc-v-spin}
+  \hat{V}^{\lr{S}}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi_{\alpha}^{\lr{S}}}
+  =
+  \hat{V}
+  \hat{A}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi_{\alpha}^{\lr{S}}}
+  ,
+\end{equation}
+in which case the $\hat{T}$ operator is instead written as
+\begin{equation}
+  \label{eq:ccc-t-v-spin}
+  \hat{T}^{\lr{S}}
+  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
+  =
+  \hat{V}^{\lr{S}}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi_{\alpha}^{\lr{S}}}
+  .
+\end{equation}
+The Convergent Close-Coupling equations are therefore of the form
+\begin{alignat}{2}
+  \label{eq:ccc-ls-t}
+  &
+  \mel*
+  {\Phi_{n_{f}}^{\lr{N}} \vb{k}_{f}}
+  {\hat{T}^{\lr{S}}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  &
+  {}={}
+  &
+  \mel*
+  {\Phi_{n_{f}}^{\lr{N}} \vb{k}_{f}}
+  {\hat{V}^{\lr{S}}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  \\
+  &
+  &
+  {}+{}
+  &
+  \sum_{n = 1}^{N_{T}}
+  \int
+  \dd{\vb{k}}
+  \dfrac
+  {
+    \mel*
+    {\Phi_{n_{f}}^{\lr{N}} \vb{k}_{f}}
+    {\hat{V}^{\lr{S}}}
+    {\Phi_{n}^{\lr{N}} \vb{k}}
+    \mel*
+    {\Phi_{n}^{\lr{N}} \vb{k}}
+    {\hat{T}^{\lr{S}}}
+    {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  }
+  {
+    E
+    -
+    \epsilon_{n}
+    -
+    \tfrac{1}{2}
+    k^{2}
+    \pm \imath 0
+  }
+  \nonumber
+  .
+\end{alignat}
 
 
 \subsubsection{Transition Amplitudes}

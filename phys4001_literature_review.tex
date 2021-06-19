@@ -652,11 +652,12 @@ $\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 We present a derivation for the Convergent Close-Coupling (CCC) equations,
 beginning with the Schr\"odinger equation for the total wavefunction
 $\ket*{\Psi^{\lr{+}}}$ presented in \autoref{eq:total-wavefunction}.
-However, we shall present the derivation in more general terms initially,
-narrowing the scope as we progress.
+This shall be re-arranged to yield the Lippmann-Schwinger equation, which will
+then be solved using the CCC formalism.
 We consider an eigenstate $\ket*{\Psi}$ of a Hamiltonian $\hat{H}$, with
 eigen-energy $E$, for which the Schr\"odinger equation is of the form
-\begin{equation*}
+\begin{equation}
+  \label{eq:schrodinger}
   \hat{H}
   \ket{\Psi}
   =
@@ -669,11 +670,12 @@ eigen-energy $E$, for which the Schr\"odinger equation is of the form
   E
   \ket{\Psi}
   ,
-\end{equation*}
+\end{equation}
 where $\hat{H}_{\rm{A}}$ is the unbounded asymptotic Hamiltonian and $\hat{V}$
 is a potential.
 This expression can be rearranged to the form
-\begin{equation*}
+\begin{equation}
+  \label{eq:schrodinger-2}
   \lrsq
   {
     E
@@ -685,23 +687,25 @@ This expression can be rearranged to the form
   \hat{V}
   \ket{\Psi}
   .
-\end{equation*}
+\end{equation}
 Suppose that $\lrset{\ket*{\Omega_{\alpha}}}$ are the (countably and
 uncountably infinite) eigenstates of the asymptotic Hamiltonian, with
 corresponding eigenvalues
 $\varepsilon_{\alpha}$,
-\begin{equation*}
+\begin{equation}
+  \label{eq:schrodinger-asymptotic}
   \hat{H}_{\rm{A}}
   \ket{\Omega_{\alpha}}
   =
   \varepsilon_{\alpha}
   \ket{\Omega_{\alpha}}
   ,
-\end{equation*}
+\end{equation}
 and note that where $\varepsilon_{\alpha} = E$, it follows that
 $\ket*{\Omega_{\alpha}} \in \ker\lr{E - \hat{H}_{\rm{A}}}$.
 We now define the Green's operator $\hat{G}_{\lr{E}}$, to be such that
-\begin{equation*}
+\begin{equation}
+  \label{eq:greens-operator}
   \hat{G}_{\lr{E}}
   \lrsq
   {
@@ -720,12 +724,13 @@ We now define the Green's operator $\hat{G}_{\lr{E}}$, to be such that
   }
   \hat{G}_{\lr{E}}
   ,
-\end{equation*}
-whence it follows that
-\begin{equation*}
+\end{equation}
+whence we obtain a general form of the Lippmann-Schwinger equation,
+\begin{equation}
+  \label{eq:ls}
   \ket{\Psi}
   =
-  \sum_{\alpha : \varepsilon_{\alpha} = E}
+  \sum_{\alpha : \varepsilon_{\alpha} = E}\int
   C_{\alpha}
   \ket{\Omega_{\alpha}}
   +
@@ -733,14 +738,19 @@ whence it follows that
   \hat{V}
   \ket{\Psi}
   ,
-\end{equation*}
-where $C_{\alpha}$ are arbitrary scalar coefficients, and where the sum taken
-over the indexes of the asymptotic eigenstates represents a sum over the
-countably infinite states, and an integration over the uncountably infinite
-states, for which the eigen-energy $\varepsilon_{\alpha}$ is equal to $E$.
-The inclusion of the asymptotic eigenstates is required, as can be seen by
-applying the operator $\lrsq{E - \hat{H}_{\rm{A}}}$ on the left,
-\begin{equation*}
+\end{equation}
+where $C_{\alpha}$ are arbitrary scalar coefficients.
+We note that in this context, the sum taken over the indexes of the asymptotic
+eigenstates represents a sum over the countably infinite states, and an
+integration over the uncountably infinite states, for which the eigen-energy
+$\varepsilon_{\alpha}$ is equal to $E$.
+The inclusion of the selected asymptotic eigenstates is required as they are in
+the kernel of $\lrsq{E - \hat{H}_{\rm{A}}}$ - thus forming the homogenous
+solutions to the Lippmann-Schwinger equation.
+This can be seen by applying the operator $\lrsq{E - \hat{H}_{\rm{A}}}$ on the
+left of \autoref{eq:ls},
+\begin{equation}
+  \label{eq:ls-kernel}
   \lrsq
   {
     E
@@ -749,7 +759,7 @@ applying the operator $\lrsq{E - \hat{H}_{\rm{A}}}$ on the left,
   }
   \ket{\Psi}
   =
-  \sum_{\alpha : \varepsilon_{\alpha} = E}
+  \sum_{\alpha : \varepsilon_{\alpha} = E}\int
   C_{\alpha}
   \lrsq
   {
@@ -772,13 +782,14 @@ applying the operator $\lrsq{E - \hat{H}_{\rm{A}}}$ on the left,
   \hat{V}
   \ket{\Psi}
   .
-\end{equation*}
+\end{equation}
 At this point, we note that selecting the values of the coefficients
 $C_{\alpha}$ amounts to specifying a boundary condition for the eigenstate
 $\ket{\Psi}$.
 Hence we may simplify the generalised sum/integral to a simpler form, without
 loss of generality, by writing
-\begin{equation*}
+\begin{equation}
+  \label{eq:ls-boundary}
   \ket{\Psi_{\alpha}}
   =
   \ket{\Omega_{\alpha}}
@@ -786,10 +797,12 @@ loss of generality, by writing
   \hat{G}_{\lr{E}}
   \hat{V}
   \ket{\Psi_{\alpha}}
-\end{equation*}
+  ,
+\end{equation}
 where $\ket*{\Omega_{\alpha}} \in \ker\lr{E - \hat{H}_{\rm{A}}}$.
 We now define the $\hat{T}$ operator, which is such that
-\begin{equation*}
+\begin{equation}
+  \label{eq:t-operator}
   \ket{\Psi_{\alpha}}
   =
   \lrsq
@@ -800,9 +813,20 @@ We now define the $\hat{T}$ operator, which is such that
     \hat{T}
   }
   \ket{\Omega_{\alpha}}
-\end{equation*}
-for which it can be seen that
-\begin{alignat*}{2}
+  ,
+\end{equation}
+which is equivalently defined by writing
+\begin{equation}
+  \label{eq:t-operator-v}
+  \hat{T}
+  \ket{\Omega_{\alpha}}
+  =
+  \hat{V}
+  \ket{\Psi_{\alpha}}
+  .
+\end{equation}
+Furthermore, we have that
+\begin{alignat*}{4}
   &
   \ket{\Psi_{\alpha}}
   &&
@@ -813,7 +837,12 @@ for which it can be seen that
   \hat{G}_{\lr{E}}
   \hat{V}
   \ket{\Psi_{\alpha}}
-  =
+  &
+  \\
+  &
+  &&
+  {}={}
+  &&
   \ket{\Omega_{\alpha}}
   +
   \hat{G}_{\lr{E}}
@@ -826,7 +855,12 @@ for which it can be seen that
     \hat{T}
   }
   \ket{\Omega_{\alpha}}
-  =
+  &
+  \\
+  &
+  &&
+  {}={}
+  &&
   \lrsq[\big]
   {
     \hat{I}
@@ -840,7 +874,163 @@ for which it can be seen that
     \hat{T}
   }
   \ket{\Omega_{\alpha}}
+  &
+  \\
+  &
+  &&
+  {}={}
+  &&
+  \lrsq[\big]
+  {
+    \hat{I}
+    +
+    \hat{G}_{\lr{E}}
+    \lr
+    {
+      \hat{V}
+      +
+      \hat{V}
+      \hat{G}_{\lr{E}}
+      \hat{T}
+    }
+  }
+  \ket{\Omega_{\alpha}}
+  ,
+  &
 \end{alignat*}
+whence it follows that $\hat{T}$ can be written in the form
+\begin{equation}
+  \label{eq:ls-t-greens}
+  \hat{T}
+  \ket{\Omega_{\alpha}}
+  =
+  \lrsq
+  {
+    \hat{V}
+    +
+    \hat{V}
+    \hat{G}_{\lr{E}}
+    \hat{T}
+  }
+  \ket{\Omega_{\alpha}}
+  ,
+\end{equation}
+yielding the formulation of the Lippmann-Schwinger equation in terms of
+$\hat{T}$.
+At this point we consider the explicit form of the Green's operator
+$\hat{G}_{\lr{E}}$.
+First, we note that the asymptotic eigenstates are complete in the sense that
+\begin{equation}
+  \label{eq:asymptotic-complete}
+  \bra*{\Omega_{\alpha}}
+  \ket*{\Omega_{\beta}}
+  =
+  \delta_{\alpha, \beta}
+  ,
+\end{equation}
+where $\delta_{\alpha, \beta}$ appropriately represents the Kronecker delta and
+Dirac delta for the asymptotic states, and that these states satisfy
+\begin{equation}
+  \label{eq:asymptotic-matrix-element}
+  \mel*
+  {\Omega_{\alpha}}
+  {E - \hat{H}_{\rm{A}}}
+  {\Omega_{\beta}}
+  =
+  \lr{E - \varepsilon_{\beta}}
+  \braket*
+  {\Omega_{\alpha}}
+  {\Omega_{\beta}}
+  =
+  \lr{E - \varepsilon_{\alpha}}
+  \delta_{\alpha, \beta}
+  .
+\end{equation}
+From the definition \autoref{eq:greens-operator}, we must have that
+\begin{equation}
+  \label{eq:greens-operator-matrix-element-1}
+  \mel*
+  {\Omega_{\alpha}}
+  {
+    \hat{G}_{\lr{E}}
+    \lrsq{E - \hat{H}_{\rm{A}}}
+  }
+  {\Omega_{\beta}}
+  =
+  \mel*
+  {\Omega_{\alpha}}
+  {\hat{I}}
+  {\Omega_{\beta}}
+  =
+  \delta_{\alpha, \beta}
+\end{equation}
+whence it follows that
+\begin{equation}
+  \label{eq:greens-operator-matrix-element-2}
+  \mel*
+  {\Omega_{\alpha}}
+  {\hat{G}_{\lr{E}}}
+  {\Omega_{\beta}}
+  =
+  \dfrac
+  {
+    \delta_{\alpha, \beta}
+  }
+  {
+    E - \varepsilon_{\alpha}
+  }
+\end{equation}
+and so the Green's operator can be expanded in the set of asymptotic states to
+be written in the form
+\begin{equation}
+  \label{eq:greens-operator-expansion}
+  \hat{G}_{\lr{E}}
+  =
+  \sum_{\gamma}\int
+  \dfrac
+  {
+    \ketbra*{\Omega_{\gamma}}{\Omega_{\gamma}}
+  }
+  {
+    E - \varepsilon_{\gamma}
+  }
+  ,
+\end{equation}
+where we note again that in this context the sum represents a sum over the
+countably infinite states, and an integration over the uncountably infinite
+states.
+With an expression for the Green's operator in hand, we can now re-write the
+Lippmann-Schwinger equation in the following form
+\begin{equation}
+  \label{eq:ls-t}
+  \mel*
+  {\Omega_{\alpha}}
+  {\hat{T}}
+  {\Omega_{\alpha}}
+  =
+  \mel*
+  {\Omega_{\alpha}}
+  {\hat{V} }
+  {\Omega_{\beta}}
+  +
+  \sum_{\gamma}\int
+  \dfrac
+  {
+    \mel*
+    {\Omega_{\alpha}}
+    {\hat{V}}
+    {\Omega_{\gamma}}
+    \mel*
+    {\Omega_{\gamma}}
+    {\hat{T}}
+    {\Omega_{\beta}}
+  }
+  {
+    E - \varepsilon_{\gamma}
+  }
+  .
+\end{equation}
+
 
 \subsubsection{Transition Amplitudes}
 \label{sec:transition-amplitudes}

@@ -494,7 +494,7 @@ $\ket*{\Psi^{\lr{+}}} \in \Lambda^{1 + n_{\mathrm{e}}}\lr{\mathcal{H}}$ is
 defined to be an eigenstate of the total Hamiltonian $\hat{H}$ with total
 energy $E$ and specified to have outgoing spherical-wave boundary conditions,
 \begin{equation}
-  \label{eq:total-state}
+  \label{eq:total-wavefunction}
   \hat{H}
   \ket*{\Psi^{\lr{+}}}
   =
@@ -523,11 +523,14 @@ kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
 operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
 
-To ensure that the total state is anti-symmetric, we construct it using a
+To ensure that the total wavefunction is anti-symmetric, we construct it using a
 multichannel expansion of the form
 \begin{equation}
-  \label{eq:total-state-multichannel}
+  \label{eq:total-wavefunction-multichannel}
   \ket*{\Psi^{\lr{+}}}
+  =
+  \hat{M}
+  \ket*{\psi^{\lr{+}}}
   =
   \lrsq[\bigg]
   {
@@ -537,32 +540,19 @@ multichannel expansion of the form
     \hat{P}_{0, m}
   }
   \ket*{\psi^{\lr{+}}}
+  ,
 \end{equation}
 where $\hat{P}_{0, m}$ are the pairwise electron exchange operators, for
 $m = 1, \dotsc, n_{\mathrm{e}}$, exchanging the projectile electron state and
 $m$-th target electron state, and where
-$\ket*{\psi^{\lr{+}}} \in
-\bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$ is the
-un-symmetrised total state.
-We neglect to anti-symmetrise the target electrons with each other, since states
-in the target space are already anti-symmetric by construction.
+$\ket*{\psi^{\lr{+}}} \in \mathcal{H}_{T} \otimes \mathcal{H}$ is the
+un-symmetrised total wavefunction.
+We note that the target states are already anti-symmetric by construction.
 
-To construct the un-symmetrised total state, $\ket*{\psi^{\lr{+}}}$, we
-observe, as a result of \autoref{eq:target-projection-convergence}, that
+To construct the un-symmetrised total wavefunction, $\ket*{\psi^{\lr{+}}}$, we
+project it onto the target psuedostates,
 \begin{equation}
-  \label{eq:total-state-un-symmetrised-convergence}
-  \ket*{\psi^{\lr{+}}}
-  =
-  \lim_{N \to \infty}
-  \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi^{\lr{+}}}
-  =
-  \lim_{N \to \infty}
-  \ket*{\psi^{\lr{N, +}}}
-\end{equation}
-where we have defined
-\begin{equation}
-  \label{eq:total-state-un-symmetrised-n}
+  \label{eq:total-wavefunction-un-symmetrised-n}
   \ket*{\psi^{\lr{N, +}}}
   =
   \hat{I}_{T}^{\lr{N}}
@@ -577,22 +567,31 @@ where we have defined
   \ket*{\Phi_{i}^{\lr{N, +}}}
   \otimes
   \ket*{F_{i}^{\lr{N, +}}}
+  ,
 \end{equation}
 where $\ket*{F_{i}^{\lr{N, +}}}
-= \bra*{\Phi_{i}^{\lr{N, +}}}\ket*{\psi^{\lr{+}}}
-\in \mathcal{H}_{\mathrm{e}}$.
-Similarly, we observe that
+= \bra*{\Phi_{i}^{\lr{N, +}}}\ket*{\psi^{\lr{+}}} \in \mathcal{H}$,
+and note that as a result of
+\autoref{eq:target-projection-convergence}, that
 \begin{equation}
-  \label{eq:total-state-multichannel-convergence}
-  \ket*{\Psi^{\lr{+}}}
+  \label{eq:total-wavefunction-un-symmetrised-convergence}
+  \ket*{\psi^{\lr{+}}}
   =
   \lim_{N \to \infty}
-  \ket*{\Psi^{\lr{N, +}}}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi^{\lr{+}}}
+  =
+  \lim_{N \to \infty}
+  \ket*{\psi^{\lr{N, +}}}
+  .
 \end{equation}
-where we have defined
+Similarly, we define
 \begin{equation}
-  \label{eq:total-state-multichannel-n}
+  \label{eq:total-wavefunction-multichannel-n}
   \ket*{\Psi^{\lr{N, +}}}
+  =
+  \hat{M}
+  \ket*{\psi^{\lr{N, +}}}
   =
   \lrsq[\bigg]
   {
@@ -602,32 +601,29 @@ where we have defined
     \hat{P}_{0, m}
   }
   \ket*{\psi^{\lr{N, +}}}
+  ,
+\end{equation}
+and observe that
+\begin{equation}
+  \label{eq:total-wavefunction-multichannel-convergence}
+  \ket*{\Psi^{\lr{+}}}
+  =
+  \lim_{N \to \infty}
+  \ket*{\Psi^{\lr{N, +}}}
   .
 \end{equation}
 
-However, after projecting the un-symmetrised total state with the projection
-operator for the target pseudostates, the multichannel expansion is not uniquely
-defined, since for any state, $\ket*{\omega^{\lr{N, +}}}$, such that
-\begin{equation}
-  \label{eq:multichannel-kernel}
-  \ket*{\omega^{\lr{N, +}}}
-  \in
-  \ker\lr[\bigg]
-  {
-    \lrsq[\bigg]
-    {
-      1 - \sum_{m = 1}^{n_{\mathrm{e}}}\hat{P}_{0, m}
-    }
-    \hat{I}_{T}^{\lr{N}}
-  }
-\end{equation}
-and constant $\theta$, the multichannel expansion of
+However, after projecting the un-symmetrised total wavefunction with the
+projection operator for the target pseudostates, the multichannel expansion is
+not uniquely defined, since for any state,
+$\ket*{\omega^{\lr{N}}} \in \ker\lr{\hat{M}\hat{I}_{T}^{\lr{N}}}$,
+and constant $\alpha \in \complex$, the multichannel expansion of
 $\ket*{\psi^{\lr{N, +}}}
-+ \theta \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N, +}}}$ will be identical to
++ \alpha \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N}}}$ will be identical to
 that of $\ket*{\psi^{\lr{N, +}}}$.
 To resolve this dilemma, we impose the constraint that for any of the
 one-electron atomic orbitals,
-$\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}_{\mathrm{e}}$, used in the
+$\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}$, used in the
 construction of the target pseudostates in \autoref{eq:target-1e-hamiltonian},
 that
 \begin{equation}
@@ -636,22 +632,18 @@ that
   \otimes
   \bra*{\Phi_{i}^{\lr{N}}}
   \hat{P}_{0, m}
-  \ket*{\Gamma^{\lr{N, +}}}
   =
   -
   \bra*{\phi_{j}^{\lr{N}}}
   \otimes
   \bra*{\Phi_{i}^{\lr{N}}}
-  \ket*{\Gamma^{\lr{N, +}}}
+  .
 \end{equation}
-for all $\ket*{\Gamma^{\lr{N, +}}}
-\in \bigotimes_{m = 1}^{1 + n_{\mathrm{e}}} \mathcal{H}_{\mathrm{e}}$.
-\todo[multichannel constraint]{Is the ket in this constraint correct?}
 Whence it follows that the multichannel expansion of
 $\ket*{\psi^{\lr{N, +}}}
-+ \theta \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N, +}}}$ will be identical to
-that of $\ket*{\psi^{\lr{N, +}}}$ only in the case where $\theta = 0$, or
-$\ket*{\omega^{\lr{N, +}}} = \ket*{0}$; that is to say,
++ \alpha \hat{I}_{T}^{\lr{N}} \ket*{\omega^{\lr{N}}}$ will be identical to
+that of $\ket*{\psi^{\lr{N, +}}}$ only in the case where $\alpha = 0$, or
+$\ket*{\omega^{\lr{N}}} = \ket*{0}$; that is to say,
 $\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
 
 \subsubsection{Close-Coupling Equations}

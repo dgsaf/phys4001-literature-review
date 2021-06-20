@@ -241,15 +241,77 @@ products which contain any one-electron state more than once.
 The space $\Lambda^{n}\lr{\mathcal{H}}$ is known as the $n$-th exterior power of
 $\mathcal{H}$, and is identifiable as the subspace of $T^{n}\lr{\mathcal{H}}$
 consisting of anti-symmetric tensors.
+Note that we shall adopt the following notation for tensor products
+\begin{equation}
+  \label{eq:tensor-product-notation}
+  \ket{\psi_{1}, \dotsc, \psi_{n}}
+  =
+  \ket{\psi_{1}}
+  \otimes
+  \dots
+  \otimes
+  \ket{\psi_{n}}
+\end{equation}
+and the following notation for anti-symmetric tensor products
+\begin{equation}
+  \label{eq:anti-symmetric-tensor-product-notation}
+  \ket{\lrsq{\psi_{1}, \dotsc, \psi_{n}}}
+  =
+  \ket{\psi_{\lrsq{1, \dotsc, n}}}
+  =
+  \sqrt{n!}
+  \hat{A}
+  \ket{\psi_{1}, \dotsc, \psi_{n}}
+\end{equation}
+where $\hat{A} : T^{n}\lr{\mathcal{H}} \to \Lambda^{n}\lr{\mathcal{H}}$ is the
+anti-symmetriser operator which we define to be of the form
+\begin{equation}
+  \label{eq:anti-symmetriser}
+  \hat{A}
+  \ket{\psi_{1}, \dotsc, \psi_{n}}
+  =
+  \dfrac{1}{n!}
+  \sum_{\sigma \in S_{n}}
+  \mathrm{sgn}\lr{\sigma}
+  \ket{\psi_{\sigma\lr{1}}, \dotsc, \psi_{\sigma\lr{n}}}
+  ,
+\end{equation}
+where $S_{n}$ is the symmetric group on $n$ elements, the sum is taken over all
+permutations, $\sigma \in S_{n}$, and where $\mathrm{sgn}\lr{\sigma}$ is the
+signature of the permutation $\sigma$.
+Note that we have neglected the commonly included $\tfrac{1}{n!}$ factor in
+the anti-symmetriser operator.
+It follows from this construction that
+\begin{equation}
+  \label{eq:anti-symmetry}
+  \ket{\psi_{\lrsq{a_{1}, \dotsc, a_{n}}}}
+  =
+  0
+  \qq{if any}
+  a_{i} = a_{j}
+  ,
+\end{equation}
+hence satisfying Pauli's exclusion principle.
+Furthermore, we have that
+\begin{equation}
+  \label{eq:pairwise-exchange}
+  \hat{P}_{i, j}
+  \ket{\psi_{\lrsq{1, \dotsc, n}}}
+  =
+  -
+  \ket{\psi_{\lrsq{1, \dotsc, n}}}
+  ,
+\end{equation}
+where $\hat{P}_{i, j}$ is the pairwise exchange operator, permuting the states
+$\ket*{\psi_{i}}$ and $\ket*{\psi_{j}}$.
+We note that in this context, the states $\ket*{\psi_{i}}$ include both coordinate
+and spin states.
 
 It follows that for an atomic/ionic target, consisting of $n_{\mathrm{e}}$
 electrons, the space of target states is of the form
 $\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
-Note that we shall adopt the convention that the projectile electron space is
-denoted by $\mathcal{H}_{0}$, and the $m$-th target electron space by
-$\mathcal{H}_{m}$, for $m = 1, \dotsc, n_{\mathrm{e}}$.
-Furthermore, operators which act on the $m$-th electron space (including the
-projectile electron), will be indexed by $m$, for
+Note that we shall adopt the convention that operators which act on the $m$-th
+electron space (including the projectile electron), will be indexed by $m$, for
 $m = 0, 1, \dotsc, n_{\mathrm{e}}$.
 
 \paragraph{Target Hamiltonian}
@@ -316,6 +378,10 @@ $\ket*{\chi_{a_{1}}^{\lr{N}}}, \dotsc, \ket*{\chi_{a_{n_{\mathrm{e}}}}^{\lr{N}}}
 these spin orbitals is of the form
 \begin{equation}
   \label{eq:target-slater-determinant}
+  \ket*{\chi_{\lrsq{a_{1}, \dotsc, a_{n_{\mathrm{e}}}}}^{\lr{N}}}
+  =
+  \sqrt{n_{\mathrm{e}}!}
+  \hat{A}
   \ket*
   {
     \chi_{a_{1}}^{\lr{N}},
@@ -326,21 +392,22 @@ these spin orbitals is of the form
   \dfrac{1}{\sqrt{n_{\mathrm{e}}!}}
   \sum_{\sigma \in S_{n_{\mathrm{e}}}}
   \mathrm{sgn}\lr{\sigma}
-  \ket*{\chi_{a_{\sigma\lr{1}}}^{\lr{N}}}
-  \otimes
-  \dots
-  \otimes
-  \ket*{\chi_{a_{\sigma\lr{n_{\mathrm{e}}}}}^{\lr{N}}}
-  \in
-  \mathcal{H}_{T}
+  \ket*
+  {
+    \chi_{a_{\sigma\lr{1}}}^{\lr{N}}
+    ,
+    \dots
+    ,
+    \chi_{a_{\sigma\lr{n_{\mathrm{e}}}}}^{\lr{N}}
+  }
   ,
 \end{equation}
-where $S_{n_{\mathrm{e}}}$ is the symmetric group on $n_{\mathrm{e}}$ elements,
-the sum is taken over all permutations, $\sigma \in S_{n_{\mathrm{e}}}$, and
-where $\mathrm{sgn}\lr{\sigma}$ is the signature of the permutation $\sigma$.
+as per \autoref{eq:anti-symmetric-tensor-product-notation} and
+\autoref{eq:anti-symmetriser}.
 We note that Slater determinants are anti-symmetric under pairwise exchange of
 any two orbitals, and are zero if constructed with two spin orbitals in the same
-state, and hence adhere to Pauli's exclusion principle and are indeed elements
+state.
+Hence they adhere to Pauli's exclusion principle and are indeed elements
 of $\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
 
 The true target states,
@@ -351,12 +418,7 @@ in a basis of Slater determinants,
   \label{eq:target-slater-determinant-basis}
   \lrset[\big]
   {
-    \ket*
-    {
-      \chi_{a_{1}}^{\lr{N}},
-      \dotsc,
-      \chi_{a_{n_{\mathrm{e}}}}^{\lr{N}}
-    }
+    \ket*{\chi_{\lrsq{a_{1}, \dotsc, a_{n_{\mathrm{e}}}}}^{\lr{N}}}
     :
     a_{1}, \dotsc, a_{n_{\mathrm{e}}}
     \in
@@ -375,8 +437,9 @@ satisfy
   =
   \epsilon_{i}^{\lr{N}}
   \delta_{i, j}
-  .
+  ,
 \end{equation}
+where $\epsilon_{i}^{\lr{N}}$ are the pseudoenergies of the pseudostates.
 Note that the number of target pseudostates, $N_{T}$, depends on the number of
 Slater determinants utilised in the expansion of $\hat{H}_{T}$.
 The process of selecting which Slater determinants to use in the expansion is
@@ -523,8 +586,9 @@ kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
 operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
 
-To ensure that the total wavefunction is anti-symmetric, we construct by
-anti-symmetrising a multichannel expansion of the form
+To ensure that the total wavefunction is anti-symmetric we utilise the
+anti-symmetriser, defined in \autoref{eq:anti-symmetriser}, to construct a
+multichannel expansion of the form
 \begin{equation}
   \label{eq:total-wavefunction-antisymmetrisation}
   \ket*{\Psi^{\lr{+}}}
@@ -542,12 +606,16 @@ anti-symmetrising a multichannel expansion of the form
   \ket*{\psi^{\lr{+}}}
   ,
 \end{equation}
-where $\hat{P}_{0, m}$ are the pairwise electron exchange operators, for
-$m = 1, \dotsc, n_{\mathrm{e}}$, exchanging the projectile electron state and
-$m$-th target electron state, and where
+where $\hat{P}_{0, m}$ are the pairwise electron exchange operators defined in
+\autoref{eq:pairwise-exchange}, and where
 $\ket*{\psi^{\lr{+}}} \in \mathcal{H}_{T} \otimes \mathcal{H}$ is the
 un-symmetrised total wavefunction.
-We note that the target states are already anti-symmetric by construction.
+Note that we have omitted the $\lr{1 + n_{\mathrm{e}}}!$ term in $\hat{A}$,
+since it is a scalar term which can be normalised away when required.
+As the target states are already anti-symmetric by construction, the
+anti-symmetriser has assumed a simpler form - requiring only permutations
+of the un-symmetrised projectile state with the spin-orbital states of the
+target electrons.
 
 To construct the un-symmetrised total wavefunction, $\ket*{\psi^{\lr{+}}}$, we
 project it onto the target psuedostates,
@@ -1054,14 +1122,8 @@ The asymptotic eigenstates taken to be of the form
   \label{eq:ccc-asymptotic-states}
   \ket*{\Omega_{\alpha}}
   =
-  \ket*{\Phi_{i_{\alpha}}}
-  \otimes
-  \ket*{\vb{k}_{\alpha}}
+  \ket*{\Phi_{i_{\alpha}} \vb{k}_{\alpha}}
   \approx
-  \ket*{\Phi_{i_{\alpha}}^{\lr{N}}}
-  \otimes
-  \ket*{\vb{k}_{\alpha}}
-  =
   \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   ,
 \end{equation}
@@ -1071,6 +1133,11 @@ with corresponding asymptotic eigenenergies
   \varepsilon_{\alpha}
   =
   \epsilon_{i_{\alpha}}
+  +
+  \tfrac{1}{2}
+  k_{\alpha}^{2}
+  \approx
+  \epsilon_{i_{\alpha}}^{\lr{N}}
   +
   \tfrac{1}{2}
   k_{\alpha}^{2}
@@ -1090,11 +1157,17 @@ Furthermore, the total wavefunction is taken to be of the form
   \hat{A}
   \hat{I}_{T}^{\lr{N}}
   \ket*{\psi_{\alpha}}
+  =
+  \hat{A}
+  \ket*{\psi_{\alpha}^{\lr{N}}}
+  =
+  \ket*{\Psi_{\alpha}^{\lr{N}}}
   ,
 \end{equation}
 as in \autoref{eq:total-wavefunction-antisymmetrisation}, where $\hat{A}$ is the
-anti-symmetrisation operator, and is subject to the constraints imposed in
-\autoref{eq:multichannel-constraint} to ensure uniqueness.
+anti-symmetriser operator, defined in \autoref{eq:anti-symmetriser}, and is
+subject to the constraints imposed in \autoref{eq:multichannel-constraint} to
+ensure uniqueness.
 We note that with these expressions for the asymptotic eigenstates and the total
 wavefunction, that the $\hat{T}$ operator is related to the potential $\hat{V}$
 by the expression
@@ -1104,6 +1177,9 @@ by the expression
   \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   =
   \hat{V}
+  \ket*{\Psi_{\alpha}^{\lr{N}}}
+  =
+  \hat{V}
   \hat{A}
   \hat{I}_{T}^{\lr{N}}
   \ket*{\psi_{\alpha}}
@@ -1111,7 +1187,8 @@ by the expression
 \end{equation}
 However, in the case where the potential $\hat{V}$ can be re-written in a way
 which accounts for the anti-symmetrisation of the un-symmetrised wavefunction
-$\ket*{\psi_{\alpha}^{\lr{S}}}$ with total spin $S$, we may write
+$\ket*{\psi_{\alpha}^{\lr{S}}}$ with total spin $S$ (as is the case for hydrogen
+and helium targets), we may instead write
 \begin{equation}
   \label{eq:ccc-v-spin}
   \hat{V}^{\lr{S}}
@@ -1135,7 +1212,8 @@ in which case the $\hat{T}$ operator is instead written as
   \ket*{\psi_{\alpha}^{\lr{S}}}
   .
 \end{equation}
-The Convergent Close-Coupling equations are therefore of the form
+We then have the Convergent Close-Coupling equations in terms of the $\hat{T}$
+operator
 \begin{alignat}{2}
   \label{eq:ccc-ls-t}
   &
@@ -1172,16 +1250,106 @@ The Convergent Close-Coupling equations are therefore of the form
   {
     E
     -
-    \epsilon_{n}
+    \epsilon_{n}^{\lr{N}}
     -
     \tfrac{1}{2}
     k^{2}
     \pm \imath 0
   }
   \nonumber
-  .
+  ,
 \end{alignat}
-
+forming a set of $\complex$-valued matrix equations  which are numerically
+solved to yield the $T$ matrix, from which information about the total
+wavefunction $\ket*{\Psi_{i}^{\lr{N, S}}}$ can be derived.
+However, it is possible to re-write the Convergent Close-Coupling equations in
+terms of an operator $\hat{K}$,
+\begin{alignat}{2}
+  \label{eq:ccc-ls-k}
+  &
+  \mel*
+  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\hat{K}^{\lr{S}}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  &
+  {}={}
+  &
+  \mel*
+  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\hat{V}^{\lr{S}}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  \\
+  &
+  &
+  {}+{}
+  &
+  \sum_{n = 1}^{N_{T}}
+  \mathcal{P}
+  \int
+  \dd{\vb{k}}
+  \dfrac
+  {
+    \mel*
+    {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+    {\hat{V}^{\lr{S}}}
+    {\Phi_{n}^{\lr{N}} \vb{k}}
+    \mel*
+    {\vb{k} \Phi_{n}^{\lr{N}}}
+    {\hat{K}^{\lr{S}}}
+    {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  }
+  {
+    E
+    -
+    \epsilon_{n}^{\lr{N}}
+    -
+    \tfrac{1}{2}
+    k^{2}
+  }
+  \nonumber
+  ,
+\end{alignat}
+where $\mathcal{P}$ indicates that the principal value of the integral is taken,
+which forms a set of $\real$-valued matrix equations which can be solved more
+efficiently, to yield the $K$ matrix.
+The $T$ matrix can be reconstructed from the $K$ matrix by the identity
+\begin{equation}
+  \label{eq:ccc-t-k}
+  \mel*
+  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\hat{K}^{\lr{S}}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  =
+  \sum_{n = 1}^{N_{T}}
+  \mel*
+  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\hat{T}^{\lr{S}}}
+  {\Phi_{n}^{\lr{N}} \vb{k}_{n}}
+  \lr[\big]
+  {
+    \delta_{n, i}
+    +
+    \imath
+    \pi
+    k_{n}
+    \mel*
+    {\vb{k}_{n} \Phi_{n}^{\lr{N}}}
+    {\hat{K}^{\lr{S}}}
+    {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  }
+  ,
+\end{equation}
+where $k_{n}$ are the on-shell projectile momenta which satisfy
+\begin{equation}
+  \label{eq:ccc-on-shell-momentum}
+  E
+  =
+  \epsilon_{n}^{\lr{N}}
+  +
+  \tfrac{1}{2}
+  k_{n}^{2}
+  .
+\end{equation}
 
 \subsubsection{Transition Amplitudes}
 \label{sec:transition-amplitudes}

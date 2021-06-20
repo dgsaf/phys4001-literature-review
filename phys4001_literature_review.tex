@@ -512,40 +512,6 @@ in the limit as $N \to \infty$; that is,
   .
 \end{equation}
 
-\subsubsection{Projectile States}
-\label{sec:projectile-states}
-
-The projectile states $\ket{\vb{k}} \in \mathcal{H}$ are defined to be
-eigenstates of the free Hamiltonian; that is,
-\begin{equation}
-  \label{eq:projectile-hamiltonian}
-  \hat{K}_{0}
-  \ket{\vb{k}}
-  =
-  \tfrac{k^{2}}{2}
-  \ket{\vb{k}}
-  .
-\end{equation}
-It follows that the coordinate-space representation of projectile states are
-plane waves; that is,
-\begin{equation}
-  \label{eq:projectile-states}
-  \bra{\vb{r}}
-  \ket{\vb{k}}
-  =
-  \lr{2 \pi}^{-\tfrac{3}{2}}
-  \exponential\lr
-  {
-    \imath
-    \vb{k}
-    \vdot
-    \vb{r}
-  }
-  .
-\end{equation}
-Further properties of the plane waves are discussed in
-\autoref{app:plane-waves}.
-
 \subsubsection{Total Wavefunction}
 \label{sec:total-wavefunction}
 
@@ -584,8 +550,8 @@ operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
 
 To ensure that the total wavefunction is anti-symmetric we utilise the
-anti-symmetriser, defined in \autoref{eq:anti-symmetriser}, to construct a
-multichannel expansion of the form
+anti-symmetriser, defined in \autoref{eq:anti-symmetriser}, to construct it
+explicitly
 \begin{equation}
   \label{eq:total-wavefunction-antisymmetrisation}
   \ket*{\Psi^{\lr{+}}}
@@ -615,7 +581,7 @@ Note that we have omitted the $\lr{1 + n_{\mathrm{e}}}!$ term in $\hat{A}$,
 since it is a scalar term which can be normalised away when required.
 
 To construct the un-symmetrised total wavefunction $\ket*{\psi^{\lr{+}}}$ we
-project it onto the target psuedostates, using the notation
+perform a multichannel expansion, projecting it onto the target psuedostates,
 \begin{equation}
   \label{eq:total-wavefunction-un-symmetrised-n}
   \ket*{\psi^{\lr{N, +}}}
@@ -1119,7 +1085,53 @@ eigenstates.
 
 In the Convergent Close-Coupling formalism, the Lippmann-Schwinger equation in
 terms of the $\hat{T}$ operator, \autoref{eq:ls-t}, is solved in momentum space.
-The asymptotic eigenstates taken to be of the form
+We split the Hamiltonian, from \autoref{eq:total-hamiltonian}, into an
+asymptotic Hamiltonian and a decaying potential in the form
+\begin{equation}
+  \label{eq:ccc-hamiltonian}
+  \hat{H}
+  =
+  \hat{H}_{T}
+  +
+  \hat{K}_{0}
+  +
+  \hat{V}_{0}
+  +
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{V}_{0, m}
+  =
+  \hat{H}_{\rm{A}}
+  +
+  \hat{W}
+  ,
+\end{equation}
+where the asymptotic Hamiltonian is of the form
+\begin{equation}
+  \label{eq:ccc-asymptotic-hamiltonian}
+  \hat{H}_{\rm{A}}
+  =
+  \hat{H}_{T}
+  +
+  \hat{K}_{0}
+  +
+  \hat{U}_{0}
+  ,
+\end{equation}
+and where the decaying potential is of the form
+\begin{equation}
+  \label{eq:ccc-potential}
+  \hat{W}
+  =
+  \hat{V}_{0}
+  +
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{V}_{0, m}
+  -
+  \hat{U}_{0}
+  ,
+\end{equation}
+where $\hat{U}_{0}$ is the asymptotic potential acting on the projectile.
+The asymptotic eigenstates are therefore taken to be of the form
 \begin{equation}
   \label{eq:ccc-asymptotic-states}
   \ket*{\Omega_{\alpha}}
@@ -1147,7 +1159,23 @@ with corresponding asymptotic eigenenergies
 \end{equation}
 where $\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ are the target
 pseudostates, defined in \autoref{eq:target-states}, and where $\ket*{\vb{k}}$
-are plane waves, defined in \autoref{eq:projectile-states}.
+are the plane/coulomb/distorted waves, defined to be eigenstates of the
+projectile component of the asymptotic Hamiltonian,
+\begin{equation}
+  \label{eq:ccc-waves}
+  \lrsq
+  {
+    \hat{K}_{0}
+    +
+    \hat{U}_{0}
+  }
+  \ket*{\vb{k}}
+  =
+  \tfrac{1}{2}
+  k^{2}
+  \ket*{\vb{k}}
+  .
+\end{equation}
 Furthermore, the total wavefunction is taken to be of the form
 \begin{equation}
   \label{eq:ccc-total-wavefunction}
@@ -1171,47 +1199,157 @@ anti-symmetriser operator, defined in \autoref{eq:anti-symmetriser}, and is
 subject to the constraints imposed in \autoref{eq:multichannel-constraint} to
 ensure uniqueness.
 We note that with these expressions for the asymptotic eigenstates and the total
-wavefunction, that the $\hat{T}$ operator is related to the potential $\hat{V}$
-by the expression
+wavefunction, that the $\hat{T}$ operator is related to the decaying potential
+$\hat{W}$ by the expression
+\begin{equation}
+  \label{eq:ccc-t-w}
+  \hat{T}
+  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
+  =
+  \hat{W}
+  \ket*{\Psi_{\alpha}^{\lr{N, +}}}
+  =
+  \hat{W}
+  \hat{A}
+  \hat{I}_{T}^{\lr{N}}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
+  =
+  \hat{W}
+  \hat{A}
+  \ket*{\psi_{\alpha}^{\lr{N, +}}}
+  .
+\end{equation}
+However, we can recast this potential in a way which accounts for the explicit
+anti-symmetrisation of the total wavefunction.
+To do this, we first note that
+\begin{equation*}
+  0
+  =
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \ket*{\Psi_{\alpha}^{\lr{+}}}
+  =
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \hat{A}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
+  ,
+\end{equation*}
+with this operator expanding to the form
+\begin{equation*}
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \hat{A}
+  =
+  \lrsq[\bigg]
+  {
+    E
+    -
+    \hat{H}
+    -
+    \lrsq
+    {
+      E
+      -
+      \hat{H}
+    }
+    \sum_{m = 1}^{n_{\mathrm{e}}}
+    \hat{P}_{0, m}
+  }
+  =
+  \lrsq[\bigg]
+  {
+    E
+    -
+    \hat{H}_{\rm{A}}
+    -
+    \hat{W}
+    -
+    \lrsq
+    {
+      E
+      -
+      \hat{H}
+    }
+    \sum_{m = 1}^{n_{\mathrm{e}}}
+    \hat{P}_{0, m}
+  }
+  ,
+\end{equation*}
+whence we define the explicitly anti-symmetrised potential $\hat{V}$ to be of
+the form
+\begin{equation}
+  \label{eq:ccc-v}
+  \hat{V}
+  =
+  \hat{W}
+  +
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{P}_{0, m}
+  =
+  \hat{V}_{0}
+  +
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{V}_{0, m}
+  -
+  \hat{U}_{0}
+  +
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \sum_{m = 1}^{n_{\mathrm{e}}}
+  \hat{P}_{0, m}
+\end{equation}
+for which we can see that the explicit anti-symmetrisation of
+$\ket*{\psi_{\alpha}^{\lr{+}}}$ is handled by $\hat{V}$,
+\begin{equation}
+  \label{eq:ccc-v-2}
+  \hat{H}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
+  =
+  \hat{H}_{\rm{A}}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
+  +
+  \hat{V}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
+  =
+  E
+  \ket*{\psi_{\alpha}^{\lr{+}}}
+  .
+\end{equation}
+This allows us to write the $\hat{T}$ operator in the form
 \begin{equation}
   \label{eq:ccc-t-v}
   \hat{T}
   \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   =
   \hat{V}
-  \ket*{\Psi_{\alpha}^{\lr{N, +}}}
-  =
-  \hat{V}
-  \hat{A}
   \hat{I}_{T}^{\lr{N}}
   \ket*{\psi_{\alpha}^{\lr{+}}}
-  .
-\end{equation}
-However, in the case where the potential $\hat{V}$ can be re-written in a way
-which accounts for the anti-symmetrisation of the un-symmetrised wavefunction
-$\ket*{\psi_{\alpha}^{\lr{S}}}$ with total spin $S$ (as is the case for hydrogen
-and helium targets), we may instead write
-\begin{equation}
-  \label{eq:ccc-v-spin}
-  \hat{V}^{\lr{S}}
-  \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}^{\lr{S, +}}}
   =
   \hat{V}
-  \hat{A}
-  \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}^{\lr{S, +}}}
-  ,
-\end{equation}
-in which case the $\hat{T}$ operator is instead written as
-\begin{equation}
-  \label{eq:ccc-t-v-spin}
-  \hat{T}^{\lr{S}}
-  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
-  =
-  \hat{V}^{\lr{S}}
-  \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}^{\lr{S, +}}}
+  \ket*{\psi_{\alpha}^{\lr{N, +}}}
   .
 \end{equation}
 We then have the Convergent Close-Coupling equations in terms of the $\hat{T}$
@@ -1221,14 +1359,14 @@ operator
   &
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-  {\hat{T}^{\lr{S}}}
+  {\hat{T}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   &
   {}={}
   &
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-  {\hat{V}^{\lr{S}}}
+  {\hat{V}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   \\
   &
@@ -1242,11 +1380,11 @@ operator
   {
     \mel*
     {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-    {\hat{V}^{\lr{S}}}
+    {\hat{V}}
     {\Phi_{n}^{\lr{N}} \vb{k}}
     \mel*
     {\vb{k} \Phi_{n}^{\lr{N}}}
-    {\hat{T}^{\lr{S}}}
+    {\hat{T}}
     {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   }
   {
@@ -1263,7 +1401,7 @@ operator
 \end{alignat}
 forming a set of $\complex$-valued matrix equations  which are numerically
 solved to yield the $T$ matrix, from which information about the total
-wavefunction $\ket*{\Psi_{i}^{\lr{N, S, +}}}$ can be derived.
+wavefunction $\ket*{\Psi_{i}^{\lr{N, +}}}$ can be derived.
 However, it is possible to re-write the Convergent Close-Coupling equations in
 terms of an operator $\hat{K}$,
 \begin{alignat}{2}
@@ -1271,14 +1409,14 @@ terms of an operator $\hat{K}$,
   &
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-  {\hat{K}^{\lr{S}}}
+  {\hat{K}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   &
   {}={}
   &
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-  {\hat{V}^{\lr{S}}}
+  {\hat{V}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   \\
   &
@@ -1293,11 +1431,11 @@ terms of an operator $\hat{K}$,
   {
     \mel*
     {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-    {\hat{V}^{\lr{S}}}
+    {\hat{V}}
     {\Phi_{n}^{\lr{N}} \vb{k}}
     \mel*
     {\vb{k} \Phi_{n}^{\lr{N}}}
-    {\hat{K}^{\lr{S}}}
+    {\hat{K}}
     {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   }
   {
@@ -1314,18 +1452,18 @@ terms of an operator $\hat{K}$,
 where $\mathcal{P}$ indicates that the principal value of the integral is taken,
 which forms a set of $\real$-valued matrix equations which can be solved more
 efficiently, to yield the $K$ matrix.
-The $T$ matrix can be reconstructed from the $K$ matrix by the identity
+The $T$ matrix can then be reconstructed from the $K$ matrix by the identity
 \begin{equation}
   \label{eq:ccc-t-k}
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-  {\hat{K}^{\lr{S}}}
+  {\hat{K}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   =
   \sum_{n = 1}^{N_{T}}
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-  {\hat{T}^{\lr{S}}}
+  {\hat{T}}
   {\Phi_{n}^{\lr{N}} \vb{k}_{n}}
   \lr[\big]
   {
@@ -1336,7 +1474,7 @@ The $T$ matrix can be reconstructed from the $K$ matrix by the identity
     k_{n}
     \mel*
     {\vb{k}_{n} \Phi_{n}^{\lr{N}}}
-    {\hat{K}^{\lr{S}}}
+    {\hat{K}}
     {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   }
   ,
@@ -1354,20 +1492,37 @@ where $k_{n}$ are the on-shell projectile momenta which satisfy
   n = 1, \dotsc, N_{T}.
 \end{equation}
 
-\subsubsection{Transition Amplitudes}
-\label{sec:transition-amplitudes}
-
 \subsubsection{Cross Sections}
 \label{sec:cross-sections}
 
-\paragraph{Total Cross Sections}
-\label{sec:cc-total-cross-sections}
+At this point, we shall utilise the S-wave model, wherein we restrict our
+attention to the target states
+$\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ for which $l = 0$.
+This allows for a simpler presentation of theoretical results, and calculations
+performed in the S-wave model are often sufficient to explore the behaviour of
+scattering phenomena with the benefit of a significant reduction in
+computational complexity.
 
-\paragraph{Differential Cross Sections}
-\label{sec:cc-differential-cross-sections}
-
-\subsubsection{S-Wave Model}
-\label{sec:s-wave-model}
+Once calculated, the matrix elements of the $\hat{T}$ operator yield the
+transition amplitudes between asymptotic states, which can then be used to
+calculate cross sections for various types of transitions.
+For discrete excitations, the partial cross sections can be written in the form
+\begin{equation}
+  \label{eq:ccc-transition-amplitude}
+  \sigma_{f, i}
+  =
+  \dfrac{k_{f}}{k_{i}}
+  \lrabs
+  {
+    \mel*
+    {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+    {\hat{T}}
+    {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  }^{2}
+  ,
+\end{equation}
+where $\sigma_{f, i}$ is the partial cross section for the discrete excition
+from state $i$ to state $f$.
 
 \subsection{Electron-Impact Hydrogen Scattering}
 \label{sec:e-h}

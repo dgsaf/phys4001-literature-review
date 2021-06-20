@@ -83,10 +83,6 @@
 \section{Theory}
 \label{sec:theory}
 
-\todo{Remove unnecessary commas.}
-
-\todo{Replace 'expansion' with 'representation'.}
-
 We shall describe the development of the Convergent Close-Coupling (CCC) method
 for generalised projectile-target scattering, before describing its application
 to the cases of: electron-impact hydrogen (e-H) scattering, and electron-impact
@@ -113,8 +109,8 @@ be treated in a similar manner to discrete excitation transition amplitudes.
 \subsubsection{Laguerre Basis}
 \label{sec:laguerre-basis}
 
-To describe the target structure, the CCC method utilises a Laguerre basis,
-$\lrset{\ket{\varphi_{i}}}_{i = 1}^{\infty}$, for the Hilbert space
+To describe the target structure, the CCC method utilises a Laguerre basis
+$\lrset{\ket{\varphi_{i}}}_{i = 1}^{\infty}$ for the Hilbert space
 $L^{2}\lr{\real^{3}}$, for which the coordinate-space representation is of the
 form
 \begin{equation}
@@ -160,8 +156,8 @@ $l_{i} \in \lrset{0, 1, \dotsc}$ and
 $m_{i} \in \lrset{-\ell_{i}, \dotsc, \ell_{i}}$, for each
 $i \in \lrset{1, 2, \dotsc}$.
 
-This Laguerre basis is utilised due to: the Laguerre basis functions,
-$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, forming a complete basis
+This Laguerre basis is utilised due to: the Laguerre basis functions
+$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$ forming a complete basis
 for the Hilbert space $L^{2}\lr{\real^{3}}$ - shown in
 \autoref{app:laguerre-completeness}, the short-range and long-range behaviour of
 the radial basis functions being well suited to describing bound target states
@@ -169,9 +165,9 @@ and providing a basis for expanding continuum states in, and because it allows
 the matrix elements of certain operators to be calculated analytically.
 
 Practically, we cannot utilise a basis of infinite size.
-Hence, we truncate the Laguerre radial basis,
-$\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{N_{l}}$, to a certain number of radial basis
-functions, $N_{l}$, for each $l$, and we also truncate
+Hence, we truncate the Laguerre radial basis
+$\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{N_{l}}$ to a certain number of radial basis
+functions $N_{l}$, for each $l$, and we also truncate
 $l \in \lrset{0, \dotsc, l_{\max}}$,
 limiting the maximum angular momentum we consider in our basis.
 Hence, for a given value of $m$, we have a basis size of
@@ -277,10 +273,8 @@ anti-symmetriser operator which we define to be of the form
   ,
 \end{equation}
 where $S_{n}$ is the symmetric group on $n$ elements, the sum is taken over all
-permutations, $\sigma \in S_{n}$, and where $\mathrm{sgn}\lr{\sigma}$ is the
+permutations $\sigma \in S_{n}$, and where $\mathrm{sgn}\lr{\sigma}$ is the
 signature of the permutation $\sigma$.
-Note that we have neglected the commonly included $\tfrac{1}{n!}$ factor in
-the anti-symmetriser operator.
 It follows from this construction that
 \begin{equation}
   \label{eq:anti-symmetry}
@@ -352,9 +346,9 @@ The target Hamiltonian, restricted to just one target electron,
   \hat{V}_{1}
   ,
 \end{equation}
-is expanded in a Laguerre basis, $\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$, and
+is expanded in a Laguerre basis $\lrset{\ket{\varphi_{i}}}_{i = 1}^{N}$ and
 diagonalised to yield a set of one-electron atomic orbitals
-$\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$, which are orthonormal and
+$\lrset{\ket*{\phi_{i}^{\lr{N}}}}_{i = 1}^{N}$ which are orthonormal and
 satisfy
 \begin{equation}
   \label{eq:target-1e-orbitals}
@@ -367,7 +361,7 @@ satisfy
   .
 \end{equation}
 From these one-electron atomic orbitals, we generate a set of one-electron spin
-orbitals, $\lrset{\ket*{\chi_{i}^{\lr{N}}}}_{i = 1}^{2N}$, for which
+orbitals $\lrset{\ket*{\chi_{i}^{\lr{N}}}}_{i = 1}^{2N}$ for which
 $\ket*{\chi_{2i - 1}^{\lr{N}}}$ and $\ket*{\chi_{2i}^{\lr{N}}}$ both correspond
 to $\ket*{\phi_{i}^{\lr{N}}}$ but have spin projection $\tfrac{1}{2}$ and
 $-\tfrac{1}{2}$ respectively.
@@ -410,9 +404,9 @@ state.
 Hence they adhere to Pauli's exclusion principle and are indeed elements
 of $\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
 
-The true target states,
-$\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty} \in \mathcal{H}_{T}$, are then
-approximated by expanding the many-electron target Hamiltonian, $\hat{H}_{T}$,
+The true target states
+$\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty} \in \mathcal{H}_{T}$ are then
+approximated by expanding the many-electron target Hamiltonian $\hat{H}_{T}$
 in a basis of Slater determinants,
 \begin{equation}
   \label{eq:target-slater-determinant-basis}
@@ -426,8 +420,8 @@ in a basis of Slater determinants,
   }
   ,
 \end{equation}
-and diagonalising to yield a set of target pseudostates,
-$\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$, which are orthonormal and
+and diagonalising to yield a set of target pseudostates
+$\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ which are orthonormal and
 satisfy
 \begin{equation}
   \label{eq:target-states}
@@ -440,7 +434,7 @@ satisfy
   ,
 \end{equation}
 where $\epsilon_{i}^{\lr{N}}$ are the pseudoenergies of the pseudostates.
-Note that the number of target pseudostates, $N_{T}$, depends on the number of
+Note that the number of target pseudostates $N_{T}$ depends on the number of
 Slater determinants utilised in the expansion of $\hat{H}_{T}$.
 The process of selecting which Slater determinants to use in the expansion is
 not trivial, and will be discussed in further detail in
@@ -461,9 +455,9 @@ pseudostates will be separable into a set of bounded pseudostates which will
 form an approximation of the true target discrete spectrum, and a set of
 unbounded pseudostates which will provide a discretisation of the true continuum
 of unbounded states.
-We order the target pseudostates by increasing pseudoenergy,
-$\epsilon_{1}^{\lr{N}} < \dotsc < \epsilon_{N_{T}}^{\lr{N}}$, which allows us to
-express the separability of the spectrum in the form
+Without loss of generality, we order the target pseudostates by increasing
+pseudoenergy, $\epsilon_{1}^{\lr{N}} < \dotsc < \epsilon_{N_{T}}^{\lr{N}}$,
+which allows us to express the separability of the spectrum in the form
 \begin{equation}
   \label{eq:target-spectrum-separable}
   \lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}
@@ -487,16 +481,19 @@ $\hat{I}_{T}^{\lr{N}}$, is of the form
   \hat{I}_{T}^{\lr{N}}
   =
   \sum_{i = 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N}}}
-  \bra*{\Phi_{i}^{\lr{N}}}
+  \ketbra*
+  {\Phi_{i}^{\lr{N}}}
+  {\Phi_{i}^{\lr{N}}}
   =
   \sum_{i = 1}^{N_{B}}
-  \ket*{\Phi_{i}^{\lr{N}}}
-  \bra*{\Phi_{i}^{\lr{N}}}
+  \ketbra*
+  {\Phi_{i}^{\lr{N}}}
+  {\Phi_{i}^{\lr{N}}}
   +
   \sum_{i = N_{B} + 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N}}}
-  \bra*{\Phi_{i}^{\lr{N}}}
+  \ketbra*
+  {\Phi_{i}^{\lr{N}}}
+  {\Phi_{i}^{\lr{N}}}
   ,
 \end{equation}
 and so in the limit as $N \to \infty$, the sum over the bounded pseudostates
@@ -518,7 +515,7 @@ in the limit as $N \to \infty$; that is,
 \subsubsection{Projectile States}
 \label{sec:projectile-states}
 
-The projectile states, $\ket{\vb{k}} \in \mathcal{H}$, are defined to be
+The projectile states $\ket{\vb{k}} \in \mathcal{H}$ are defined to be
 eigenstates of the free Hamiltonian; that is,
 \begin{equation}
   \label{eq:projectile-hamiltonian}
@@ -610,15 +607,15 @@ where $\hat{P}_{0, m}$ are the pairwise electron exchange operators defined in
 \autoref{eq:pairwise-exchange}, and where
 $\ket*{\psi^{\lr{+}}} \in \mathcal{H}_{T} \otimes \mathcal{H}$ is the
 un-symmetrised total wavefunction.
-Note that we have omitted the $\lr{1 + n_{\mathrm{e}}}!$ term in $\hat{A}$,
-since it is a scalar term which can be normalised away when required.
 As the target states are already anti-symmetric by construction, the
 anti-symmetriser has assumed a simpler form - requiring only permutations
 of the un-symmetrised projectile state with the spin-orbital states of the
 target electrons.
+Note that we have omitted the $\lr{1 + n_{\mathrm{e}}}!$ term in $\hat{A}$,
+since it is a scalar term which can be normalised away when required.
 
-To construct the un-symmetrised total wavefunction, $\ket*{\psi^{\lr{+}}}$, we
-project it onto the target psuedostates,
+To construct the un-symmetrised total wavefunction $\ket*{\psi^{\lr{+}}}$ we
+project it onto the target psuedostates, using the notation
 \begin{equation}
   \label{eq:total-wavefunction-un-symmetrised-n}
   \ket*{\psi^{\lr{N, +}}}
@@ -630,11 +627,14 @@ project it onto the target psuedostates,
   \ket*{\Phi_{i}^{\lr{N, +}}}
   \bra*{\Phi_{i}^{\lr{N, +}}}
   \ket*{\psi^{\lr{+}}}
+  % =
+  % \sum_{i = 1}^{N_{T}}
+  % \ket*{\Phi_{i}^{\lr{N, +}}}
+  % \otimes
+  % \ket*{F_{i}^{\lr{N, +}}}
   =
   \sum_{i = 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N, +}}}
-  \otimes
-  \ket*{F_{i}^{\lr{N, +}}}
+  \ket*{\Phi_{i}^{\lr{N, +}}, F_{i}^{\lr{N, +}}}
   ,
 \end{equation}
 where $\ket*{F_{i}^{\lr{N, +}}}
@@ -653,7 +653,9 @@ and note that as a result of
   \ket*{\psi^{\lr{N, +}}}
   .
 \end{equation}
-Similarly, we define
+Similarly, the total wavefunction constructed from the projection of the
+un-symmetrised total wavefunction onto the target pseudostates is written in the
+form
 \begin{equation}
   \label{eq:total-wavefunction-antisymmetrisation-n}
   \ket*{\Psi^{\lr{N, +}}}
@@ -671,7 +673,7 @@ Similarly, we define
   \ket*{\psi^{\lr{N, +}}}
   ,
 \end{equation}
-and observe that
+and we note that as a result of \autoref{eq:target-projection-convergence}, that
 \begin{equation}
   \label{eq:total-wavefunction-antisymmetrisation-convergence}
   \ket*{\Psi^{\lr{+}}}
@@ -683,14 +685,14 @@ and observe that
 
 However, after projecting the un-symmetrised total wavefunction with the
 projection operator for the target pseudostates, the multichannel expansion is
-not uniquely defined, since for any state,
+not uniquely defined, since for any state
 $\ket*{\omega^{\lr{N}}} = \hat{I}_{T}^{\lr{N}} \ket*{\omega} \in
-\ker\lr{\hat{A}}$, and constant $\alpha \in \complex$, the multichannel
+\ker\lr{\hat{A}}$ and scalar $\alpha \in \complex$, the multichannel
 expansion of $\ket*{\psi^{\lr{N, +}}} + \alpha \ket*{\omega^{\lr{N}}}$ will be
 identical to that of $\ket*{\psi^{\lr{N, +}}}$.
 To resolve this dilemma, we impose the constraint that for any of the
-one-electron atomic orbitals,
-$\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}$, used in the
+one-electron atomic orbitals
+$\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}$ used in the
 construction of the target pseudostates in \autoref{eq:target-1e-hamiltonian},
 that
 \begin{equation}
@@ -1149,19 +1151,19 @@ are plane waves, defined in \autoref{eq:projectile-states}.
 Furthermore, the total wavefunction is taken to be of the form
 \begin{equation}
   \label{eq:ccc-total-wavefunction}
-  \ket*{\Psi_{\alpha}}
+  \ket*{\Psi_{\alpha}^{\lr{+}}}
   =
   \hat{A}
-  \ket*{\psi_{\alpha}}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
   \approx
   \hat{A}
   \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
   =
   \hat{A}
-  \ket*{\psi_{\alpha}^{\lr{N}}}
+  \ket*{\psi_{\alpha}^{\lr{N, +}}}
   =
-  \ket*{\Psi_{\alpha}^{\lr{N}}}
+  \ket*{\Psi_{\alpha}^{\lr{N, +}}}
   ,
 \end{equation}
 as in \autoref{eq:total-wavefunction-antisymmetrisation}, where $\hat{A}$ is the
@@ -1177,12 +1179,12 @@ by the expression
   \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   =
   \hat{V}
-  \ket*{\Psi_{\alpha}^{\lr{N}}}
+  \ket*{\Psi_{\alpha}^{\lr{N, +}}}
   =
   \hat{V}
   \hat{A}
   \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}}
+  \ket*{\psi_{\alpha}^{\lr{+}}}
   .
 \end{equation}
 However, in the case where the potential $\hat{V}$ can be re-written in a way
@@ -1193,12 +1195,12 @@ and helium targets), we may instead write
   \label{eq:ccc-v-spin}
   \hat{V}^{\lr{S}}
   \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}^{\lr{S}}}
+  \ket*{\psi_{\alpha}^{\lr{S, +}}}
   =
   \hat{V}
   \hat{A}
   \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}^{\lr{S}}}
+  \ket*{\psi_{\alpha}^{\lr{S, +}}}
   ,
 \end{equation}
 in which case the $\hat{T}$ operator is instead written as
@@ -1209,7 +1211,7 @@ in which case the $\hat{T}$ operator is instead written as
   =
   \hat{V}^{\lr{S}}
   \hat{I}_{T}^{\lr{N}}
-  \ket*{\psi_{\alpha}^{\lr{S}}}
+  \ket*{\psi_{\alpha}^{\lr{S, +}}}
   .
 \end{equation}
 We then have the Convergent Close-Coupling equations in terms of the $\hat{T}$
@@ -1261,7 +1263,7 @@ operator
 \end{alignat}
 forming a set of $\complex$-valued matrix equations  which are numerically
 solved to yield the $T$ matrix, from which information about the total
-wavefunction $\ket*{\Psi_{i}^{\lr{N, S}}}$ can be derived.
+wavefunction $\ket*{\Psi_{i}^{\lr{N, S, +}}}$ can be derived.
 However, it is possible to re-write the Convergent Close-Coupling equations in
 terms of an operator $\hat{K}$,
 \begin{alignat}{2}
@@ -1348,7 +1350,8 @@ where $k_{n}$ are the on-shell projectile momenta which satisfy
   +
   \tfrac{1}{2}
   k_{n}^{2}
-  .
+  \qq{for}
+  n = 1, \dotsc, N_{T}.
 \end{equation}
 
 \subsubsection{Transition Amplitudes}
@@ -1395,13 +1398,6 @@ where $k_{n}$ are the on-shell projectile momenta which satisfy
 
 \paragraph{Meta-stable States}
 \label{sec:he-meta-stable}
-
-\todo[meta-stable states]{
-  How are positive energy discrete states handled?
-  Do positive energy discrete states overlap with the continuum?
-  Do we simply include the positive energy discrete states in the continuum with
-  a Dirac mass function?
-}
 
 \subsubsection{Elastic Scattering}
 \label{sec:e-he-elastic-scattering}

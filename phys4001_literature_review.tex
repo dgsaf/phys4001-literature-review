@@ -1493,8 +1493,8 @@ where $k_{n}$ are the on-shell projectile momenta which satisfy
   n = 1, \dotsc, N_{T}.
 \end{equation}
 
-\subsubsection{Cross Sections}
-\label{sec:cross-sections}
+\subsection{Scattering Statistics}
+\label{sec:scattering-statistics}
 
 At this point, we shall utilise the S-wave model, wherein we restrict our
 attention to the target states
@@ -1503,27 +1503,194 @@ This allows for a simpler presentation of theoretical results, and calculations
 performed in the S-wave model are often sufficient to explore the behaviour of
 scattering phenomena with the benefit of a significant reduction in
 computational complexity.
+Much of the following treatment is readily generalisable to a full treatment of
+angular momentum.
+
+\subsubsection{Scattering Amplitudes}
+\label{sec:scattering-amplitudes}
 
 Once calculated, the matrix elements of the $\hat{T}$ operator yield the
 transition amplitudes between asymptotic states, which can then be used to
-calculate cross sections for various types of transitions.
-For discrete excitations, the partial cross sections can be written in the form
+calculate the scattering amplitudes.
+In general terms, and neglecting constant factors, the scattering amplitudes can
+be written in the form
 \begin{equation}
-  \label{eq:ccc-transition-amplitude}
-  \sigma_{f, i}
+  \label{eq:scattering-amplitude}
+  F_{\alpha, \beta}
   =
-  \dfrac{k_{f}}{k_{i}}
-  \lrabs
-  {
-    \mel*
-    {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
-    {\hat{T}}
-    {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
-  }^{2}
+  -
+  \mel*
+  {\vb{k}_{\alpha} \Phi_{\alpha}}
+  {\hat{V}}
+  {\Psi_{\beta}}
+  =
+  -
+  \mel*
+  {\vb{k}_{\alpha} \Phi_{\alpha}}
+  {\hat{T}}
+  {\Phi_{\beta} \vb{k}_{\beta}}
   ,
 \end{equation}
-where $\sigma_{f, i}$ is the partial cross section for the discrete excition
-from state $i$ to state $f$.
+where the target state $\ket*{\Phi_{\alpha}}$ can be a bounded discrete
+state or an unbounded continuum state, corresponding to either a discrete
+excition or an ionisation transition.
+Note that despite the duplicated notation, we are referring to the scattering
+amplitudes $F_{\alpha, \beta}$, not the one-electron states in the multichannel
+expansion \autoref{eq:total-wavefunction-un-symmetrised-n}.
+
+For discrete excitations, the numerically calculated scattering amplitude is
+simply of the form
+\begin{equation}
+  \label{eq:scattering-amplitude-discrete}
+  F_{f, i}^{\lr{N}}
+  =
+  -
+  \mel*
+  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  .
+\end{equation}
+However, for ionisations the numerically calculated scattering amplitudes
+require a more carefully considered treatment.
+We shall restrict our attention to the case of single ionisation.
+The ionised asymptotic state $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ corresponds
+to the breakup of the target state $\ket*{\Phi_{\alpha}}$ into a singly-ionised
+target state $\ket*{\Phi_{\alpha}^{+}}$ and a continuum wave
+$\ket*{\vb{q}_{\alpha}}$; that is,
+\begin{equation}
+  \label{eq:asymptotic-ionised}
+  \ket*{\Phi_{\alpha} \vb{k}_{\alpha}}
+  =
+  \ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}
+  ,
+\end{equation}
+where the energy of the ionised asymptotic state is of the form
+\begin{equation}
+  \label{eq:asymptotic-ionised-energy}
+  E
+  =
+  \epsilon_{\alpha}
+  +
+  \tfrac{1}{2}
+  k_{\alpha}^{2}
+  =
+  \epsilon_{\alpha}^{+}
+  +
+  \tfrac{1}{2}
+  q_{\alpha}^{2}
+  +
+  \tfrac{1}{2}
+  k_{\alpha}^{2}
+  .
+\end{equation}
+It follows from the completeness of the target pseudostates
+\autoref{eq:target-projection-convergence} that the ionised asymptotic state can
+be expanded in terms of the unbounded target pseudostates, with the expansion
+becoming increasingly accurate as $N$ increases.
+Hence, for ionisations, the numerically calculated scattering amplitude can be
+written in the form
+\begin{alignat}{2}
+  \label{eq:scattering-amplitude-ionisation}
+  &
+  F_{\alpha, i}^{\lr{N}}
+  &
+  {}={}
+  &
+  -
+  \mel*
+  {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\hat{I}_{T}^{\lr{N}} \hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  \nonumber
+  \\
+  &
+  &
+  {}={}
+  &
+  -
+  \sum_{n = 1}^{N_{T}}
+  \braket*
+  {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\Phi_{n}^{\lr{N}}}
+  \mel*
+  {\Phi_{n}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  \nonumber
+  \\
+  &
+  &
+  {}={}
+  &
+  -
+  \sum_{n = 1}^{N_{T}}
+  \braket*
+  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\Phi_{n}^{\lr{N}}}
+  \mel*
+  {\vb{k}_{\alpha} \Phi_{n}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  .
+\end{alignat}
+However, this expression is problematic as it involves a summation over
+not necessarily on-shell terms $\bra*{\vb{k}_{\alpha}\Phi_{n}^{\lr{N}}}$.
+If we restrict our attention to only evaluating the ionisation scattering
+amplitudes $F_{\alpha, i}^{\lr{N}}$ for ionised asymptotic states
+$\ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}$ which satisfy
+\begin{equation}
+  \label{eq:asymptotic-ionisation-energy-constraint}
+  \epsilon_{\alpha}
+  =
+  \epsilon_{\alpha}^{+}
+  +
+  \tfrac{1}{2}
+  q_{\alpha}^{2}
+  =
+  \epsilon_{n_{\alpha}}^{\lr{N}}
+  ,
+\end{equation}
+for one of the target pseudoenergies $\epsilon_{n_{\alpha}}^{\lr{N}}$,
+corresponding to the target pseudostate $\ket*{\Phi_{n_{\alpha}}^{\lr{N}}}$, then
+we must have that
+\begin{equation}
+  \label{eq:asymptotic-ionisation-overlap}
+  \braket*
+  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\Phi_{n}^{\lr{N}}}
+  =
+  \delta_{n_{\alpha}, n}
+  \braket*
+  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\Phi_{n}^{\lr{N}}}
+  ,
+\end{equation}
+whence the ionisation scattering amplitudes can be evaluated as
+\begin{equation}
+  \label{eq:scattering-amplitude-ionisation-evaluated}
+  F_{\alpha, i}^{\lr{N}}
+  =
+  -
+  \braket*
+  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\Phi_{n_{\alpha}}^{\lr{N}}}
+  \mel*
+  {\vb{k}_{\alpha} \Phi_{n_{\alpha}}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  ,
+\end{equation}
+at these $q_{\alpha}$ which satisfy
+\autoref{eq:asymptotic-ionisation-energy-constraint}.
+This is the approach taken in the CCC method to calculate the ionisation
+scattering amplitudes, and we note that it is constrained to evaluating these
+amplitudes only at certain energies permitted by the target pseudoenergies.
+Evaluating the ionisation scattering amplitudes at any other energies requires
+an interpolation between the energies at which it can be evaluated at.
+
+\subsubsection{Cross Sections}
+\label{sec:cross-sections}
 
 \subsection{Electron-Impact Hydrogen Scattering}
 \label{sec:e-h}

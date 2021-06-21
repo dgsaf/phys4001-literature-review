@@ -591,17 +591,16 @@ perform a multichannel expansion, projecting it onto the target psuedostates,
   \ket*{\psi^{\lr{+}}}
   =
   \sum_{i = 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N, +}}}
-  \bra*{\Phi_{i}^{\lr{N, +}}}
+  \ket*{\Phi_{i}^{\lr{N}}}
+  \bra*{\Phi_{i}^{\lr{N}}}
   \ket*{\psi^{\lr{+}}}
   =
   \sum_{i = 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N, +}}, F_{i}^{\lr{N, +}}}
+  \ket*{\Phi_{i}^{\lr{N}} F_{i}^{\lr{N}}}
   ,
 \end{equation}
-where $\ket*{F_{i}^{\lr{N, +}}}
-= \bra*{\Phi_{i}^{\lr{N, +}}}\ket*{\psi^{\lr{+}}} \in \mathcal{H}$,
-and note that as a result of
+where $\ket*{F_{i}^{\lr{N}}} = \bra*{\Phi_{i}^{\lr{N}}}\ket*{\psi^{\lr{+}}}$ are
+the multichannel weight functions, and note that as a result of
 \autoref{eq:target-projection-convergence}, that
 \begin{equation}
   \label{eq:total-wavefunction-un-symmetrised-convergence}
@@ -648,29 +647,30 @@ and we note that as a result of \autoref{eq:target-projection-convergence}, that
 However, after projecting the un-symmetrised total wavefunction with the
 projection operator for the target pseudostates, the multichannel expansion is
 not uniquely defined, since for any state
-$\ket*{\omega^{\lr{N}}} = \hat{I}_{T}^{\lr{N}} \ket*{\omega} \in
-\ker\lr{\hat{A}}$ and scalar $\alpha \in \complex$, the multichannel
+$\ket*{\omega^{\lr{N}}} \in \ker\lr{\hat{A}\hat{I}_{T}^{\lr{N}}}$ and scalar
+$\alpha \in \complex$, the multichannel
 expansion of $\ket*{\psi^{\lr{N, +}}} + \alpha \ket*{\omega^{\lr{N}}}$ will be
 identical to that of $\ket*{\psi^{\lr{N, +}}}$.
-To resolve this dilemma, we impose the constraint that for any of the
-one-electron atomic orbitals
-$\ket*{\phi_{j}^{\lr{N}}} \in \mathcal{H}$ used in the
-construction of the target pseudostates in \autoref{eq:target-1e-hamiltonian},
-that
+To resolve this dilemma, we first note that the multichannel weight functions
+$\ket*{F_{i}^{\lr{N}}}$ are within the span of the one-electron spin orbitals
+$\lrset{\ket*{\chi_{i}^{\lr{N}}}}_{i = 1}^{2N}$, used to construct the Slater
+determinants, \autoref{eq:target-slater-determinant}, with which the target
+states are expanded.
+Hence, we impose the constraint that for any of the one-electron spin orbitals
+$\ket*{\chi_{i}^{\lr{N}}}$, that
 \begin{equation}
   \label{eq:multichannel-constraint}
-  \bra*{\phi_{j}^{\lr{N}}, \Phi_{i}^{\lr{N}}}
   \hat{P}_{0, m}
+  \ket*{\Phi_{n}^{\lr{N}} \chi_{i}^{\lr{N}}}
   =
   -
-  \bra*{\phi_{j}^{\lr{N}}, \Phi_{i}^{\lr{N}}}
+  \ket*{\Phi_{n}^{\lr{N}} \chi_{i}^{\lr{N}}}
   .
 \end{equation}
-Whence it follows that the multichannel expansion of
-$\ket*{\psi^{\lr{N, +}}} + \alpha \ket*{\omega^{\lr{N}}}$ will be identical to
-that of $\ket*{\psi^{\lr{N, +}}}$ only in the case where $\alpha = 0$, or
-$\ket*{\omega^{\lr{N}}} = \ket*{0}$; that is to say,
-$\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine $\ket*{\Psi^{\lr{N, +}}}$.
+With this constraint in place, it can then be shown that
+$\dim\ker\lr{\hat{A}\hat{I}_{T}^{\lr{N}}} = 0$, whence it follows that the
+multichannel expansion of $\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine
+$\ket*{\Psi^{\lr{N, +}}}$.
 
 \subsubsection{Convergent Close-Coupling Equations}
 \label{sec:ccc-equations}
@@ -1578,13 +1578,18 @@ where $k_{n}$ are the on-shell projectile momenta which satisfy
 \end{equation}
 
 We note that the matrix equations \autoref{eq:ccc-ls-t}, as well as
-\autoref{eq:ccc-ls-k} and \autoref{eq:ccc-t-k}, for a given physical system, are
-parameterised by the energy $E$, and are computationally parameterised by the
-set of target pseudostates
-$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$, which are in-turn
-computationally parameterised by the size of the Laguerre basis $N$ used to
-construct the one-electron orbitals and the number of Slater determinants $N_{T}$
-constructed from the one-electron orbitals.
+\autoref{eq:ccc-ls-k} and \autoref{eq:ccc-t-k}, are computationally
+parameterised by the set of target pseudostates
+$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$ and the discretisation of
+the projectile spectrum.
+In turn, the target pseudostates are parameterised by the number of Slater
+determinants $N_{T}$ used in their construction, and the number of basis
+functions $N$ used to construct the one-electron orbitals from which the Slater
+determinants are built.
+Furthermore, we note that matrix equations in this form do not explicitly
+include the constraints, detailed in \autoref{eq:multichannel-constraint}, which
+guarantee the uniqueness of the explicitly anti-symmetrised multichannel
+expansion,
 
 
 \subsection{Scattering Statistics}

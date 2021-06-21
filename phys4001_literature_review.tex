@@ -1179,7 +1179,7 @@ target states, is of the form
 \end{equation}
 where $\hat{U}_{0}$ is an asymptotic potential acting on the projectile, which
 can be chosen arbitrarily.
-A suitable choice for this potential is that of a coulomb potential with a
+A suitable choice for this potential is that of a Coulomb potential with a
 charge corresponding to the asymptotic charge of the target system, whence
 $\braket*{\vb{r}}{\hat{W}} = W\lr{r, \Omega} \to 0$ as $r \to \infty$.
 Such a selection for $\hat{U}_{0}$ adapts the projectile states to the target
@@ -1209,7 +1209,8 @@ pseudostates, defined in \autoref{eq:target-states}, which satisfy
   \delta_{i, j}
   ,
 \end{equation}
-and where $\ket*{\vb{k}_{\alpha}}$ are the plane/coulomb/distorted waves,
+and where $\ket*{\vb{k}_{\alpha}}$ are the continuum waves (which could be
+plane, distorted, or Coulomb waves depending on the choice of $\hat{U}_{0}$),
 defined to be eigenstates of the projectile component of the asymptotic
 Hamiltonian,
 \begin{equation}
@@ -1591,8 +1592,7 @@ determinants are built.
 Furthermore, we note that matrix equations in this form do not explicitly
 include the constraints, detailed in \autoref{eq:multichannel-constraint}, which
 guarantee the uniqueness of the explicitly anti-symmetrised multichannel
-expansion,
-
+expansion.
 
 \subsection{Scattering Statistics}
 \label{sec:scattering-statistics}
@@ -1656,8 +1656,8 @@ We shall restrict our attention to the case of single ionisation, but leave open
 the consideration of ionisation with excitation.
 The ionised asymptotic state $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ corresponds
 to the breakup of the target state $\ket*{\Phi_{\alpha}}$ into a singly-ionised
-target state $\ket*{\Phi_{\alpha}^{+}}$ (which may be excited) and a continuum
-wave $\ket*{\vb{q}_{\alpha}}$; that is,
+target state $\ket*{\Phi_{\alpha}^{+}}$ (which may be excited) and an ionised
+electron in the form of a Coulomb wave $\ket*{\vb{q}_{\alpha}}$; that is,
 \begin{equation}
   \label{eq:asymptotic-ionised}
   \ket*{\Phi_{\alpha} \vb{k}_{\alpha}}
@@ -1682,13 +1682,14 @@ where the energy of the ionised asymptotic state is of the form
   +
   \tfrac{1}{2}
   k_{\alpha}^{2}
-  .
 \end{equation}
+where $\epsilon_{\alpha}^{+}$ is the energy of the singly-ionised target state,
+and where $\tfrac{1}{2} q_{\alpha}^{2}$ is the energy of the Coulomb wave.
 It is important to note that in this formulation, the asymptotic state
 $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ separates into the asymptotic projectile
 state $\ket*{\vb{k}_{\alpha}}$ and the asymptotic target state
 $\ket*{\Phi_{\alpha}} = \ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha}}$, within which
-the continuum wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding from
+the Coulomb wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding from
 consideration a three-body boundary condition.
 It follows from the completeness of the target pseudostates
 \autoref{eq:target-projection-convergence} that the ionised asymptotic state can

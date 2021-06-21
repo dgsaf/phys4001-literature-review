@@ -95,10 +95,9 @@ projectiles and atomic/ionic targets consisting of $n_{\mathrm{e}}$ electrons.
 \subsection{Convergent Close-Coupling Method}
 \label{sec:ccc-method}
 
-In brief, the CCC method utilises the method of basis expansion, discussed in
-further detail in \autoref{app:basis-expansion}, to numerically solve the
-Lippmann-Schwinger equation, for a projectile-target system, to yield the
-transition amplitudes, which are convergent as the size of the basis is
+In brief, the CCC method utilises the method of basis expansion to numerically
+solve the Lippmann-Schwinger equation, for a projectile-target system, to yield
+the transition amplitudes, which are convergent as the size of the basis is
 increased.
 The rate of convergence depends on many factors, such as the complexity and
 geometry of the projectile-target system for example, as well as the choice of
@@ -158,11 +157,11 @@ $i \in \lrset{1, 2, \dotsc}$.
 
 This Laguerre basis is utilised due to: the Laguerre basis functions
 $\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$ forming a complete basis
-for the Hilbert space $L^{2}\lr{\real^{3}}$ - shown in
-\autoref{app:laguerre-completeness}, the short-range and long-range behaviour of
-the radial basis functions being well suited to describing bound target states
-and providing a basis for expanding continuum states in, and because it allows
-the matrix elements of certain operators to be calculated analytically.
+for the Hilbert space $L^{2}\lr{\real^{3}}$, the short-range and long-range
+behaviour of the radial basis functions being well suited to describing bound
+target states and providing a basis for expanding continuum states in, and
+because it allows the matrix elements of certain operators to be calculated
+analytically.
 
 Practically, we cannot utilise a basis of infinite size.
 Hence, we truncate the Laguerre radial basis
@@ -182,9 +181,6 @@ Hence, for a given value of $m$, we have a basis size of
 In the limit as $N \to \infty$, the truncated basis will tend towards
 completeness, and it is in this limit that we discuss the convergence of the
 Convergent Close-Coupling method.
-
-Further properties of the Laguerre basis are discussed in
-\autoref{app:laguerre-basis}.
 
 \subsubsection{Target States}
 \label{sec:target-states}
@@ -436,21 +432,21 @@ satisfy
 where $\epsilon_{i}^{\lr{N}}$ are the pseudoenergies of the pseudostates.
 Note that the number of target pseudostates $N_{T}$ depends on the number of
 Slater determinants utilised in the expansion of $\hat{H}_{T}$.
-The process of selecting which Slater determinants to use in the expansion is
-not trivial, as the number of Slater determinants scales as
-$\binom{2N}{n_{\mathrm{e}}}$.
-A common method of mitigating this computationaly complexity, is to partition
-the target orbitals into a core and valence set of orbitals, with the core
-orbitals being limited to a much smaller set of states, while the valence
-orbitals are not so constrained.
-This provides an effective model for targets with a mostly fixed set of electron
-states, while allowing the valence electrons to interact fully with the
-projectile.
-
 Note also that the $\lr{N}$ superscript has been introduced to indicate that
 these are not true eigenstates of the target Hamiltonian, only of its
 representation in the truncated Laguerrre basis, and that these pseudostates and
 their pseudoenergies are dependent on the size of the Laguerre basis utilised.
+
+The process of selecting which Slater determinants to use in the expansion is
+not trivial, as the number of Slater determinants scales as
+$\binom{2N}{n_{\mathrm{e}}}$.
+A common method of mitigating this computationaly complexity, is to partition
+the target orbitals into a core set and valence set of orbitals, with the core
+orbitals being limited to a much smaller set of states, while the valence
+orbitals are not so constrained.
+This provides an effective model for targets with a mostly fixed set of core
+electron states, while allowing the valence electrons to interact fully with the
+projectile.
 
 \paragraph{Completeness of Target Pseudostates}
 \label{sec:target-states-completeness}
@@ -598,11 +594,6 @@ perform a multichannel expansion, projecting it onto the target psuedostates,
   \ket*{\Phi_{i}^{\lr{N, +}}}
   \bra*{\Phi_{i}^{\lr{N, +}}}
   \ket*{\psi^{\lr{+}}}
-  % =
-  % \sum_{i = 1}^{N_{T}}
-  % \ket*{\Phi_{i}^{\lr{N, +}}}
-  % \otimes
-  % \ket*{F_{i}^{\lr{N, +}}}
   =
   \sum_{i = 1}^{N_{T}}
   \ket*{\Phi_{i}^{\lr{N, +}}, F_{i}^{\lr{N, +}}}
@@ -688,7 +679,8 @@ We present a derivation for the Convergent Close-Coupling (CCC) equations,
 beginning with the Schr\"odinger equation for the total wavefunction
 $\ket*{\Psi^{\lr{+}}}$ presented in \autoref{eq:total-wavefunction}.
 This shall be re-arranged to yield the Lippmann-Schwinger equation, which will
-then be solved using the CCC formalism.
+then be solved using the CCC formalism to obtain the matrix elements of the
+$\hat{T}$ operator - with which scattering statistics can be calculated.
 
 \paragraph{Lippmann-Schwinger Equation}
 \label{sec:lippmann-schwinger}
@@ -1047,8 +1039,8 @@ be written in the form
   }
   ,
 \end{equation}
-where the imaginary limit exists to ensure the integral is well-defined for all
-$\varepsilon_{\gamma}$.
+where the imaginary limit is present to ensure that the integral is well-defined
+for all $\varepsilon_{\gamma}$.
 With an expression for the Green's operator in hand, we can now re-write the
 Lippmann-Schwinger equation in the following form
 \begin{equation}
@@ -1088,8 +1080,12 @@ eigenstates.
 
 In the Convergent Close-Coupling formalism, the Lippmann-Schwinger equation in
 terms of the $\hat{T}$ operator, \autoref{eq:ls-t}, is solved in momentum space.
+We preface this discussion with a minor note, that the notation for the
+asymptotic Hamiltonian $\hat{H}_{\rm{A}}$ is to be distinguished from the
+notation for the anti-symmetriser $\hat{A}$.
+
 We split the Hamiltonian, from \autoref{eq:total-hamiltonian}, into an
-asymptotic Hamiltonian and a decaying potential in the form
+asymptotic Hamiltonian and a potential in the form
 \begin{equation}
   \label{eq:ccc-hamiltonian}
   \hat{H}
@@ -1120,7 +1116,8 @@ where the asymptotic Hamiltonian is of the form
   \hat{U}_{0}
   ,
 \end{equation}
-and where the decaying potential is of the form
+and where the potential, modelling the interaction between the projectile and
+target states, is of the form
 \begin{equation}
   \label{eq:ccc-potential}
   \hat{W}
@@ -1133,37 +1130,41 @@ and where the decaying potential is of the form
   \hat{U}_{0}
   ,
 \end{equation}
-where $\hat{U}_{0}$ is the asymptotic potential acting on the projectile.
+where $\hat{U}_{0}$ is an asymptotic potential acting on the projectile, which
+can be chosen arbitrarily.
+A suitable choice for this potential is that of a coulomb potential with a
+charge corresponding to the asymptotic charge of the target system, whence
+$\braket*{\vb{r}}{\hat{W}} = W\lr{r, \Omega} \to 0$ as $r \to \infty$.
+Such a selection for $\hat{U}_{0}$ adapts the projectile states to the target
+system, without loss of generality, and can lead to improvement in computational
+performance.
+
 The asymptotic eigenstates are therefore taken to be of the form
 \begin{equation}
   \label{eq:ccc-asymptotic-states}
   \ket*{\Omega_{\alpha}}
   =
-  \ket*{\Phi_{i_{\alpha}} \vb{k}_{\alpha}}
+  \ket*{\Phi_{\alpha} \vb{k}_{\alpha}}
   \approx
-  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
-  ,
-\end{equation}
-with corresponding asymptotic eigenenergies
-\begin{equation}
-  \label{eq:ccc-asymptotic-energy}
-  \varepsilon_{\alpha}
-  =
-  \epsilon_{i_{\alpha}}
-  +
-  \tfrac{1}{2}
-  k_{\alpha}^{2}
-  \approx
-  \epsilon_{i_{\alpha}}^{\lr{N}}
-  +
-  \tfrac{1}{2}
-  k_{\alpha}^{2}
+  \ket*{\Phi_{n_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   ,
 \end{equation}
 where $\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ are the target
-pseudostates, defined in \autoref{eq:target-states}, and where $\ket*{\vb{k}}$
-are the plane/coulomb/distorted waves, defined to be eigenstates of the
-projectile component of the asymptotic Hamiltonian,
+pseudostates, defined in \autoref{eq:target-states}, which satisfy
+\begin{equation}
+  \label{eq:ccc-target}
+  \mel*
+  {\Phi_{i}^{\lr{N}}}
+  {\hat{H}_{T}}
+  {\Phi_{j}^{\lr{N}}}
+  =
+  \epsilon_{i}^{\lr{N}}
+  \delta_{i, j}
+  ,
+\end{equation}
+and where $\ket*{\vb{k}_{\alpha}}$ are the plane/coulomb/distorted waves,
+defined to be eigenstates of the projectile component of the asymptotic
+Hamiltonian,
 \begin{equation}
   \label{eq:ccc-waves}
   \lrsq
@@ -1172,11 +1173,27 @@ projectile component of the asymptotic Hamiltonian,
     +
     \hat{U}_{0}
   }
-  \ket*{\vb{k}}
+  \ket*{\vb{k}_{\alpha}}
   =
   \tfrac{1}{2}
-  k^{2}
-  \ket*{\vb{k}}
+  k_{\alpha}^{2}
+  \ket*{\vb{k}_{\alpha}}
+  ,
+\end{equation}
+whence it can be seen that the asymptotic eigenenergies are of the form
+\begin{equation}
+  \label{eq:ccc-asymptotic-energy}
+  \varepsilon_{\alpha}
+  =
+  \epsilon_{n_{\alpha}}
+  +
+  \tfrac{1}{2}
+  k_{\alpha}^{2}
+  \approx
+  \epsilon_{n_{\alpha}}^{\lr{N}}
+  +
+  \tfrac{1}{2}
+  k_{\alpha}^{2}
   .
 \end{equation}
 Furthermore, the total wavefunction is taken to be of the form
@@ -1202,12 +1219,12 @@ anti-symmetriser operator, defined in \autoref{eq:anti-symmetriser}, and is
 subject to the constraints imposed in \autoref{eq:multichannel-constraint} to
 ensure uniqueness.
 We note that with these expressions for the asymptotic eigenstates and the total
-wavefunction, that the $\hat{T}$ operator is related to the decaying potential
-$\hat{W}$ by the expression
+wavefunction, that the $\hat{T}$ operator is related to the potential $\hat{W}$
+by the expression
 \begin{equation}
   \label{eq:ccc-t-w}
   \hat{T}
-  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
+  \ket*{\Phi_{n_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   =
   \hat{W}
   \ket*{\Psi_{\alpha}^{\lr{N, +}}}
@@ -1222,8 +1239,10 @@ $\hat{W}$ by the expression
   \ket*{\psi_{\alpha}^{\lr{N, +}}}
   .
 \end{equation}
-However, we can recast this potential in a way which accounts for the explicit
-anti-symmetrisation of the total wavefunction.
+However, it is possible to recast the potential $\hat{W}$ in a form $\hat{V}$
+which accounts for the explicit anti-symmetrisation of the total wavefunction;
+that is, which allows us to write the CCC equations without direct reference to
+the anti-symmetriser $\hat{A}$.
 To do this, we first note that
 \begin{equation*}
   0
@@ -1246,7 +1265,7 @@ To do this, we first note that
   \ket*{\psi_{\alpha}^{\lr{+}}}
   ,
 \end{equation*}
-with this operator expanding to the form
+with the operator on the right hand side expanding to the form
 \begin{equation*}
   \lrsq
   {
@@ -1291,7 +1310,9 @@ with this operator expanding to the form
   }
   ,
 \end{equation*}
-whence we define the explicitly anti-symmetrised potential $\hat{V}$ to be of
+where again we make sure to distinguish the notation for the asymptotic
+Hamiltonian $\hat{H}_{\rm{A}}$ and the anti-symmetriser $\hat{A}$.
+We therefore define the explicitly anti-symmetrised potential $\hat{V}$ to be of
 the form
 \begin{equation}
   \label{eq:ccc-v}
@@ -1325,28 +1346,43 @@ the form
   \hat{P}_{0, m}
   ,
 \end{equation}
-for which we can see that the explicit anti-symmetrisation of
-$\ket*{\psi_{\alpha}^{\lr{+}}}$ is handled by $\hat{V}$,
-\begin{equation}
+for which we can see that
+\begin{equation*}
   \label{eq:ccc-v-2}
-  \hat{H}
+  0
+  =
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \hat{A}
   \ket*{\psi_{\alpha}^{\lr{+}}}
   =
-  \hat{H}_{\rm{A}}
+  \lrsq
+  {
+    E
+    -
+    \lrsq
+    {
+      \hat{H}_{\rm{A}}
+      +
+      \hat{V}
+    }
+  }
   \ket*{\psi_{\alpha}^{\lr{+}}}
-  +
-  \hat{V}
-  \ket*{\psi_{\alpha}^{\lr{+}}}
-  =
-  E
-  \ket*{\psi_{\alpha}^{\lr{+}}}
-  .
-\end{equation}
-This allows us to write the $\hat{T}$ operator in the form
+  ,
+\end{equation*}
+which is to say that the Lippmann-Schwinger equation \autoref{eq:ls-t} can be
+written in terms of the un-symmetrised total wavefunction
+$\ket*{\psi_{\alpha}^{\lr{+}}}$, rather than the anti-symmetric total
+wavefunction $\ket*{\Psi_{\alpha}^{\lr{+}}}$.
+Specifically, this allows us to write the $\hat{T}$ operator in the form
 \begin{equation}
   \label{eq:ccc-t-v}
   \hat{T}
-  \ket*{\Phi_{i_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
+  \ket*{\Phi_{n_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   =
   \hat{V}
   \hat{I}_{T}^{\lr{N}}
@@ -1521,13 +1557,11 @@ be written in the form
   \label{eq:scattering-amplitude}
   F_{\alpha, \beta}
   =
-  -
   \mel*
   {\vb{k}_{\alpha} \Phi_{\alpha}}
   {\hat{V}}
   {\Psi_{\beta}}
   =
-  -
   \mel*
   {\vb{k}_{\alpha} \Phi_{\alpha}}
   {\hat{T}}
@@ -1547,7 +1581,6 @@ simply of the form
   \label{eq:scattering-amplitude-discrete}
   F_{f, i}^{\lr{N}}
   =
-  -
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
   {\hat{T}}
@@ -1556,11 +1589,12 @@ simply of the form
 \end{equation}
 However, for ionisations the numerically calculated scattering amplitudes
 require a more carefully considered treatment.
-We shall restrict our attention to the case of single ionisation.
+We shall restrict our attention to the case of single ionisation, but leave open
+the consideration of ionisation with excitation.
 The ionised asymptotic state $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ corresponds
 to the breakup of the target state $\ket*{\Phi_{\alpha}}$ into a singly-ionised
-target state $\ket*{\Phi_{\alpha}^{+}}$ and a continuum wave
-$\ket*{\vb{q}_{\alpha}}$; that is,
+target state $\ket*{\Phi_{\alpha}^{+}}$ (which may be excited) and a continuum
+wave $\ket*{\vb{q}_{\alpha}}$; that is,
 \begin{equation}
   \label{eq:asymptotic-ionised}
   \ket*{\Phi_{\alpha} \vb{k}_{\alpha}}
@@ -1587,6 +1621,11 @@ where the energy of the ionised asymptotic state is of the form
   k_{\alpha}^{2}
   .
 \end{equation}
+It is important to note that in this formulation, the asymptotic state separates
+into the asymptotic projectile state $\ket*{\vb{k}_{\alpha}}$ and the asymptotic
+target state $\ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha}}$, within which the
+continuum wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding the
+consideration of a three-body boundary condition.
 It follows from the completeness of the target pseudostates
 \autoref{eq:target-projection-convergence} that the ionised asymptotic state can
 be expanded in terms of the unbounded target pseudostates, with the expansion
@@ -1600,7 +1639,6 @@ written in the form
   &
   {}={}
   &
-  -
   \mel*
   {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{\alpha}^{+}}
   {\hat{I}_{T}^{\lr{N}} \hat{T}}
@@ -1611,7 +1649,6 @@ written in the form
   &
   {}={}
   &
-  -
   \sum_{n = 1}^{N_{T}}
   \braket*
   {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{\alpha}^{+}}
@@ -1626,7 +1663,6 @@ written in the form
   &
   {}={}
   &
-  -
   \sum_{n = 1}^{N_{T}}
   \braket*
   {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
@@ -1674,7 +1710,6 @@ whence the ionisation scattering amplitudes can be evaluated as
   \label{eq:scattering-amplitude-ionisation-evaluated}
   F_{\alpha, i}^{\lr{N}}
   =
-  -
   \braket*
   {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
   {\Phi_{n_{\alpha}}^{\lr{N}}}

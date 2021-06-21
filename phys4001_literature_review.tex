@@ -401,9 +401,9 @@ Hence they adhere to Pauli's exclusion principle and are indeed elements
 of $\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
 
 The true target states
-$\lrset{\ket{\Phi_{i}}}_{i = 1}^{\infty} \in \mathcal{H}_{T}$ are then
-approximated by expanding the many-electron target Hamiltonian $\hat{H}_{T}$
-in a basis of Slater determinants,
+$\lrset{\ket{\Phi_{\alpha}}} \in \mathcal{H}_{T}$ are then
+approximated by expanding the full target Hamiltonian $\hat{H}_{T}$ in a basis
+of Slater determinants,
 \begin{equation}
   \label{eq:target-slater-determinant-basis}
   \lrset[\big]
@@ -417,7 +417,7 @@ in a basis of Slater determinants,
   ,
 \end{equation}
 and diagonalising to yield a set of target pseudostates
-$\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ which are orthonormal and
+$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$ which are orthonormal and
 satisfy
 \begin{equation}
   \label{eq:target-states}
@@ -429,7 +429,8 @@ satisfy
   \delta_{i, j}
   ,
 \end{equation}
-where $\epsilon_{i}^{\lr{N}}$ are the pseudoenergies of the pseudostates.
+where $\epsilon_{n}^{\lr{N}}$ is the pseudoenergy corresponding to the
+pseudostate $\ket*{\Phi_{n}^{\lr{N}}}$.
 Note that the number of target pseudostates $N_{T}$ depends on the number of
 Slater determinants utilised in the expansion of $\hat{H}_{T}$.
 Note also that the $\lr{N}$ superscript has been introduced to indicate that
@@ -461,15 +462,15 @@ pseudoenergy, $\epsilon_{1}^{\lr{N}} < \dotsc < \epsilon_{N_{T}}^{\lr{N}}$,
 which allows us to express the separability of the spectrum in the form
 \begin{equation}
   \label{eq:target-spectrum-separable}
-  \lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}
+  \lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}
   =
-  \lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{B}}
+  \lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{B}}
   \cup
-  \lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = N_{B} + 1}^{N_{T}}
+  \lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = N_{B} + 1}^{N_{T}}
   ,
 \end{equation}
-where $\epsilon_{i}^{\lr{N}} < 0$ for $i = 1, \dotsc, N_{B}$, and where
-$\epsilon_{i}^{\lr{N}} \geq 0$ for $i = N_{B} + 1, \dotsc, N_{T}$.
+where $\epsilon_{n}^{\lr{N}} < 0$ for $n = 1, \dotsc, N_{B}$, and where
+$\epsilon_{n}^{\lr{N}} \geq 0$ for $n = N_{B} + 1, \dotsc, N_{T}$.
 Note that $N_{B}$ is the number of bounded pseudostates, and we write
 $N_{U} = N_{T} - N_{B}$ to represent the number of unbounded pseudostates, both of
 which are dependent on $N$ by consequence of the construction of the target
@@ -481,20 +482,20 @@ $\hat{I}_{T}^{\lr{N}}$, is of the form
   \label{eq:target-projection}
   \hat{I}_{T}^{\lr{N}}
   =
-  \sum_{i = 1}^{N_{T}}
+  \sum_{n = 1}^{N_{T}}
   \ketbra*
-  {\Phi_{i}^{\lr{N}}}
-  {\Phi_{i}^{\lr{N}}}
+  {\Phi_{n}^{\lr{N}}}
+  {\Phi_{n}^{\lr{N}}}
   =
-  \sum_{i = 1}^{N_{B}}
+  \sum_{n = 1}^{N_{B}}
   \ketbra*
-  {\Phi_{i}^{\lr{N}}}
-  {\Phi_{i}^{\lr{N}}}
+  {\Phi_{n}^{\lr{N}}}
+  {\Phi_{n}^{\lr{N}}}
   +
-  \sum_{i = N_{B} + 1}^{N_{T}}
+  \sum_{n = N_{B} + 1}^{N_{T}}
   \ketbra*
-  {\Phi_{i}^{\lr{N}}}
-  {\Phi_{i}^{\lr{N}}}
+  {\Phi_{n}^{\lr{N}}}
+  {\Phi_{n}^{\lr{N}}}
   ,
 \end{equation}
 and so in the limit as $N \to \infty$, the sum over the bounded pseudostates
@@ -590,16 +591,16 @@ perform a multichannel expansion, projecting it onto the target psuedostates,
   \hat{I}_{T}^{\lr{N}}
   \ket*{\psi^{\lr{+}}}
   =
-  \sum_{i = 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N}}}
-  \bra*{\Phi_{i}^{\lr{N}}}
+  \sum_{n = 1}^{N_{T}}
+  \ket*{\Phi_{n}^{\lr{N}}}
+  \bra*{\Phi_{n}^{\lr{N}}}
   \ket*{\psi^{\lr{+}}}
   =
-  \sum_{i = 1}^{N_{T}}
-  \ket*{\Phi_{i}^{\lr{N}} F_{i}^{\lr{N}}}
+  \sum_{n = 1}^{N_{T}}
+  \ket*{\Phi_{n}^{\lr{N}} F_{n}^{\lr{N}}}
   ,
 \end{equation}
-where $\ket*{F_{i}^{\lr{N}}} = \bra*{\Phi_{i}^{\lr{N}}}\ket*{\psi^{\lr{+}}}$ are
+where $\ket*{F_{n}^{\lr{N}}} = \bra*{\Phi_{n}^{\lr{N}}}\ket*{\psi^{\lr{+}}}$ are
 the multichannel weight functions, and note that as a result of
 \autoref{eq:target-projection-convergence}, that
 \begin{equation}
@@ -652,7 +653,7 @@ $\alpha \in \complex$, the multichannel
 expansion of $\ket*{\psi^{\lr{N, +}}} + \alpha \ket*{\omega^{\lr{N}}}$ will be
 identical to that of $\ket*{\psi^{\lr{N, +}}}$.
 To resolve this dilemma, we first note that the multichannel weight functions
-$\ket*{F_{i}^{\lr{N}}}$ are within the span of the one-electron spin orbitals
+$\ket*{F_{n}^{\lr{N}}}$ are within the span of the one-electron spin orbitals
 $\lrset{\ket*{\chi_{i}^{\lr{N}}}}_{i = 1}^{2N}$, used to construct the Slater
 determinants, \autoref{eq:target-slater-determinant}, with which the target
 states are expanded.
@@ -667,9 +668,10 @@ $\ket*{\chi_{i}^{\lr{N}}}$, that
   \ket*{\Phi_{n}^{\lr{N}} \chi_{i}^{\lr{N}}}
   .
 \end{equation}
+which can be seen as an explicit imposition of \autoref{eq:pairwise-exchange}.
 With this constraint in place, it can then be shown that
 $\dim\ker\lr{\hat{A}\hat{I}_{T}^{\lr{N}}} = 0$, whence it follows that the
-multichannel expansion of $\ket*{\psi^{\lr{N, +}}}$ will now uniquely determine
+multichannel expansion of $\ket*{\psi^{\lr{N, +}}}$ is now unique in determining
 $\ket*{\Psi^{\lr{N, +}}}$.
 
 \subsubsection{Convergent Close-Coupling Equations}
@@ -992,7 +994,7 @@ and a spectral decomposition of the asymptotic Hamiltonian
   \hat{H}_{\rm{A}}
   =
   \sum_{\gamma}\int
-  \epsilon_{\gamma}
+  \varepsilon_{\gamma}
   \ketbra*{\Omega_{\gamma}}{\Omega_{\gamma}}
   .
 \end{equation*}
@@ -1019,7 +1021,7 @@ It therefore follows from the definition of the Green's operator,
   {
     E
     -
-    \epsilon_{\gamma}
+    \varepsilon_{\gamma}
   }
   \hat{G}_{\lr{E}}
   \ketbra*{\Omega_{\gamma}}{\Omega_{\gamma}}
@@ -1043,13 +1045,13 @@ the form
   {
     E
     -
-    \epsilon_{\gamma}
+    \varepsilon_{\gamma}
   }
   .
 \end{equation}
 However, this expression is not well-defined, as it is singular for the
 asymptotic states $\ket*{\Omega_{\gamma}^{\lr{E}}}$ for which
-$\epsilon_{\gamma} = E$.
+$\varepsilon_{\gamma} = E$.
 This problem can be overcome by regularising the Green's operator to either the
 incoming $\hat{G}_{\lr{E, -}}$ or outgoing $\hat{G}_{\lr{E, +}}$ forms,
 \begin{equation}
@@ -1194,7 +1196,7 @@ The asymptotic eigenstates are therefore taken to be of the form
   \ket*{\Phi_{n_{\alpha}}^{\lr{N}} \vb{k}_{\alpha}}
   ,
 \end{equation}
-where $\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ are the target
+where $\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{i = 1}^{N_{T}}$ are the target
 pseudostates, defined in \autoref{eq:target-states}, which satisfy
 \begin{equation}
   \label{eq:ccc-target}
@@ -1597,7 +1599,7 @@ expansion,
 
 At this point, we shall utilise the S-wave model, wherein we restrict our
 attention to the target states
-$\lrset{\ket*{\Phi_{i}^{\lr{N}}}}_{i = 1}^{N_{T}}$ for which $l = 0$.
+$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$ for which $l = 0$.
 This allows for a simpler presentation of theoretical results, and calculations
 performed in the S-wave model are often sufficient to explore the behaviour of
 scattering phenomena with the benefit of a significant reduction in
@@ -1632,8 +1634,9 @@ where the target state $\ket*{\Phi_{\alpha}}$ can be a bounded discrete
 state or an unbounded continuum state, corresponding to either a discrete
 excition or an ionisation transition.
 Note that despite the duplicated notation, we are referring to the scattering
-amplitudes $F_{\alpha, \beta}$, not the one-electron states in the multichannel
-expansion \autoref{eq:total-wavefunction-un-symmetrised-n}.
+amplitudes $F_{\alpha, \beta}$, not the multichannel weight functions
+$\ket*{F_{n}^{\lr{N}}}$ defined in
+\autoref{eq:total-wavefunction-un-symmetrised-n}.
 
 For discrete excitations, the numerically calculated scattering amplitude is
 simply of the form
@@ -1681,11 +1684,12 @@ where the energy of the ionised asymptotic state is of the form
   k_{\alpha}^{2}
   .
 \end{equation}
-It is important to note that in this formulation, the asymptotic state separates
-into the asymptotic projectile state $\ket*{\vb{k}_{\alpha}}$ and the asymptotic
-target state $\ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha}}$, within which the
-continuum wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding the
-consideration of a three-body boundary condition.
+It is important to note that in this formulation, the asymptotic state
+$\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ separates into the asymptotic projectile
+state $\ket*{\vb{k}_{\alpha}}$ and the asymptotic target state
+$\ket*{\Phi_{\alpha}} = \ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha}}$, within which
+the continuum wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding from
+consideration a three-body boundary condition.
 It follows from the completeness of the target pseudostates
 \autoref{eq:target-projection-convergence} that the ionised asymptotic state can
 be expanded in terms of the unbounded target pseudostates, with the expansion

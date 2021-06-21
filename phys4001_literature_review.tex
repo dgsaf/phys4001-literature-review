@@ -686,7 +686,7 @@ $\hat{T}$ operator - with which scattering statistics can be calculated.
 \label{sec:lippmann-schwinger}
 
 We consider an eigenstate $\ket*{\Psi}$ of a Hamiltonian $\hat{H}$, with
-eigen-energy $E$, for which the Schr\"odinger equation is of the form
+eigenenergy $E$, for which the Schr\"odinger equation is of the form
 \begin{equation}
   \label{eq:schrodinger}
   \hat{H}
@@ -773,15 +773,16 @@ whence we obtain a general form of the Lippmann-Schwinger equation,
 where $C_{\alpha}$ are arbitrary scalar coefficients.
 We note that in this context, the sum taken over the indexes of the asymptotic
 eigenstates represents a sum over the countably infinite states, and an
-integration over the uncountably infinite states, for which the eigen-energy
+integration over the uncountably infinite states, for which the eigenenergy
 $\varepsilon_{\alpha}$ is equal to $E$.
 The inclusion of the selected asymptotic eigenstates is required as they are in
 the kernel of $\lrsq{E - \hat{H}_{\rm{A}}}$ - thus forming the homogenous
 solutions to the Lippmann-Schwinger equation.
 This can be seen by applying the operator $\lrsq{E - \hat{H}_{\rm{A}}}$ on the
 left of \autoref{eq:ls},
-\begin{equation}
-  \label{eq:ls-kernel}
+\begin{alignat*}{2}
+  % \label{eq:ls-kernel}
+  &
   \lrsq
   {
     E
@@ -789,7 +790,9 @@ left of \autoref{eq:ls},
     \hat{H}_{\rm{A}}
   }
   \ket{\Psi}
-  =
+  &
+  {}={}
+  &
   \sum_{\alpha : \varepsilon_{\alpha} = E}\int
   C_{\alpha}
   \lrsq
@@ -809,16 +812,32 @@ left of \autoref{eq:ls},
   \hat{G}_{\lr{E}}
   \hat{V}
   \ket{\Psi}
-  =
+  \\
+  &
+  &
+  {}={}
+  &
+  \sum_{\alpha : \varepsilon_{\alpha} = E}\int
+  C_{\alpha}
+  \ket{0}
+  +
+  \hat{I}
+  \hat{V}
+  \ket{\Psi}
+  \\
+  &
+  &
+  {}={}
+  &
   \hat{V}
   \ket{\Psi}
   .
-\end{equation}
+\end{alignat*}
 At this point, we note that selecting the values of the coefficients
 $C_{\alpha}$ amounts to specifying a boundary condition for the eigenstate
 $\ket{\Psi}$.
-Hence we may simplify the generalised sum/integral to a simpler form, without
-loss of generality, by writing
+Hence, without loss of generality, we may simplify the generalised sum/integral
+to a simpler form by writing
 \begin{equation}
   \label{eq:ls-boundary}
   \ket{\Psi_{\alpha}}
@@ -830,7 +849,10 @@ loss of generality, by writing
   \ket{\Psi_{\alpha}}
   ,
 \end{equation}
-where $\ket*{\Omega_{\alpha}} \in \ker\lr{E - \hat{H}_{\rm{A}}}$.
+where $\ket*{\Omega_{\alpha}} \in \ker\lr{E - \hat{H}_{\rm{A}}}$, for which
+$\ket{\Psi_{\alpha}}$ is the eigenstate of $\hat{H}$ corresponding to the
+boundary condition specified by the asymptotic eigenstate
+$\ket*{\Omega_{\alpha}}$.
 We now define the $\hat{T}$ operator, which is such that
 \begin{equation}
   \label{eq:t-operator}
@@ -1072,8 +1094,11 @@ Lippmann-Schwinger equation in the following form
   }
   ,
 \end{equation}
-which conveniently expresses all matrix elements in terms of the asymptotic
-eigenstates.
+which expresses the representation of the operator $\hat{T}$ in terms of the
+asymptotic eigenstates.
+
+As a final note on this general form of the Lippmann-Schwinger equation,
+\autoref{eq:ls-t}, it can be seen that the
 
 \paragraph{Convergent Close-Coupling Formalism}
 \label{sec:ccc-formalism}
@@ -1531,6 +1556,16 @@ where $k_{n}$ are the on-shell projectile momenta which satisfy
   \qq{for}
   n = 1, \dotsc, N_{T}.
 \end{equation}
+
+We note that the matrix equations \autoref{eq:ccc-ls-t}, as well as
+\autoref{eq:ccc-ls-k} and \autoref{eq:ccc-t-k}, for a given physical system, are
+parameterised by the energy $E$, and are computationally parameterised by the
+set of target pseudostates
+$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$, which are in-turn
+computationally parameterised by the size of the Laguerre basis $N$ used to
+construct the one-electron orbitals and the number of Slater determinants $N_{T}$
+constructed from the one-electron orbitals.
+
 
 \subsection{Scattering Statistics}
 \label{sec:scattering-statistics}

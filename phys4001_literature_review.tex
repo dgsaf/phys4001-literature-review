@@ -673,6 +673,19 @@ With this constraint in place, it can then be shown that
 $\dim\ker\lr{\hat{A}\hat{I}_{T}^{\lr{N}}} = 0$, whence it follows that the
 multichannel expansion of $\ket*{\psi^{\lr{N, +}}}$ is now unique in determining
 $\ket*{\Psi^{\lr{N, +}}}$.
+% To make these constraints explicit, we note as a consequence we have
+% \begin{equation}
+%   \label{eq:multichannel-constraint-2}
+%   \hat{P}_{0, m}
+%   \ket*{\psi^{\lr{N, +}}}
+%   =
+%   -
+%   \ket*{\psi^{\lr{N, +}}}
+%   ,
+%   \qq{for}
+%   m = 1, \dotsc, n_{\mathrm{e}}
+%   .
+% \end{equation}
 
 \subsubsection{Convergent Close-Coupling Equations}
 \label{sec:ccc-equations}
@@ -1116,11 +1129,6 @@ We can now re-write the Lippmann-Schwinger equation in the following form
 which expresses the representation of the operator $\hat{T}$, for a given energy
 $E$, in terms of the asymptotic eigenstates $\lrset{\ket*{\Omega_{\alpha}}}$ and
 the on-shell asymptotic eigenstates $\lrset{\ket*{\Omega_{\beta}^{\lr{E}}}}$.
-
-\todo[Must LHS be on-shell?]{
-  Must the $\hat{T}$ operator be represented only in
-  on-shell asymptotic eigenstates or can the LHS terms be off-shell?
-}
 
 \paragraph{Convergent Close-Coupling Formalism}
 \label{sec:ccc-formalism}
@@ -1619,6 +1627,8 @@ be written in the form
   \label{eq:scattering-amplitude}
   F_{\alpha, \beta}
   =
+  F_{\alpha, \beta}\lr{\vb{k}_{\alpha}, \vb{k}_{\beta}}
+  =
   \mel*
   {\vb{k}_{\alpha} \Phi_{\alpha}}
   {\hat{V}}
@@ -1643,6 +1653,37 @@ simply of the form
 \begin{equation}
   \label{eq:scattering-amplitude-discrete}
   F_{f, i}^{\lr{N}}
+  =
+  F_{n_{f}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
+  =
+  \mel*
+  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  ,
+\end{equation}
+for on-shell transitions,
+\begin{equation}
+  \label{eq:on-shell-energy-discrete}
+  \epsilon_{n_{f}}^{\lr{N}}
+  +
+  \tfrac{1}{2}
+  k_{f}^{2}
+  =
+  E
+  =
+  \epsilon_{n_{i}}^{\lr{N}}
+  +
+  \tfrac{1}{2}
+  k_{i}^{2}
+  ,
+\end{equation}
+with elastic scattering occuring in the case where $n_{f} = n_{i}$,
+\begin{equation}
+  \label{eq:scattering-amplitude-elastic}
+  F_{i}^{\lr{N}}
+  =
+  F_{n_{i}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
   =
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
@@ -1701,6 +1742,8 @@ written in the form
   \label{eq:scattering-amplitude-ionisation}
   &
   F_{\alpha, i}^{\lr{N}}
+  =
+  F_{\alpha, n_{i}}^{\lr{N}}\lr{\vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}}
   &
   {}={}
   &
@@ -1773,7 +1816,7 @@ we must have that
 whence the ionisation scattering amplitudes can be evaluated as
 \begin{equation}
   \label{eq:scattering-amplitude-ionisation-evaluated}
-  F_{\alpha, i}^{\lr{N}}
+  F_{\alpha, n_{i}}^{\lr{N}}\lr{\vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}}
   =
   \braket*
   {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}

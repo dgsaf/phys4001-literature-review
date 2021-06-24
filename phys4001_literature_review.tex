@@ -1863,6 +1863,69 @@ an interpolation between these energies.
 \subsubsection{Cross Sections}
 \label{sec:cross-sections}
 
+We present expressions for the partial and total cross sections, in a manner
+similar to \cite[10]{BRAY19951}.
+In general terms, the partial cross sections are of the form
+\begin{equation}
+  \label{eq:partial-cross-sections}
+  \sigma_{\alpha, \beta}
+  =
+  \sigma_{\alpha, \beta}\lr{\vb{k}_{\alpha}, \vb{k}_{\beta}}
+  =
+  \dfrac{k_{\alpha}}{k_{\beta}}
+  \lrabs{F_{\alpha, \beta}}^{2}
+  =
+  \dfrac{k_{\alpha}}{k_{\beta}}
+  \lrabs
+  {
+    \mel*
+    {\vb{k}_{\alpha} \Phi_{\alpha}}
+    {\hat{T}}
+    {\Phi_{\beta} \vb{k}_{\beta}}
+  }^{2}
+  ,
+\end{equation}
+with the specific notation for elastic, discrete excitation, and ionisation
+cross sections paralleling the notation used in
+\autoref{eq:scattering-amplitude-discrete},
+\autoref{eq:scattering-amplitude-elastic}, and
+\autoref{eq:scattering-amplitude-ionisation} respectively.
+
+The total cross section (TCS), for a given initial asymptotic state, is obtained
+as a sum of all partial cross sections for which the outgoing asymptotic
+projectile energy is positive,
+\begin{equation}
+  \label{eq:total-cross-section}
+  \sigma_{\mathrm{T}; i}^{\lr{N}}
+  =
+  \sum_{f : k_{f} > 0}
+  \sigma_{f, i}^{\lr{N}}
+  ,
+\end{equation}
+while the total ionisation cross section (TICS), for a given initial asymptotic
+state, is obtained as a sum of all partial cross sections for which the outgoing
+asymptotic target state is positive (and thus unbounded),
+\begin{equation}
+  \label{eq:total-ionisation-cross-section}
+  \sigma_{\mathrm{I}; i}^{\lr{N}}
+  =
+  \sum_{f : k_{f} > 0, \epsilon_{\alpha}^{\lr{N}} > 0}
+  \sigma_{\alpha, i}^{\lr{N}}
+  .
+\end{equation}
+We also consider the various differential cross sections in the context of
+ionisation transitions.
+Evaluating the partial cross sections, for an ionisation transition, yields the
+triple-differential cross section (TDCS).
+Integrating the TDCS over the spherical coordinates of either the outgoing
+asymptotic projectile electron, or the outgoing ionised target electron, yields
+the double-differential cross section (DDCS).
+Furthermore, integrating the DDCS over the spherical coordinates of the
+remaining electron, whichever one that may be, yields the single-differential
+cross section (SDCS).
+Integration of the SDCS over the projectile (or target) electron energy yields
+the total ionisation cross section.
+
 \section{Survey of Literature}
 \label{sec:survey-theoretical}
 

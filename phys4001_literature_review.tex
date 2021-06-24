@@ -1697,13 +1697,13 @@ We shall restrict our attention to the case of single ionisation, but leave open
 the consideration of ionisation with excitation.
 The ionised asymptotic state $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ corresponds
 to the breakup of the target state $\ket*{\Phi_{\alpha}}$ into a singly-ionised
-target state $\ket*{\Phi_{\alpha}^{+}}$ (which may be excited) and an ionised
+target state $\ket*{\Phi_{n_{\alpha}}^{+}}$ (which may be excited) and an ionised
 electron in the form of a Coulomb wave $\ket*{\vb{q}_{\alpha}}$; that is,
 \begin{equation}
   \label{eq:asymptotic-ionised}
   \ket*{\Phi_{\alpha} \vb{k}_{\alpha}}
   =
-  \ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}
+  \ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}
   ,
 \end{equation}
 where the energy of the ionised asymptotic state is of the form
@@ -1716,7 +1716,7 @@ where the energy of the ionised asymptotic state is of the form
   \tfrac{1}{2}
   k_{\alpha}^{2}
   =
-  \epsilon_{\alpha}^{+}
+  \epsilon_{n_{\alpha}}^{+}
   +
   \tfrac{1}{2}
   q_{\alpha}^{2}
@@ -1724,18 +1724,24 @@ where the energy of the ionised asymptotic state is of the form
   \tfrac{1}{2}
   k_{\alpha}^{2}
 \end{equation}
-where $\epsilon_{\alpha}^{+}$ is the energy of the singly-ionised target state,
-and where $\tfrac{1}{2} q_{\alpha}^{2}$ is the energy of the Coulomb wave.
+where $\epsilon_{n_{\alpha}}^{+}$ is the energy of the singly-ionised target
+state, and where $\tfrac{1}{2} q_{\alpha}^{2}$ is the energy of the Coulomb
+wave.
 It is important to note that in this formulation, the asymptotic state
 $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ separates into the asymptotic projectile
 state $\ket*{\vb{k}_{\alpha}}$ and the asymptotic target state
-$\ket*{\Phi_{\alpha}} = \ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha}}$, within which
-the Coulomb wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding from
+$\ket*{\Phi_{\alpha}} = \ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha}}$, within
+which the Coulomb wave $\ket{\vb{q}_{\alpha}}$ is modelled - thus excluding from
 consideration a three-body boundary condition.
-It follows from the completeness of the target pseudostates
-\autoref{eq:target-projection-convergence} that the ionised asymptotic state can
-be expanded in terms of the unbounded target pseudostates, with the expansion
-becoming increasingly accurate as $N$ increases.
+This presents an issue however as Coulomb waves are not bounded states, and
+thus their coordinate-space representations are not elements of
+$L^{2}\lr{\real^{3}}$.
+This is the space wherein the coordinate-space representations of the
+one-electron states, comprising the target pseudostates, are spanned in terms of
+the Laguerre basis, \autoref{eq:laguerre-basis}.
+However it can be shown, as discussed in \cite{BRAY19951}, that the projection
+of a continuum wave onto a $N$-dimensional Laguerre basis is conditionally
+convergent as $N$ increases, but is numerically stable.
 Hence, for ionisations, the numerically calculated scattering amplitude can be
 written in the form
 \begin{alignat}{2}
@@ -1743,12 +1749,15 @@ written in the form
   &
   F_{\alpha, i}^{\lr{N}}
   =
-  F_{\alpha, n_{i}}^{\lr{N}}\lr{\vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}}
+  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}
+  }
   &
   {}={}
   &
   \mel*
-  {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
   {\hat{I}_{T}^{\lr{N}} \hat{T}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   \nonumber
@@ -1759,7 +1768,7 @@ written in the form
   &
   \sum_{n = 1}^{N_{T}}
   \braket*
-  {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\vb{k}_{\alpha} \vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
   {\Phi_{n}^{\lr{N}}}
   \mel*
   {\Phi_{n}^{\lr{N}}}
@@ -1773,7 +1782,7 @@ written in the form
   &
   \sum_{n = 1}^{N_{T}}
   \braket*
-  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
   {\Phi_{n}^{\lr{N}}}
   \mel*
   {\vb{k}_{\alpha} \Phi_{n}^{\lr{N}}}
@@ -1785,12 +1794,13 @@ However, this expression is problematic as it involves a summation over
 not necessarily on-shell terms $\bra*{\vb{k}_{\alpha}\Phi_{n}^{\lr{N}}}$.
 If we restrict our attention to only evaluating the ionisation scattering
 amplitudes $F_{\alpha, i}^{\lr{N}}$ for ionised asymptotic states
-$\ket*{\Phi_{\alpha}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}$ which satisfy
+$\ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}$ for which the
+ionised target energy satisfies
 \begin{equation}
   \label{eq:asymptotic-ionisation-energy-constraint}
   \epsilon_{\alpha}
   =
-  \epsilon_{\alpha}^{+}
+  \epsilon_{n_{\alpha}}^{+}
   +
   \tfrac{1}{2}
   q_{\alpha}^{2}
@@ -1804,22 +1814,25 @@ we must have that
 \begin{equation}
   \label{eq:asymptotic-ionisation-overlap}
   \braket*
-  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
   {\Phi_{n}^{\lr{N}}}
   =
   \delta_{n_{\alpha}, n}
   \braket*
-  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
   {\Phi_{n}^{\lr{N}}}
   ,
 \end{equation}
 whence the ionisation scattering amplitudes can be evaluated as
 \begin{equation}
   \label{eq:scattering-amplitude-ionisation-evaluated}
-  F_{\alpha, n_{i}}^{\lr{N}}\lr{\vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}}
+  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}
+  }
   =
   \braket*
-  {\vb{q}_{\alpha} \Phi_{\alpha}^{+}}
+  {\vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
   {\Phi_{n_{\alpha}}^{\lr{N}}}
   \mel*
   {\vb{k}_{\alpha} \Phi_{n_{\alpha}}^{\lr{N}}}

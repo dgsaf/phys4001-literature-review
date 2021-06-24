@@ -39,17 +39,11 @@
   \end{flushleft}
   \hrule
   \begin{center}
-    {
-      \huge
-      \thetitle
-    }
-    ~\\
+    {\huge\thetitle}
+    \\
     \rule[1.0pt]{8.5cm}{0.4pt}
-    ~\\
-    {
-      \large
-      \theauthor ~supervised by \thesupervisor
-    }
+    \\
+    {\large \theauthor ~supervised by \thesupervisor}
   \end{center}
   \hrule
   \begin{center}
@@ -83,27 +77,34 @@
 \section{Theory}
 \label{sec:theory}
 
-We shall describe the development of the Convergent Close-Coupling (CCC) method
-for generalised projectile-target scattering, before describing its application
-to the cases of: electron-impact hydrogen (e-H) scattering, and electron-impact
-helium (e-He) scattering.
-In particular, we shall explore the treatment of target ionisation within the CCC
-method.
-Note that in the general treatment, we restrict our attention to electron
-projectiles and atomic/ionic targets consisting of $n_{\mathrm{e}}$ electrons.
+We shall describe a brief derivation of the Convergent Close-Coupling (CCC)
+method for generalised electron-projectile atomic/ionic-target scattering,
+similar in form to the derivations presented in \cite{AJP_BRAY1996, BRAY19951}.
+The specific considerations for the application of the CCC method to the cases
+of electron-impact hydrogen (e-H) scattering, and electron-impact helium (e-He)
+scattering, are discussed in \autoref{sec:e-h-target} and
+\autoref{sec:e-he-target} respectively.
+We shall focus on the treatment of target ionisation, both with and without
+excitation, by consideration of the ionisation amplitudes within the CCC method.
 
 \subsection{Convergent Close-Coupling Method}
 \label{sec:ccc-method}
 
 In brief, the CCC method utilises the method of basis expansion to numerically
-solve the Lippmann-Schwinger equation, for a projectile-target system, to yield
-the transition amplitudes, which are convergent as the size of the basis is
-increased.
-The rate of convergence depends on many factors, such as the complexity and
-geometry of the projectile-target system for example, as well as the choice of
+solve the Lippmann-Schwinger equation in a momentum-space representation, for a
+projectile-target system, to yield the transition amplitudes, which are checked
+for convergence as the size of the basis is increased.
+The scattering statistics can then be extracted from the transistion amplitudes.
+
+The rate of convergence, depends on many factors, such as the complexity of the
+target structure, the coupling between transition channels, and the choice of
 basis used in the expansion.
-Furthermore, by selecting a complete basis, ionisation transition amplitudes can
-be treated in a similar manner to discrete excitation transition amplitudes.
+With the selection of an appropriate basis, unbounded continuum waves can be
+accurately represented by a finite amount of basis states, which allows
+ionisation amplitudes to be treated in a similar manner to discrete excitation
+amplitudes within the CCC method.
+A Laguerre basis is well-suited to this task; the benefits of this basis are
+discussed in further detail in \cite[5-9]{BRAY19951}.
 
 \subsubsection{Laguerre Basis}
 \label{sec:laguerre-basis}
@@ -160,8 +161,8 @@ $\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$ forming a complete basis
 for the Hilbert space $L^{2}\lr{\real^{3}}$, the short-range and long-range
 behaviour of the radial basis functions being well suited to describing bound
 target states and providing a basis for expanding continuum states in, and
-because it allows the matrix elements of certain operators to be calculated
-analytically.
+because it allows the matrix representation of numerous operators to be
+calculated analytically.
 
 Practically, we cannot utilise a basis of infinite size.
 Hence, we truncate the Laguerre radial basis
@@ -181,6 +182,9 @@ Hence, for a given value of $m$, we have a basis size of
 In the limit as $N \to \infty$, the truncated basis will tend towards
 completeness, and it is in this limit that we discuss the convergence of the
 Convergent Close-Coupling method.
+We have presented the Laguerre basis with full generality, however we note that
+in the S-wave model we have $l_{\max} = 0$, which allows for the simplification
+of numerous expressions and computations.
 
 \subsubsection{Target States}
 \label{sec:target-states}
@@ -300,8 +304,8 @@ and spin states.
 It follows that for an atomic/ionic target, consisting of $n_{\mathrm{e}}$
 electrons, the space of target states is of the form
 $\mathcal{H}_{T} = \Lambda^{n_{\mathrm{e}}}\lr{\mathcal{H}}$.
-Note that we shall adopt the convention that operators which act on the $m$-th
-electron space (including the projectile electron), will be indexed by $m$, for
+We shall adopt the convention that operators which act on the $m$-th electron
+space (including the projectile electron), will be indexed by $m$, for
 $m = 0, 1, \dotsc, n_{\mathrm{e}}$.
 
 \paragraph{Target Hamiltonian}
@@ -476,8 +480,8 @@ $N_{U} = N_{T} - N_{B}$ to represent the number of unbounded pseudostates, both 
 which are dependent on $N$ by consequence of the construction of the target
 pseudostates.
 
-We note that the projection operator for the target pseudostates,
-$\hat{I}_{T}^{\lr{N}}$, is of the form
+The projection operator for the target pseudostates, $\hat{I}_{T}^{\lr{N}}$, is
+of the form
 \begin{equation}
   \label{eq:target-projection}
   \hat{I}_{T}^{\lr{N}}
@@ -513,6 +517,8 @@ in the limit as $N \to \infty$; that is,
   \hat{I}_{T}
   .
 \end{equation}
+A more rigorous discussion on the suitabiliy of representing unbounded states in
+the Laguerre basis is provided in \cite[5-9]{BRAY19951}.
 
 \subsubsection{Total Wavefunction}
 \label{sec:total-wavefunction}
@@ -550,6 +556,8 @@ where $\hat{H}_{T}$ is the target Hamiltonian, defined in
 kinetic operator, $\hat{V}_{0}$ is the projectile electron-nuclei potential
 operator, and $\hat{V}_{0, m}$ are the projectile electron-target electron
 potential operators.
+The following treatment of the total wavefunction is of a similar form to
+\cite[202-204]{AJP_BRAY1996}.
 
 To ensure that the total wavefunction is anti-symmetric we utilise the
 anti-symmetriser, defined in \autoref{eq:anti-symmetriser}, to construct it
@@ -1192,7 +1200,7 @@ charge corresponding to the asymptotic charge of the target system, whence
 $\braket*{\vb{r}}{\hat{W}} = W\lr{r, \Omega} \to 0$ as $r \to \infty$.
 Such a selection for $\hat{U}_{0}$ adapts the projectile states to the target
 system, without loss of generality, and can lead to improvement in computational
-performance.
+performance, as discussed in \cite[204]{AJP_BRAY1996}.
 
 The asymptotic eigenstates are therefore taken to be of the form
 \begin{equation}
@@ -1549,6 +1557,7 @@ where $\mathcal{P}$ indicates that the principal value of the integral is taken,
 which forms a set of $\real$-valued matrix equations which can be solved more
 efficiently, to yield the $K$ matrix.
 The $T$ matrix can then be reconstructed from the $K$ matrix by the identity
+\cite[9]{BRAY19951}
 \begin{equation}
   \label{eq:ccc-t-k}
   \mel*
@@ -1601,18 +1610,21 @@ Furthermore, we note that matrix equations in this form do not explicitly
 include the constraints, detailed in \autoref{eq:multichannel-constraint}, which
 guarantee the uniqueness of the explicitly anti-symmetrised multichannel
 expansion.
+The manifestation of these constraints for the case of a hydrogen target is
+discussed in \autoref{sec:e-h-uniqueness}.
 
 \subsection{Scattering Statistics}
 \label{sec:scattering-statistics}
 
 At this point, we shall utilise the S-wave model, wherein we restrict our
-attention to the target states
-$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$ for which $l = 0$.
+attention to the asymptotic eigenstates for which the target pseudostate
+$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$ and projectile both have
+$l = 0$.
 This allows for a simpler presentation of theoretical results, and calculations
 performed in the S-wave model are often sufficient to explore the behaviour of
 scattering phenomena with the benefit of a significant reduction in
 computational complexity.
-Much of the following treatment is readily generalisable to a full treatment of
+Much of the following treatment is generalisable to a full treatment of
 angular momentum.
 
 \subsubsection{Scattering Amplitudes}
@@ -1621,8 +1633,7 @@ angular momentum.
 Once calculated, the matrix elements of the $\hat{T}$ operator yield the
 transition amplitudes between asymptotic states, which can then be used to
 calculate the scattering amplitudes.
-In general terms, and neglecting constant factors, the scattering amplitudes can
-be written in the form
+In general terms, the scattering amplitudes can be written in the form
 \begin{equation}
   \label{eq:scattering-amplitude}
   F_{\alpha, \beta}
@@ -1641,8 +1652,8 @@ be written in the form
   ,
 \end{equation}
 where the target state $\ket*{\Phi_{\alpha}}$ can be a bounded discrete
-state or an unbounded continuum state, corresponding to either a discrete
-excition or an ionisation transition.
+state or an unbounded continuum state, corresponding to either an elastic
+scattering / a discrete excition transition, or an ionisation transition.
 Note that despite the duplicated notation, we are referring to the scattering
 amplitudes $F_{\alpha, \beta}$, not the multichannel weight functions
 $\ket*{F_{n}^{\lr{N}}}$ defined in
@@ -1681,18 +1692,19 @@ for on-shell transitions,
 with elastic scattering occuring in the case where $n_{f} = n_{i}$,
 \begin{equation}
   \label{eq:scattering-amplitude-elastic}
-  F_{i}^{\lr{N}}
+  F_{i}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
   =
   F_{n_{i}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
   =
   \mel*
-  {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
+  {\vb{k}_{f} \Phi_{n_{i}}^{\lr{N}}}
   {\hat{T}}
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   .
 \end{equation}
-However, for ionisations the numerically calculated scattering amplitudes
-require a more carefully considered treatment.
+However, the numerically calculated scattering amplitudes for ionisations
+require a more carefully considered treatment - which we present in a form
+similar to that described in \cite{PhysRevLett.89.273201, PhysRevA.90.022710}.
 We shall restrict our attention to the case of single ionisation, but leave open
 the consideration of ionisation with excitation.
 The ionised asymptotic state $\ket*{\Phi_{\alpha} \vb{k}_{\alpha}}$ corresponds
@@ -1851,7 +1863,7 @@ an interpolation between these energies.
 \subsubsection{Cross Sections}
 \label{sec:cross-sections}
 
-\section{Survey of Theoretical Literature}
+\section{Survey of Literature}
 \label{sec:survey-theoretical}
 
 \subsection{Electron-Impact Hydrogen Ionisation}
@@ -1907,80 +1919,78 @@ an interpolation between these energies.
 
 \clearpage
 
-\bibliographystyle{chicago}
-
 \bibliography{references}
 
 \clearpage
 
-\appendix
+% \appendix
 
-\section{Properties of Utilised Bases}
-\label{app:properties}
+% \section{Properties of Utilised Bases}
+% \label{app:properties}
 
-\subsection{Spherical Harmonics}
-\label{app:spherical-harmonics}
+% \subsection{Spherical Harmonics}
+% \label{app:spherical-harmonics}
 
-\subsubsection{Completeness}
-\label{app:spherical-harmonic-completeness}
+% \subsubsection{Completeness}
+% \label{app:spherical-harmonic-completeness}
 
-\todo[spherical harmonic completeness]{
-  Prove that the set of spherical harmonics forms,
-  $\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
-  forms an orthonormal, complete basis for the Hilbert space
-  $L^{2}\lr{S^{2}}$.
-}
+% \todo[spherical harmonic completeness]{
+%   Prove that the set of spherical harmonics forms,
+%   $\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
+%   forms an orthonormal, complete basis for the Hilbert space
+%   $L^{2}\lr{S^{2}}$.
+% }
 
-\subsection{Laguerre Radial Basis}
-\label{app:laguerre-radial-basis}
+% \subsection{Laguerre Radial Basis}
+% \label{app:laguerre-radial-basis}
 
-\subsubsection{Completeness}
-\label{app:laguerre-radial-completeness}
+% \subsubsection{Completeness}
+% \label{app:laguerre-radial-completeness}
 
-\todo[laguerre radial completeness]{
-  Prove that the Laguerre radial basis functions,
-  $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each $l$, forms a complete
-  basis for the Hilbert space $L^{2}\lr{[0, \infty)}$.
-}
+% \todo[laguerre radial completeness]{
+%   Prove that the Laguerre radial basis functions,
+%   $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each $l$, forms a complete
+%   basis for the Hilbert space $L^{2}\lr{[0, \infty)}$.
+% }
 
-\subsection{Laguerre Basis}
-\label{app:laguerre-basis}
+% \subsection{Laguerre Basis}
+% \label{app:laguerre-basis}
 
-\subsubsection{Completeness}
-\label{app:laguerre-completeness}
+% \subsubsection{Completeness}
+% \label{app:laguerre-completeness}
 
-It is shown in \autoref{app:laguerre-radial-completeness}, that the Laguerre
-radial basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each
-$l$, forms a complete basis for the Hilbert space $L^{2}\lr{[0, \infty)}$.
-Similarly, it is also shown in \autoref{app:spherical-harmonic-completeness},
-that the set of spherical harmonics,
-$\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
-forms an orthonormal, complete basis for the Hilbert space $L^{2}\lr{S^{2}}$.
-Hence, the Laguerre basis functions
-$\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, form a complete basis
-for the Hilbert space $L^{2}\lr{\real^{3}}$.
+% It is shown in \autoref{app:laguerre-radial-completeness}, that the Laguerre
+% radial basis functions, $\lrset{\xi_{k, l}\lr{r}}_{k = 1}^{\infty}$, for each
+% $l$, forms a complete basis for the Hilbert space $L^{2}\lr{[0, \infty)}$.
+% Similarly, it is also shown in \autoref{app:spherical-harmonic-completeness},
+% that the set of spherical harmonics,
+% $\lrset{Y_{l}^{-l}\lr{\Omega}, \dotsc, Y_{l}^{l}\lr{\Omega}}_{l = 0}^{\infty}$,
+% forms an orthonormal, complete basis for the Hilbert space $L^{2}\lr{S^{2}}$.
+% Hence, the Laguerre basis functions
+% $\lrset{\varphi_{i}\lr{r, \Omega}}_{i = 1}^{\infty}$, form a complete basis
+% for the Hilbert space $L^{2}\lr{\real^{3}}$.
 
-\subsection{Plane Waves}
-\label{app:plane-waves}
+% \subsection{Plane Waves}
+% \label{app:plane-waves}
 
-\section{Numerical Techniques}
-\label{app:numerical-techniques}
+% \section{Numerical Techniques}
+% \label{app:numerical-techniques}
 
-\subsection{Basis Expansion}
-\label{app:basis-expansion}
+% \subsection{Basis Expansion}
+% \label{app:basis-expansion}
 
-\todo[basis expansion]{
-  Elaborate on the method of basis expansion for Hilbert spaces.
-}
+% \todo[basis expansion]{
+%   Elaborate on the method of basis expansion for Hilbert spaces.
+% }
 
-\subsection{Diagonalisation}
-\label{app:diagonalisation}
+% \subsection{Diagonalisation}
+% \label{app:diagonalisation}
 
-\todo[target diagonalisation]{
-  Elaborate on the diagonalisation procedure for the target states.
-}
+% \todo[target diagonalisation]{
+%   Elaborate on the diagonalisation procedure for the target states.
+% }
 
-\clearpage
+% \clearpage
 
 \todos
 

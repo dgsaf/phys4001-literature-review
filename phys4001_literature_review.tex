@@ -80,12 +80,14 @@ unitary formulation.
 Proven capable of modelling elastic scattering and discrete excitations
 \cite{PhysRevA.46.6995} as well as ionisation processes
 \cite{PhysRevLett.70.746, PhysRevLett.78.4721, PhysRevLett.83.1570} for the
-two-body system of hydrogen, the CCC method was extended to three-body systems
-\cite{PhysRevLett.69.53, BRAY19951, PhysRevLett.89.273201}, including
-helium targets \cite{PhysRevA.52.1279, Fursa_1997}, as well as hydrogenic
-targets \cite{}.
-The CCC method was also extended to include photon \cite{Bray_2002}, and
-positron \cite{} projectiles.
+two-body system of hydrogen, the CCC method was extended to hydrogenic targets
+\cite{PhysRevA.49.1066}, and further to three-body systems
+\cite{PhysRevLett.69.53, BRAY19951, PhysRevLett.89.273201}, such as for
+helium targets \cite{PhysRevA.52.1279, PhysRevLett.76.2674, Fursa_1997}.
+The CCC method was also extended to include double-photonionisation of
+helium-like targets \cite{PhysRevA.54.R995, PhysRevA.58.4501, Bray_2002}.
+
+While the CCC model was effective in
 
 \paragraph{Applications of Electron-Impact Hydrogen Scattering}
 
@@ -1655,9 +1657,9 @@ calculate the scattering amplitudes.
 In general terms, the scattering amplitudes can be written in the form
 \begin{equation}
   \label{eq:scattering-amplitude}
-  F_{\alpha, \beta}
+  f_{\alpha, \beta}
   =
-  F_{\alpha, \beta}\lr{\vb{k}_{\alpha}, \vb{k}_{\beta}}
+  f_{\alpha, \beta}\lr{\vb{k}_{\alpha}, \vb{k}_{\beta}}
   =
   \mel*
   {\vb{k}_{\alpha} \Phi_{\alpha}}
@@ -1673,18 +1675,13 @@ In general terms, the scattering amplitudes can be written in the form
 where the target state $\ket*{\Phi_{\alpha}}$ can be a bounded discrete
 state or an unbounded continuum state, corresponding to either an elastic
 scattering / a discrete excition transition, or an ionisation transition.
-Note that despite the duplicated notation, we are referring to the scattering
-amplitudes $F_{\alpha, \beta}$, not the multichannel weight functions
-$\ket*{F_{n}^{\lr{N}}}$ defined in
-\autoref{eq:total-wavefunction-un-symmetrised-n}.
-
 For discrete excitations, the numerically calculated scattering amplitude is
 simply of the form
 \begin{equation}
   \label{eq:scattering-amplitude-discrete}
-  F_{f, i}^{\lr{N}}
+  f_{f, i}^{\lr{N}}
   =
-  F_{n_{f}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
+  f_{n_{f}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
   =
   \mel*
   {\vb{k}_{f} \Phi_{n_{f}}^{\lr{N}}}
@@ -1711,9 +1708,9 @@ for on-shell transitions,
 with elastic scattering occuring in the case where $n_{f} = n_{i}$,
 \begin{equation}
   \label{eq:scattering-amplitude-elastic}
-  F_{i}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
+  f_{i}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
   =
-  F_{n_{i}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
+  f_{n_{i}, n_{i}}^{\lr{N}}\lr{\vb{k}_{f}, \vb{k}_{i}}
   =
   \mel*
   {\vb{k}_{f} \Phi_{n_{i}}^{\lr{N}}}
@@ -1770,19 +1767,19 @@ $L^{2}\lr{\real^{3}}$.
 This is the space wherein the coordinate-space representations of the
 one-electron states, comprising the target pseudostates, are spanned in terms of
 the Laguerre basis, \autoref{eq:laguerre-basis}.
-However it can be shown, as discussed in \cite{BRAY19951}, that the projection
-of a continuum wave onto a $N$-dimensional Laguerre basis is conditionally
-convergent as $N$ increases, but is numerically stable.
+However it can be shown, as discussed in \cite{BRAY19951}, that while the
+projection of a continuum wave onto a $N$-dimensional Laguerre basis is only
+conditionally convergent as $N$ increases, it is numerically stable.
 Hence, for ionisations, the numerically calculated scattering amplitude can be
 written in the form
 \begin{alignat}{2}
   \label{eq:scattering-amplitude-ionisation}
   &
-  F_{\alpha, i}^{\lr{N}}
+  f_{\alpha, i}^{\lr{N}}
   =
-  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
   {
-    \vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
   }
   &
   {}={}
@@ -1824,7 +1821,7 @@ written in the form
 However, this expression is problematic as it involves a summation over
 not necessarily on-shell terms $\bra*{\vb{k}_{\alpha}\Phi_{n}^{\lr{N}}}$.
 If we restrict our attention to only evaluating the ionisation scattering
-amplitudes $F_{\alpha, i}^{\lr{N}}$ for ionised asymptotic states
+amplitudes $f_{\alpha, i}^{\lr{N}}$ for ionised asymptotic states
 $\ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}$ for which the
 ionised target energy satisfies
 \begin{equation}
@@ -1857,9 +1854,9 @@ we must have that
 whence the ionisation scattering amplitudes can be evaluated as
 \begin{equation}
   \label{eq:scattering-amplitude-ionisation-evaluated}
-  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
   {
-    \vb{q}_{\alpha}; \vb{k}_{\alpha}, \vb{k}_{i}
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
   }
   =
   \braket*
@@ -1873,6 +1870,68 @@ whence the ionisation scattering amplitudes can be evaluated as
 \end{equation}
 at these $q_{\alpha}$ which satisfy
 \autoref{eq:asymptotic-ionisation-energy-constraint}.
+
+However, we note that a consequence of the assumed separability of the
+asymptotic state in \autoref{eq:ccc-asymptotic-states} is that the
+anti-symmetrisation of the asymptotic state is neglected.
+Clearly this cannot be entirely neglected in the case of ionisation resulting in
+two unbounded electron states, even if one is screened by the other.
+Inclusion of the anti-symmetrisation of the ionised asymptotic state, with
+respect to the two unbounded electron states, results in the transformation
+\begin{equation}
+  \label{eq:asymptotic-ionised-anti-symmetrised}
+  \ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}
+  \mapsto
+  \lrsq{1 - \hat{P}_{0, n_{\mathrm{e}}}}
+  \ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}
+  =
+  \ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}
+  -
+  \exp{\imath \theta_{\alpha}}
+  \ket*{\Phi_{n_{\alpha}}^{+} \vb{k}_{\alpha} \vb{q}_{\alpha}}
+  ,
+\end{equation}
+where $\theta_{\alpha} \in \lrset{0, \pi}$ is the exchange phase, corresponding
+to the exchange of the projectile and ionised electron states.
+Whence, as described in \cite{PhysRevLett.78.4721, PhysRevLett.83.1570,
+  PhysRevLett.89.273201}, we perform an ad-hoc anti-symmetrisation of the
+scattering amplitude to account for this, resulting in a corrected ionisation
+amplitude $F_{n_{\alpha}, n_{i}}^{\lr{N}}$ of the form
+\begin{equation}
+  \label{eq:scattering-amplitude-ionisation-anti-symmetrised}
+  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  =
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  -
+  \exp{- \imath \theta_{\alpha}}
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{q}_{\alpha}, \vb{k}_{\alpha}, \vb{k}_{i}
+  }
+  ,
+\end{equation}
+and which satisfies
+\begin{equation}
+  \label{eq:scattering-amplitude-ionisation-anti-symmetrised-constraint}
+  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  =
+  -
+  \exp{- \imath \theta_{\alpha}}
+  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{q}_{\alpha}, \vb{k}_{\alpha}, \vb{k}_{i}
+  }
+  .
+\end{equation}
 This is the approach taken in the CCC method to calculate the ionisation
 scattering amplitudes, and we note that it is constrained to evaluating these
 amplitudes only at certain energies permitted by the target pseudoenergies.
@@ -1892,7 +1951,7 @@ In general terms, the partial cross sections are of the form
   \sigma_{\alpha, \beta}\lr{\vb{k}_{\alpha}, \vb{k}_{\beta}}
   =
   \dfrac{k_{\alpha}}{k_{\beta}}
-  \lrabs{F_{\alpha, \beta}}^{2}
+  \lrabs{f_{\alpha, \beta}}^{2}
   =
   \dfrac{k_{\alpha}}{k_{\beta}}
   \lrabs

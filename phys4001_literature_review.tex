@@ -146,7 +146,7 @@ may exist with its application.
 
 We shall describe a brief derivation of the Convergent Close-Coupling (CCC)
 method for generalised electron-projectile atomic/ionic-target scattering,
-similar in form to the derivations presented in \cite{AJP_BRAY1996, BRAY19951}.
+similar in form to the derivations presented in \cite{BRAY19951, AJP_BRAY1996}.
 The specific considerations for the application of the CCC method to the cases
 of electron-impact hydrogen (e-H) scattering, and electron-impact helium (e-He)
 scattering, are discussed in \autoref{sec:e-h-target} and
@@ -1683,16 +1683,22 @@ discussed in \autoref{sec:e-h-uniqueness}.
 \subsection{Scattering Statistics}
 \label{sec:scattering-statistics}
 
-At this point, we shall utilise the S-wave model, wherein we restrict our
-attention to the asymptotic eigenstates for which the target pseudostate
-$\lrset{\ket*{\Phi_{n}^{\lr{N}}}}_{n = 1}^{N_{T}}$ and projectile both have
-$l = 0$.
-This allows for a simpler presentation of theoretical results, and calculations
-performed in the S-wave model are often sufficient to explore the behaviour of
-scattering phenomena with the benefit of a significant reduction in
-computational complexity.
-Much of the following treatment is generalisable to a full treatment of
+At this point, we shall make use of the S-wave model, wherein all partial wave
+expansions are limited to the $l = 0$ terms; this has the effect of restricting
+our attention to asymptotic eigenstates $\ket*{\Phi_{n}^{\lr{N}} \vb{k}}$ for
+which the target pseudostate has $l = 0$.
+This allows for a simpler presentation of the theory, and a significant
+reduction in computational complexity.
+Furthermore, calculations performed in the S-wave model are sufficient for the
+emergence of scattering phenomena which is of interest in this project.
+Much of the following treatment is generalisable to the inclusion of arbitrary
 angular momentum.
+
+Lastly, we note that many of the following statistics can be constructed for a
+particular symmetry of the system which is conserved by the scattering process;
+examples include total spin and angular momentum.
+We shall refrain from specifying the forms of these statistics for specific
+symmetries, in lieu of providing a clearer, more general treatment.
 
 \subsubsection{Scattering Amplitudes}
 \label{sec:scattering-amplitudes}
@@ -2073,7 +2079,7 @@ spherical coordinates of momentum-space.
 Integrating the TDCS over the spherical coordinates of either the outgoing
 asymptotic projectile electron, or the outgoing ionised target electron, yields
 the double-differential cross section (DDCS).
-Hence, integrating the DDCS over the spherical coordinates of the
+Furthermore, integrating the DDCS over the spherical coordinates of the
 remaining electron, whichever one that may be, yields the single-differential
 cross section (SDCS), which is of the form
 \begin{equation}
@@ -2097,12 +2103,11 @@ cross section (SDCS), which is of the form
 where we recall that the energies of the incoming and outgoing projectile
 states, as well as the ionised electron state, are constrained to be on-shell as
 specified in \autoref{eq:asymptotic-ionised-energy}.
-
 Integration of the SDCS over the projectile (or target) electron energy yields
 the total ionisation cross section.
 
 \section{Survey of Literature}
-\label{sec:survey-theoretical}
+\label{sec:survey-literature}
 
 \subsection{Electron-Impact Hydrogen Ionisation}
 \label{sec:e-h-ionisation}
@@ -2125,11 +2130,8 @@ the total ionisation cross section.
 \paragraph{Singlet Case}
 \label{sec:e-h-singlet}
 
-\paragraph{Step Function Behaviour of TICS}
-\label{sec:e-h-step-function}
-
-\subsubsection{Exterior-Complex-Scaling Calculations}
-\label{sec:e-h-ecs-calculations}
+\paragraph{Step Function Behaviour of SDCS}
+\label{sec:e-h-sdcs}
 
 \subsubsection{Ansatz of Zatsarinny and Bartschat}
 \label{sec:e-h-ecs-calculations}

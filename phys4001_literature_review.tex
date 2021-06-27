@@ -2040,13 +2040,64 @@ asymptotic target state is positive (and thus unbounded),
 We also consider the various differential cross sections in the context of
 ionisation transitions, following in the form of \cite{PhysRevA.54.2991}.
 Evaluating the partial cross sections, for an ionisation transition, yields the
-triple-differential cross section (TDCS).
+triple-differential cross section (TDCS),
+\begin{equation}
+  \label{eq:triple-differential-cross-section}
+  \dfrac
+  {
+    \dd{\sigma_{\alpha, i}^{\lr{N}}}
+  }
+  {
+    \dd{\Omega_{k_{\alpha}}}
+    \dd{\Omega_{q_{\alpha}}}
+    \dd{e_{q_{\alpha}}}
+  }
+  \lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  =
+  \dfrac{k_{\alpha} q_{\alpha}}{k_{i}}
+  \lrabs
+  {
+    F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+    {
+      \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+    }
+  }^{2}
+  ,
+\end{equation}
+where $e_{q_{\alpha}} = \tfrac{1}{2} q_{\alpha}^{2}$ is the energy of the outgoing
+projectile electron, and where $\Omega = \lr{\theta, \phi}$ refers to the
+spherical coordinates of momentum-space.
 Integrating the TDCS over the spherical coordinates of either the outgoing
 asymptotic projectile electron, or the outgoing ionised target electron, yields
 the double-differential cross section (DDCS).
-Furthermore, integrating the DDCS over the spherical coordinates of the
+Hence, integrating the DDCS over the spherical coordinates of the
 remaining electron, whichever one that may be, yields the single-differential
-cross section (SDCS).
+cross section (SDCS), which is of the form
+\begin{equation}
+  \label{eq:single-differential-cross-section}
+  \dv{\sigma_{\alpha, i}^{\lr{N}}}{e_{q_{\alpha}}}\lr{e_{q_{\alpha}}}
+  =
+  \dfrac{k_{\alpha} q_{\alpha}}{k_{i}}
+  \int_{S^{2}}
+  \dd{\Omega_{k_{\alpha}}}
+  \int_{S^{2}}
+  \dd{\Omega_{q_{\alpha}}}
+  \lrabs
+  {
+    F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+    {
+      \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+    }
+  }^{2}
+  ,
+\end{equation}
+where we recall that the energies of the incoming and outgoing projectile
+states, as well as the ionised electron state, are constrained to be on-shell as
+specified in \autoref{eq:asymptotic-ionised-energy}.
+
 Integration of the SDCS over the projectile (or target) electron energy yields
 the total ionisation cross section.
 

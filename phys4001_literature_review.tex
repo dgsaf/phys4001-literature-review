@@ -97,9 +97,10 @@ good level of agreement with experimental values for the total ionisation cross
 sections, despite the non-convergence of the differential cross sections, proved
 quite puzzling.
 It was demonstrated by Bray \cite{PhysRevLett.78.4721}, in the context of the
-Temkin-Poet model \cite{PhysRev.126.130, Poet_1978} of electron-impact hydrogen
-ionisation, that the SDCS is expected to be zero past the point of
-equal-energy-sharing between the projectile and ionised electrons.
+Temkin-Poet model (also known as the S-wave model) \cite{PhysRev.126.130,
+  Poet_1978} of electron-impact hydrogen ionisation, that the SDCS is expected
+to be zero past the point of equal-energy-sharing between the projectile and
+ionised electrons.
 However, issues arise for the singlet case as the SDCS assumes a non-zero value
 at the point of equal-energy-sharing, leading to a discontinuity.
 These issues are compounded by the CCC method being restricted to evaluating
@@ -2235,7 +2236,20 @@ it was even contemplated if convergence could be achieved for a finite basis
 size.
 The behaviour of the SDCS, \autoref{eq:single-differential-cross-section}, was
 representative of the problems faced by all differential cross sections at the
-time.
+time, and is shown in \autoref{fig:physrevlett-78-4721-sdcs}.
+
+\begin{figure}[h]
+  \centering
+
+  \caption[e-H Singlet and Triplet SDCS]{
+    Triplet and singlet single-differential cross sections (SDCS), for
+    electron-impact ionisation of hydrogen in S-wave model.
+    The singlet SDCS data points have been connected for clarity, and here the
+    step function was presented as an educated guess.
+    Original figure from \cite[FIG 2]{PhysRevLett.78.4721}.
+  }
+  \label{fig:physrevlett-78-4721-sdcs}
+\end{figure}
 
 For the triplet case, $S = 1$, the SDCS was seen to tend to zero at the
 equal-energy-sharing point $e_{q_{\alpha}} = \tfrac{1}{2} E$, and remain zero
@@ -2259,16 +2273,33 @@ $e_{q_{\alpha}} \in [0, \tfrac{1}{2} E)$, before tending towards zero, but
 remaining non-zero, past $e_{q_{\alpha}} = \tfrac{1}{2} E$.
 Expanding the basis size did little to dampen the oscillatory behaviour nor to
 flatten the SDCS to be non-zero past the equal-energy-sharing point.
+The issues present in the singlet SDCS were recognised at the time to likely be
+the result of step-function like behaviour in the SDCS: approaching a non-zero
+value at the equal-energy-sharing point $e_{q_{\alpha}} = \tfrac{1}{2} E$,
+followed by a discontinuous step to being uniformly zero in the region
+$[\tfrac{1}{2} E, E]$.
+The irregularity in the SDCS can then be seen as a consequence of using a
+finite-dimensional basis to ultimately represent discontinuous behaviour, which
+is rarely adequately convergent until a large number of terms are used.
 
-
-\paragraph{Triplet Case}
-\label{sec:e-h-triplet}
-
-\paragraph{Singlet Case}
-\label{sec:e-h-singlet}
-
-\paragraph{Step Function Behaviour of SDCS}
-\label{sec:e-h-sdcs}
+Indeed, this was later shown to be the case by Stelbovics
+\cite{PhysRevLett.83.1570}, through comparison of the asymptotic form of the
+ionised total wavefunction obtained by the CCC method, with the form obtained
+using an analytically-based technique, in the S-wave model.
+The value of the SDCS at the equal-energy-sharing point, calculated using the
+CCC method, was also compared with the values obtained by the ECS method
+\cite{PhysRevA.56.1958}.
+In his analysis, it was demonstrated for the triplet case, that if the
+ionisation amplitudes converge then they converge correctly.
+Furthermore, it was demonstrated for the singlet case that the SDCS, calculated
+at the equal-energy-sharing point using the CCC method, does achieve a good
+level of agreement with the results obtained with the ECS methods.
+Most significantly, it was observed that the singlet SDCS did indeed exhibit
+behaviour similar to a Fourier series of a step function: a slow convergence in
+the representation of a discontinous function, non-zero values in a region which
+should be uniformly zero, and the convergence of the ionisation amplitudes to
+half the step height at the equal-energy-sharing points, and thus the
+convergence of the SDCS to one quarter of the step height at this point.
 
 \subsubsection{Ansatz of Zatsarinny and Bartschat}
 \label{sec:e-h-ecs-calculations}

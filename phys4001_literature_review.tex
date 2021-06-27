@@ -87,13 +87,59 @@ helium targets \cite{PhysRevA.52.1279, PhysRevLett.76.2674, Fursa_1997}.
 The CCC method was also extended to include double-photonionisation of
 helium-like targets \cite{PhysRevA.54.R995, PhysRevA.58.4501, Bray_2002}.
 
-While the CCC model was effective in
+While the CCC method yielded accurate total ionisation cross sections (TICS) for
+electron-impact ionisation on targets such as hydrogen and helium, the
+calculation of differential cross sections - namely the single-, double-, and
+triple-differential cross sections (SDCS, DDCS, TDCS) - failed to demonstrate
+convergence, discussed in detail by Bray \cite{PhysRevLett.78.4721}.
+That the scattering amplitudes calculated using the CCC method would lead to a
+good level of agreement with experimental values for the total ionisation cross
+sections, despite the non-convergence of the differential cross sections, proved
+quite puzzling.
+It was demonstrated by Bray \cite{PhysRevLett.78.4721}, in the context of the
+Temkin-Poet model \cite{PhysRev.126.130, Poet_1978} of electron-impact hydrogen
+ionisation, that the SDCS is expected to be zero past the point of
+equal-energy-sharing between the projectile and ionised electrons.
+However, issues arise for the triplet case as the SDCS assumes a non-zero value
+at the point of equal-energy-sharing, leading to a discontinuity.
+These issues are compounded by the CCC method being restricted to evaluating
+ionisation amplitudes only for a countable number of outgoing projectile
+energies.
 
-\paragraph{Applications of Electron-Impact Hydrogen Scattering}
+It was later shown by Stelbovics \cite{PhysRevLett.83.1570}, that the behaviour
+of the singlet SDCS about the equal-energy-sharing point was indeed analogous to
+that of a Fourier series of a step function about the point of discontinuity.
+Specifically: that the singlet SDCS would not necessarily be zero past the point
+of equal-energy-sharing but would tend to zero, that the ionisation amplitudes
+would converge to half the step height at the equal-energy-sharing point, and
+thus that the SDCS would converge to one quarter the step height at this point.
+Accounting for this behaviour, Bray \cite{PhysRevLett.89.273201}, was able to
+demonstrate the validity of the CCC method by reproducing differential cross
+sections for electron-impact hydrogen ionisation which were in agreement with
+experimental results, as well as with the results of another computational
+approach: exterior complex scaling (ECS) \cite{PhysRevA.64.022709}.
 
-\paragraph{Specific Applications of Electron-Impact Hydrogen Ionisation}
+However, the issue of the calculation of ionisation amplitudes for outgoing
+projectile energies, outside the countable number which the CCC method is
+restricted to, remains.
+The current approach is to interpolate the ionisation amplitudes, between these
+restricted points, across the continuum of on-shell projectile energies, as
+discussed in \cite{PhysRevLett.89.273201}.
+An ansatz has been suggested by Zatsarinny and Bartschat
+\cite{PhysRevLett.107.023203} which, alternatively, removes this restriction and
+allows for the evaluation of the ionisation amplitudes across all on-shell
+projectile energies.
+The application of this ansatz to electron-impact hydrogen ionisation by Bray
+\textit{et al.} \cite{PhysRevA.90.022710} suggested that the ansatz was
+unphysical, but that it did provide an effective scheme for evaluating
+ionisation amplitudes.
 
-\paragraph{Development of Quantum Scattering Theory}
+The topic of this project will be the application of the ansatz of Zatsarinny
+and Bartschat to electron-impact ionisation of helium, with and without
+excitation, within the CCC method and in the context of the S-wave model.
+We shall explore the suitability of this ansatz in evaluating the ionisation
+amplitudes for this scattering process, including if and where any limitations
+may exist with its application.
 
 \section{Theory}
 \label{sec:theory}

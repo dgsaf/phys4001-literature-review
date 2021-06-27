@@ -90,8 +90,8 @@ helium-like targets \cite{PhysRevA.54.R995, PhysRevA.58.4501, Bray_2002}.
 While the CCC method yielded accurate total ionisation cross sections (TICS) for
 electron-impact ionisation on targets such as hydrogen and helium, the
 calculation of differential cross sections - namely the single-, double-, and
-triple-differential cross sections (SDCS, DDCS, TDCS) - failed to demonstrate
-convergence, discussed in detail by Bray \cite{PhysRevLett.78.4721}.
+triple-differential cross sections (SDCS, DDCS, TDCS) - were seen to fail to
+demonstrate convergence, discussed in detail by Bray \cite{PhysRevLett.78.4721}.
 That the scattering amplitudes calculated using the CCC method would lead to a
 good level of agreement with experimental values for the total ionisation cross
 sections, despite the non-convergence of the differential cross sections, proved
@@ -100,7 +100,7 @@ It was demonstrated by Bray \cite{PhysRevLett.78.4721}, in the context of the
 Temkin-Poet model \cite{PhysRev.126.130, Poet_1978} of electron-impact hydrogen
 ionisation, that the SDCS is expected to be zero past the point of
 equal-energy-sharing between the projectile and ionised electrons.
-However, issues arise for the triplet case as the SDCS assumes a non-zero value
+However, issues arise for the singlet case as the SDCS assumes a non-zero value
 at the point of equal-energy-sharing, leading to a discontinuity.
 These issues are compounded by the CCC method being restricted to evaluating
 ionisation amplitudes only for a countable number of outgoing projectile
@@ -113,8 +113,8 @@ Specifically: that the singlet SDCS would not necessarily be zero past the point
 of equal-energy-sharing but would tend to zero, that the ionisation amplitudes
 would converge to half the step height at the equal-energy-sharing point, and
 thus that the SDCS would converge to one quarter the step height at this point.
-Accounting for this behaviour, Bray \cite{PhysRevLett.89.273201}, was able to
-demonstrate the validity of the CCC method by reproducing differential cross
+Accounting for this behaviour, Bray \cite{PhysRevLett.89.273201}, was then able
+to demonstrate the validity of the CCC method by reproducing differential cross
 sections for electron-impact hydrogen ionisation which were in agreement with
 experimental results, as well as with the results of another computational
 approach: exterior complex scaling (ECS) \cite{PhysRevA.64.022709}.
@@ -135,11 +135,11 @@ unphysical, but that it did provide an effective scheme for evaluating
 ionisation amplitudes.
 
 The topic of this project will be the application of the ansatz of Zatsarinny
-and Bartschat to electron-impact ionisation of helium, with and without
+and Bartschat to the electron-impact ionisation of helium, with and without
 excitation, within the CCC method and in the context of the S-wave model.
 We shall explore the suitability of this ansatz in evaluating the ionisation
 amplitudes for this scattering process, including if and where any limitations
-may exist with its application.
+in its use may exist.
 
 \section{Theory}
 \label{sec:theory}
@@ -1678,7 +1678,7 @@ include the constraints, detailed in \autoref{eq:multichannel-constraint}, which
 guarantee the uniqueness of the explicitly anti-symmetrised multichannel
 expansion.
 The manifestation of these constraints for the case of a hydrogen target is
-discussed in \autoref{sec:e-h-uniqueness}.
+discussed in \autoref{sec:e-h-ccc-calculations}.
 
 \subsection{Scattering Statistics}
 \label{sec:scattering-statistics}
@@ -1985,8 +1985,9 @@ and which satisfies
   .
 \end{equation}
 This is the approach taken in the CCC method to calculate the ionisation
-scattering amplitudes, and we note that it is constrained to evaluating these
-amplitudes only at certain energies permitted by the target pseudoenergies.
+scattering amplitudes which are suitable for comparison with experimental data,
+and we note that it is constrained to evaluating these amplitudes only at
+certain energies permitted by the target pseudoenergies.
 Evaluating the ionisation scattering amplitudes at any other energy requires
 an interpolation between these energies.
 
@@ -2073,7 +2074,7 @@ triple-differential cross section (TDCS),
   }^{2}
   ,
 \end{equation}
-where $e_{q_{\alpha}} = \tfrac{1}{2} q_{\alpha}^{2}$ is the energy of the outgoing
+where $e_{q_{\alpha}} = \tfrac{1}{2} q_{\alpha}^{2} \in [0, E - \epsilon_{n_{\alpha}}^{+}]$ is the energy of the outgoing
 projectile electron, and where $\Omega = \lr{\theta, \phi}$ refers to the
 spherical coordinates of momentum-space.
 Integrating the TDCS over the spherical coordinates of either the outgoing
@@ -2109,20 +2110,156 @@ the total ionisation cross section.
 \section{Survey of Literature}
 \label{sec:survey-literature}
 
+Having now established the framework of the CCC method for electron-impact
+scattering on atomic/ionic targets, as well as the accompanying terminology and
+notation, we will proceed to examine the literature on extant calculations for
+hydrogen and helium targets.
+Specifically, we will discuss the history of the issues, both resolved and
+unresolved, faced in the calculation of ionisation amplitudes and differential
+cross sections, within the CCC method.
+
 \subsection{Electron-Impact Hydrogen Ionisation}
 \label{sec:e-h-ionisation}
+
+Historically, the CCC method was first developed for and applied to electron
+scattering on a hydrogen target \cite{PhysRevA.46.6995}.
+It is a well studied problem, being the natural test case for any model or
+computational method investigating electron scattering on atoms, and as a result
+many of the scattering phenomena that emerge, or are expected to emerge, are
+well known and understood.
+As a consequence, there exists a mature body of experimental and computational
+data with which to compare.
+Hence, we will first examine the ionisation amplitudes and differential cross
+sections in the context of a hydrogen target, before extending to helium
+targets - noting that many aspects of electron-impact ionisation of helium can
+be observed in this simpler context.
 
 \subsubsection{Considerations for a Hydrogen Target}
 \label{sec:e-h-target}
 
-\paragraph{Spin}
-\label{sec:e-h-spin}
-
-\paragraph{Uniqueness}
-\label{sec:e-h-uniqueness}
+For a hydrogen target, we note that the total spin $S \in \lrset{0, 1}$ of the
+projectile-target system is conserved by the scattering process.
+It follows that the (coordinate-and-spin) exchange operator $\hat{P}_{0, 1}$ can
+thus be written in the form
+\begin{equation}
+  \label{eq:pairwise-exchange-hydrogen}
+  \hat{P}_{0, 1}^{\lr{S}}
+  =
+  \hat{R}_{0, 1}
+  \hat{X}_{0, 1}^{\lr{S}}
+  =
+  \lr{-1}^{S + 1}
+  \hat{R}_{0, 1}
+  ,
+\end{equation}
+where $\hat{R}_{0, 1}$ is the coordinate exchange operator, and
+$\hat{X}_{0, 1}$ is the spin exchange operator.
+Furthermore, the explicitly anti-symmetrised potential \autoref{eq:ccc-v} is of
+the form
+\begin{equation}
+  \label{eq:ccc-v-h}
+  \hat{V}^{\lr{S}}
+  =
+  \hat{V}_{0}
+  +
+  \hat{V}_{0, 1}
+  -
+  \hat{U}_{0}
+  +
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \hat{P}_{0, 1}^{\lr{S}}
+  =
+  \hat{V}_{0}
+  +
+  \hat{V}_{0, 1}
+  -
+  \hat{U}_{0}
+  +
+  \lr{-1}^{S + 1}
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \hat{R}_{0, 1}
+  ,
+\end{equation}
+and, as noted in \cite[5]{BRAY19951}, can be rewritten to manifest the
+constraint on the multichannel expansion \autoref{eq:multichannel-constraint},
+guaranteeing a unique un-symmetrised total wavefunction
+$\ket*{\psi^{\lr{N, S, +}}}$, by re-writing $\hat{V}$ in the form
+\begin{equation}
+  \label{eq:ccc-v-h-constraint}
+  \hat{V}^{\lr{S}}\lr{\theta}
+  =
+  \hat{V}_{0}
+  +
+  \hat{V}_{0, 1}
+  -
+  \hat{U}_{0}
+  -
+  E
+  \theta
+  \hat{I}_{0}
+  +
+  \lr{-1}^{S + 1}
+  \lrsq
+  {
+    E
+    \lr{1 - \theta}
+    -
+    \hat{H}
+  }
+  \hat{R}_{0, 1}
+  ,
+\end{equation}
+for arbitrary $\theta \in \real$ such that $\theta \neq 0$.
+It can be shown that while $\hat{V}^{\lr{S}}\lr{\theta}$ is dependentent on
+$\theta$, $\hat{T}^{\lr{S}}$ is not.
 
 \subsubsection{Convergent Close-Coupling Calculations}
 \label{sec:e-h-ccc-calculations}
+
+That the CCC method yielded accurate calculations for the TICS, in addition to
+elastic and discrete excitation cross sections \cite{PhysRevA.46.6995}, was
+readily established by Bray and Stelbovics \cite{PhysRevLett.70.746}.
+It was observed however, as discussed by Bray \cite{PhysRevLett.78.4721}, that
+the differential cross sections (SDCS, DDCS, TDCS) were not so well behaved, and
+it was even contemplated if convergence could be achieved for a finite basis
+size.
+The behaviour of the SDCS, \autoref{eq:single-differential-cross-section}, was
+representative of the problems faced by all differential cross sections at the
+time.
+
+For the triplet case, $S = 1$, the SDCS was seen to tend to zero at the
+equal-energy-sharing point $e_{q_{\alpha}} = \tfrac{1}{2} E$, and remain zero
+past this point.
+This was to be expected as the Pauli's exclusion principle would require that
+the SDCS be zero at the $e_{q_{\alpha}} = \tfrac{1}{2} E$ to avoid the outgoing
+projectile and ionised electron doubly occupying the same electron state.
+Furthermore, it can be seen that the restriction of the SDCS being non-zero only
+for $e_{q_{\alpha}} \in [0, \tfrac{1}{2} E)$ avoids double counting the
+indistinguishable electrons, while the SDCS past this region can be
+reconstructed from the SDCS within this region due to the symmetry of the
+system.
+In a sense, the SDCS across the region $[0, E]$ is folded up into
+$[0, \tfrac{1}{2} E]$ within the CCC method.
+
+However, for the singlet case, $S = 0$, the SDCS exhibited much less regular
+behaviour and did not display the positive characteristics as seen for the
+triplet case.
+The SDCS oscillated dramatically in the region
+$e_{q_{\alpha}} \in [0, \tfrac{1}{2} E)$, before tending towards zero, but
+remaining non-zero, past $e_{q_{\alpha}} = \tfrac{1}{2} E$.
+Expanding the basis size did little to dampen the oscillatory behaviour nor to
+flatten the SDCS to be non-zero past the equal-energy-sharing point.
+
 
 \paragraph{Triplet Case}
 \label{sec:e-h-triplet}

@@ -2573,6 +2573,7 @@ Further investigation by Plottke \textit{et al.} \cite{Plottke_2004} into
 electron-impact excitation of helium indicated that the convergence of the
 autoionising doubly-excited discrete states was more involved than for the
 singly-excited bound states.
+However, convergence was demonstrated for these autoionising states.
 
 Notably, the Exterior Complex Scaling (ECS) method was applied by Bartlett and
 Stelbovics \cite{PhysRevA.81.022715, PhysRevA.81.022716}, in the context of the
@@ -2583,10 +2584,46 @@ cross section without excitation, but not with excitation.
 Furthermore, an acceptable level of agreement between the methods was not found
 for the double excitation cross sections.
 
-In summary, while the CCC method ...
+In summary, the CCC method is demonstrated to suitably model electron-impact
+collisions with helium in the ground state $2{}^{1}\mathrm{S}$, including
+elastic scattering, single-excitation and single-ionisation scattering
+processes.
+However, further development is required to calculate double excitation cross
+sections which are in agreement with ECS calculations, and to calculate cross
+sections which are in agreement with experimental values for the metastable
+state $2{}^{3}\mathrm{S}$ of helium.
 
 \section{Conclusion}
 \label{sec:conclusion}
+
+We have reviewed the development of the treatment of ionisation in the CCC
+method, within the context of the S-wave model, and seen that it does indeed
+yield accuracte calculations for the ionisation amplitudes and differential
+cross sections for electron-impact ionisation of hydrogen.
+The manifestation of a Fourier-like expansion of a step-like term in the SDCS of
+hydrogen was demonstrated to occur in CCC calculations, and was shown to be
+expected on theoretical grounds \cite{PhysRevLett.78.4721, PhysRevLett.83.1570}.
+Implementing an appropriate treatment for the resulting irregular behaviour of
+the SDCS was then demonstrated to yield calculations which were in remarkable
+agreement with those from experimental data as well as from other computational
+techniques \cite{PhysRevLett.89.273201}.
+
+The ansatz of Zatsarinny and Bartschat \cite{PhysRevLett.107.023203} was
+determined to be non-physical, and yet still capable of functioning as an
+effective interpolation scheme which circumvents the restriction to evaluating
+the ionisation amplitudes only at a countable number of outgoing projectile
+energies \cite{PhysRevA.90.022710}.
+
+Finally, the CCC approach to electron-impact collisions on helium, in the ground
+state $2{}^{1}\mathrm{S}$, was shown to be in agreement with experiment and
+other computational methods.
+What remains, for this project, is to investigate the applicability of the
+ansatz of Zatsarinny and Bartschat to electron-impact ionisation of helium, and
+to examine under what conditions the ansatz is most and least effective, in a
+similar manner as done by Bray \textit{et al.} \cite{PhysRevA.90.022710}.
+If the suitability of ansatz is established for single-ionisation without
+excitation, then it shall be examined further for the case of ionisation with
+excitation.
 
 \clearpage
 

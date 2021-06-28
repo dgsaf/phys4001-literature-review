@@ -2432,7 +2432,7 @@ presented for both the singlet and triplet cases in
 
 \begin{figure}[h]
   \centering
-  \includegraphics{S_sdcs.eps}
+  \resizebox{0.5\textwidth}{!}{\includegraphics{S_sdcs.eps}}
   \caption[e-H Singlet and Triplet SDCS with Ansatz]{
     Triplet and singlet single-differential cross sections (SDCS) for
     \SI{54.4}{\eV} electron-impact ionisation of hydrogen in S-wave model.
@@ -2464,6 +2464,8 @@ That the ansatz can be readily extended to more complex targets, eliminating the
 need for the interpolation over ionisation amplitudes while retaining an
 acceptable level of validity, is what motivates this project.
 
+\clearpage
+
 \subsection{Electron-Impact Helium Ionisation}
 \label{sec:e-he-ionisation}
 
@@ -2482,19 +2484,38 @@ complexity in the modelling of target structure, as target states are no longer
 described in terms of a single wavefunction, but rather a slater determinant of
 one-electron wavefunctions - significantly increasing the dimensionality of the
 calculation.
-Furthermore, the helium target states can have a total spin
-$s_{T} \in \lrset{0, 1}$, which couples with the spin of the projectile electron
-$s_{0} = \tfrac{1}{2}$, increasing the complexity of the spin algebra beyond
-that encountered for hydrogen.
+Additionally, whereas singly-ionised hydrogen is left with no target structure,
+singly-ionised helium retains an electron which may be left in an excited state
+or the ground state - referred to as ionisation with, or without, excitation
+respectively.
+Helium also exhibits the phenomena of possessing doubly-excited states which are
+autoionising, such as $2\mathrm{s}2\mathrm{s} {}^{1}\mathrm{S}$,
+$2\mathrm{s}3\mathrm{s} {}^{1}\mathrm{S}$, and
+$2\mathrm{s}3\mathrm{s} {}^{3}\mathrm{S}$ \cite{Plottke_2004}.
+A feature of these states is that they are discrete states yet with positive
+energy, and hence their calculation is dependent on an accurate description of
+the helium target continuum by the target pseudostates.
 
+Furthermore, the helium target states can have spin $S \in \lrset{0, 1}$,
+which couples with the spin of the projectile electron $s_{0} = \tfrac{1}{2}$,
+increasing the complexity of the spin algebra beyond that encountered for
+hydrogen.
 We have described the construction of Slater determinants and provided a brief
 overview of how their dimensionality may be handled in
 \autoref{sec:target-states}, however we shall not describe in explicit detail
 here how they are constructed in the CCC method.
+It suffices to say that the helium target structure is constructed using a
+partially frozen-core model, with one electron state being expanded in only a
+small number $n_{\rm{c}}$ of orbitals, while the other electron state is
+expanded in a larger number.
+This approach has been demonstrated to represent the target structure suitably
+well for scattering calculations, however the number of core orbitals required
+varies for different processes.
 For a more detailed treatment of the target structure, and the handling of spin
 in electron-impact helium collisions, we refer to the work of Fursa, Bray and
 Stelbovics \cite{PhysRevA.52.1279, PhysRevLett.76.2674, Fursa_1997,
   PhysRevA.63.040702}.
+
 Lastly, we note that the explicitly anti-symmetrised potential
 \autoref{eq:ccc-v}, for a helium target, is of the form
 \begin{equation}
@@ -2524,14 +2545,45 @@ Lastly, we note that the explicitly anti-symmetrised potential
   ,
 \end{equation}
 where it should be reiterated that this potential is modified form of the
-asymptotic potential, and does not include the potential terms of the helium
-target Hamiltonian.
+asymptotic potential, and does not include the potential terms of the target
+Hamiltonian.
 
 \subsubsection{Convergent Close-Coupling Calculations}
 \label{sec:e-he-ccc-calculations}
 
-\subsubsection{Exterior-Complex-Scaling Calculations}
-\label{sec:e-he-ecs-calculations}
+The CCC method, having been proven capable of modelling elastic scattering and
+discrete excitations \cite{PhysRevA.46.6995} as well as ionisation processes
+\cite{PhysRevLett.70.746, PhysRevLett.78.4721, PhysRevLett.83.1570} for
+electron scattering on hydrogen, was extended to helium by Fursa and Bray
+\cite{PhysRevA.52.1279, PhysRevLett.76.2674, Fursa_1997}.
+
+It was demonstrated by Fursa and Bray \cite{Fursa_1997} that the CCC method
+yielded accurate cross sections for elastic scattering and discrete excitations
+of the ground state of helium, $2{}^{1}\mathrm{S}$, with a frozen core model
+$n_{\rm{c}} = 1$.
+However, it was observed that the cross sections for the metastable state
+$2{}^{3}\mathrm{S}$ did not produce acceptable agreement with experimental
+values and other computational values found in the literature.
+A later investigation by Bray and Fursa \cite{PhysRevA.63.040702}, incorporating
+the insights gained from the analysis of electron-impact ionisation of hydrogen,
+suggested that the CCC method yielded accurate ionisation amplitudes and
+differential cross sections for electron-impact ionisation of helium without
+excitation.
+Further investigation by Plottke \textit{et al.} \cite{Plottke_2004} into
+electron-impact excitation of helium indicated that the convergence of the
+autoionising doubly-excited discrete states was more involved than for the
+singly-excited bound states.
+
+Notably, the Exterior Complex Scaling (ECS) method was applied by Bartlett and
+Stelbovics \cite{PhysRevA.81.022715, PhysRevA.81.022716}, in the context of the
+S-wave model, to yield comprehensive total and differential cross sections for
+double ionisation, ionisation with excitation, and double excitation for helium.
+Agreement between the ECS and CCC methods was found for the total ionisation
+cross section without excitation, but not with excitation.
+Furthermore, an acceptable level of agreement between the methods was not found
+for the double excitation cross sections.
+
+In summary, while the CCC method ...
 
 \section{Conclusion}
 \label{sec:conclusion}

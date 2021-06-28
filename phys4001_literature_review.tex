@@ -650,18 +650,18 @@ explicitly
 where $\hat{P}_{0, m}$ are the pairwise electron exchange operators defined in
 \autoref{eq:pairwise-exchange}, and where
 $\ket*{\psi^{\lr{+}}} \in \mathcal{H}_{T} \otimes \mathcal{H}$ is the
-un-symmetrised total wavefunction.
+unsymmetrised total wavefunction.
 As the target states are already anti-symmetric by construction, the
 anti-symmetriser has assumed a simpler form - requiring only permutations
-of the un-symmetrised projectile state with the spin-orbital states of the
+of the unsymmetrised projectile state with the spin-orbital states of the
 target electrons.
 Note that we have omitted the $\lr{1 + n_{\mathrm{e}}}!$ term in $\hat{A}$,
 since it is a scalar term which can be normalised away when required.
 
-To construct the un-symmetrised total wavefunction $\ket*{\psi^{\lr{+}}}$ we
+To construct the unsymmetrised total wavefunction $\ket*{\psi^{\lr{+}}}$ we
 perform a multichannel expansion, projecting it onto the target psuedostates,
 \begin{equation}
-  \label{eq:total-wavefunction-un-symmetrised-n}
+  \label{eq:total-wavefunction-unsymmetrised-n}
   \ket*{\psi^{\lr{N, +}}}
   =
   \hat{I}_{T}^{\lr{N}}
@@ -680,7 +680,7 @@ where $\ket*{F_{n}^{\lr{N}}} = \bra*{\Phi_{n}^{\lr{N}}}\ket*{\psi^{\lr{+}}}$ are
 the multichannel weight functions, and note that as a result of
 \autoref{eq:target-projection-convergence}, that
 \begin{equation}
-  \label{eq:total-wavefunction-un-symmetrised-convergence}
+  \label{eq:total-wavefunction-unsymmetrised-convergence}
   \ket*{\psi^{\lr{+}}}
   =
   \lim_{N \to \infty}
@@ -692,7 +692,7 @@ the multichannel weight functions, and note that as a result of
   .
 \end{equation}
 Similarly, the total wavefunction constructed from the projection of the
-un-symmetrised total wavefunction onto the target pseudostates is written in the
+unsymmetrised total wavefunction onto the target pseudostates is written in the
 form
 \begin{equation}
   \label{eq:total-wavefunction-antisymmetrisation-n}
@@ -721,7 +721,7 @@ and we note that as a result of \autoref{eq:target-projection-convergence}, that
   .
 \end{equation}
 
-However, after projecting the un-symmetrised total wavefunction with the
+However, after projecting the unsymmetrised total wavefunction with the
 projection operator for the target pseudostates, the multichannel expansion is
 not uniquely defined, since for any state
 $\ket*{\omega^{\lr{N}}} \in \ker\lr{\hat{A}\hat{I}_{T}^{\lr{N}}}$ and scalar
@@ -1507,7 +1507,7 @@ for which we can see that
   ,
 \end{equation*}
 which is to say that the Lippmann-Schwinger equation \autoref{eq:ls-t} can be
-written in terms of the un-symmetrised total wavefunction
+written in terms of the unsymmetrised total wavefunction
 $\ket*{\psi_{\alpha}^{\lr{+}}}$, rather than the anti-symmetric total
 wavefunction $\ket*{\Psi_{\alpha}^{\lr{+}}}$.
 Specifically, this allows us to write the $\hat{T}$ operator in the form
@@ -1985,10 +1985,17 @@ and which satisfies
   }
   .
 \end{equation}
-This is the approach taken in the CCC method to calculate the ionisation
-scattering amplitudes which are suitable for comparison with experimental data,
-and we note that it is constrained to evaluating these amplitudes only at
-certain energies permitted by the target pseudoenergies.
+We note that in the CCC method, we refer to $f_{\alpha, i}^{\lr{N}}$ as the
+ionisation amplitudes (or as the unsymmetrised ionisation amplitudes when
+specificity is required), and we refer to $F_{\alpha, i}^{\lr{N}}$ as the
+anti-symmetrised ionisation amplitudes.
+We note that while the anti-symmetrised ionisation amplitudes are used for
+comparison with experimental results, we make reference to the unsymmetrised
+ionisation amplitudes in the discussion of ionisation in the CCC method in
+\autoref{sec:survey-literature}.
+Lastly, we note that we are constrained to evaluating these amplitudes only for
+a countable number of outgoing projectile energies, bound by the constraint
+defined in \autoref{eq:asymptotic-ionisation-energy-constraint}.
 Evaluating the ionisation scattering amplitudes at any other energy requires
 an interpolation between these energies.
 
@@ -2193,7 +2200,7 @@ the form
 \end{equation}
 and, as noted in \cite[5]{BRAY19951}, can be rewritten to manifest the
 constraint on the multichannel expansion \autoref{eq:multichannel-constraint},
-guaranteeing a unique un-symmetrised total wavefunction
+guaranteeing a unique unsymmetrised total wavefunction
 $\ket*{\psi^{\lr{N, S, +}}}$, by re-writing $\hat{V}$ in the form
 \begin{equation}
   \label{eq:ccc-v-h-constraint}
@@ -2236,19 +2243,17 @@ it was even contemplated if convergence could be achieved for a finite basis
 size.
 The behaviour of the SDCS, \autoref{eq:single-differential-cross-section}, was
 representative of the problems faced by all differential cross sections at the
-time, and is shown in \autoref{fig:physrevlett-78-4721-sdcs}.
+time, and is shown in \autoref{fig:physreva-90-022710-sdcs-s-wave}.
 
 \begin{figure}[h]
   \centering
 
   \caption[e-H Singlet and Triplet SDCS]{
     Triplet and singlet single-differential cross sections (SDCS), for
-    electron-impact ionisation of hydrogen in S-wave model.
-    The singlet SDCS data points have been connected for clarity, and here the
-    step function was presented as an educated guess.
-    Original figure from \cite[FIG 2]{PhysRevLett.78.4721}.
+    \SI{54.4}{\eV} electron-impact ionisation of hydrogen in S-wave model.
+    Original figure from \cite[FIG 1]{PhysRevA.90.022710}.
   }
-  \label{fig:physrevlett-78-4721-sdcs}
+  \label{fig:physreva-90-022710-sdcs-s-wave}
 \end{figure}
 
 For the triplet case, $S = 1$, the SDCS was seen to tend to zero at the
@@ -2305,15 +2310,16 @@ With the underlying cause of the irregular behaviour of the singlet SDCS now
 understood, the step-like behaviour across all the differential cross sections
 could be accounted and corrected for, with confidence in the validity of the
 treatment.
-It was shown by Bray \cite{PhysRevLett.89.273201} that by adjusting the
-differential cross sections to account for the behaviour of the Fourier-like
-expansions of step-like terms, that the CCC method yields ionisation amplitudes
-and differential cross sections which achieve a great level of agreement with
-experimental values, as well with calculations obtained using ECS methods.
+This was accomplished by Bray \cite{PhysRevLett.89.273201}, who demonstrated
+that by adjusting the differential cross sections to account for the behaviour
+of the Fourier-like expansions of step-like terms, that the CCC method yields
+ionisation amplitudes and differential cross sections which achieve a great
+level of agreement with experimental values, as well with calculations obtained
+using ECS methods.
 It was also demonstrated that with this adjustment, accurate calculations could
 be performed using a relatively small basis size.
 This was demonstrated not only for electron-impact ionisation of hydrogen, but
-also of helium (within the frozen core model), as well as for double
+also for helium (within the frozen core model), as well as for double
 photoionisation of helium.
 
 The question of correctness in the treatment of ionisation processes in the
@@ -2321,7 +2327,7 @@ CCC method was arguably resolved, having been demonstrated numerically and
 justified on theoretical grounds.
 Despite this, there remains the limitation of the ionisation amplitudes only
 being calculable for the countable number of outgoing projectile electron
-energies which satisfy \autoref{eq:asymptotic-ionisation-energy-constraint}.
+energies that satisfy \autoref{eq:asymptotic-ionisation-energy-constraint}.
 
 \subsubsection{Ansatz of Zatsarinny and Bartschat}
 \label{sec:e-h-ecs-calculations}

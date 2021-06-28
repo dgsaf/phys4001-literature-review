@@ -1,0 +1,42 @@
+set term pslatex  12; set out 'SDCS.tex'
+set size 1.0 
+set ylabel ' ' 
+set xlabel ' ' 
+set format x ' '
+set xr [0:2]
+set mxtics 10
+set yr [0:0.008]
+set ytics 0,0.002,0.008
+set pointsize 0.6
+set mytics 4
+set multiplot
+set format y "%5.3f"
+set key title 'triplet'
+set origin 0.1,0.8
+p 'S.10' u 1:($3/pi/sqrt($1)/2) t '{\scriptsize CCC(10)\kern-1.2em}' w p 9,\
+  'S.20' u 1:($3/pi/sqrt($1)/2) t '{\scriptsize CCC(20)\kern-1.2em}' w p 11,\
+  'S.30' u 1:($3/pi/sqrt($1)/2) t '{\scriptsize CCC(30)\kern-1.2em}' w p 13,\
+  'S.40' u 1:($3/pi/sqrt($1)/2) t '{\scriptsize CCC(40)\kern-1.2em}' w p 3 5,\
+  'S.50' u 1:($3/pi/sqrt($1)/2) t '{\scriptsize CCC(50)\kern-1.2em}' w p 7 7
+pause -1 "press return to continue"
+set xlabel 'secondary electron energy $e$ (Ry)' 0,-0.5
+set ylabel 'cross section ($\pi a_0^2$/Ry)' 0.5,15
+set yr [0.0:0.029]
+set ytics
+set format x 
+set key title 'singlet'
+set mytics 5
+#set nokey
+#set multiplot
+f(x) = (x < 1) ? 0.01*(x-1)**2 + 0.0167 : 0
+set samples 2000
+set origin 0.1,0.0
+p 'S.10' u 1:($2/pi/sqrt($1)/2) t '{\scriptsize CCC(10)\kern-0.2em}' w lp 0 9,\
+'S.20' u 1:($2/pi/sqrt($1)/2) t '{\scriptsize CCC(20)\kern-0.2em}' w lp 0 11,\
+'S.30' u 1:($2/pi/sqrt($1)/2) t '{\scriptsize CCC(30)\kern-0.2em}' w lp 0 13,\
+'S.40' u 1:($2/pi/sqrt($1)/2) t '{\scriptsize CCC(40)\kern-0.2em}' w lp 0 5,\
+'S.50' u 1:($2/pi/sqrt($1)/2) t '{\scriptsize CCC(50)\kern-0.2em}' w lp 0 7,\
+f(x) t '{\scriptsize CCC($\infty$)\kern-0.2em}' w l 1
+set nomultiplot
+
+pause -1 "press return to continue"

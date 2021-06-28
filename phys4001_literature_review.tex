@@ -1223,7 +1223,7 @@ In the Convergent Close-Coupling formalism, the Lippmann-Schwinger equation in
 terms of the $\hat{T}$ operator, \autoref{eq:ls-t}, is solved in momentum space.
 We preface this discussion with a minor note, that the notation for the
 asymptotic Hamiltonian $\hat{H}_{\rm{A}}$ is to be distinguished from the
-notation for the anti-symmetriser $\hat{A}$.
+notation for the anti-symmetriser $\hat{A}$, and is unrelated.
 
 We split the Hamiltonian, from \autoref{eq:total-hamiltonian}, into an
 asymptotic Hamiltonian and a potential in the form
@@ -1781,7 +1781,8 @@ with elastic scattering occuring in the case where $n_{f} = n_{i}$,
   {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
   .
 \end{equation}
-However, the numerically calculated scattering amplitudes for ionisations
+However, the numerically calculated scattering amplitudes for ionisations,
+hereby referred to as ionisation amplitudes,
 require a more carefully considered treatment - which we present in a form
 similar to that described in \cite{PhysRevLett.89.273201, PhysRevA.90.022710}.
 We shall restrict our attention to the case of single ionisation, but leave open
@@ -1833,8 +1834,8 @@ the Laguerre basis, \autoref{eq:laguerre-basis}.
 However it can be shown, as discussed in \cite{BRAY19951}, that while the
 projection of a continuum wave onto a $N$-dimensional Laguerre basis is only
 conditionally convergent as $N$ increases, it is numerically stable.
-Hence, for ionisations, the numerically calculated scattering amplitude can be
-written in the form
+Hence, the numerically calculated ionisation amplitudes can be written in the
+form
 \begin{alignat}{2}
   \label{eq:scattering-amplitude-ionisation}
   &
@@ -1883,8 +1884,8 @@ written in the form
 \end{alignat}
 However, this expression is problematic as it involves a summation over
 not necessarily on-shell terms $\bra*{\vb{k}_{\alpha}\Phi_{n}^{\lr{N}}}$.
-If we restrict our attention to only evaluating the ionisation scattering
-amplitudes $f_{\alpha, i}^{\lr{N}}$ for ionised asymptotic states
+If we restrict our attention to only evaluating the ionisation amplitudes
+$f_{\alpha, i}^{\lr{N}}$ for ionised asymptotic states
 $\ket*{\Phi_{n_{\alpha}}^{+} \vb{q}_{\alpha} \vb{k}_{\alpha}}$ for which the
 ionised target energy satisfies
 \begin{equation}
@@ -1914,7 +1915,7 @@ we must have that
   {\Phi_{n}^{\lr{N}}}
   ,
 \end{equation}
-whence the ionisation scattering amplitudes can be evaluated as
+whence the ionisation amplitudes can be evaluated as
 \begin{equation}
   \label{eq:scattering-amplitude-ionisation-evaluated}
   f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
@@ -1958,7 +1959,7 @@ where $\theta_{\alpha} \in \lrset{0, \pi}$ is the exchange phase, corresponding
 to the exchange of the projectile and ionised electron states.
 Whence, as described in \cite{PhysRevLett.78.4721, PhysRevLett.83.1570,
   PhysRevLett.89.273201}, we perform an ad-hoc anti-symmetrisation of the
-scattering amplitude to account for this, resulting in a corrected ionisation
+ionisation amplitude to account for this, resulting in a corrected ionisation
 amplitude $F_{n_{\alpha}, n_{i}}^{\lr{N}}$ of the form
 \begin{equation}
   \label{eq:scattering-amplitude-ionisation-anti-symmetrised}
@@ -1979,7 +1980,7 @@ amplitude $F_{n_{\alpha}, n_{i}}^{\lr{N}}$ of the form
   }
   ,
 \end{equation}
-and which satisfies
+which satisfies
 \begin{equation}
   \label{eq:scattering-amplitude-ionisation-anti-symmetrised-constraint}
   F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
@@ -1995,8 +1996,8 @@ and which satisfies
   }
   .
 \end{equation}
-We note that in the CCC method, we refer to $f_{\alpha, i}^{\lr{N}}$ as the
-ionisation amplitudes (or as the unsymmetrised ionisation amplitudes when
+We note that in the CCC method, we refer to $f_{\alpha, i}^{\lr{N}}$ simply as
+the ionisation amplitudes (or as the unsymmetrised ionisation amplitudes when
 specificity is required), and we refer to $F_{\alpha, i}^{\lr{N}}$ as the
 anti-symmetrised ionisation amplitudes.
 We note that while the anti-symmetrised ionisation amplitudes are used for
@@ -2145,8 +2146,8 @@ It is a well studied problem, being the natural test case for any model or
 computational method investigating electron scattering on atoms, and as a result
 many of the scattering phenomena that emerge, or are expected to emerge, are
 well known and understood.
-As a consequence, there exists a mature body of experimental and computational
-data with which to compare.
+As a consequence, there exists a mature body of computational data with which to
+compare.
 Hence, we will first examine the ionisation amplitudes and differential cross
 sections in the context of a hydrogen target, before extending to helium
 targets - noting that many aspects of electron-impact ionisation of helium can
@@ -2243,7 +2244,7 @@ $\theta$, $\hat{T}^{\lr{S}}$ is not.
 Furthermore, the anti-symmetrised ionisation amplitudes are of the form
 \begin{equation}
   \label{eq:ionisation-amplitude-h}
-  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  F_{n_{\alpha}, n_{i}}^{\lr{N, S}}\lr
   {
     \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
   }

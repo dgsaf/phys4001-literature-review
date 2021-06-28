@@ -2229,6 +2229,26 @@ $\ket*{\psi^{\lr{N, S, +}}}$, by re-writing $\hat{V}$ in the form
 for arbitrary $\theta \in \real$ such that $\theta \neq 0$.
 It can be shown that while $\hat{V}^{\lr{S}}\lr{\theta}$ is dependentent on
 $\theta$, $\hat{T}^{\lr{S}}$ is not.
+Furthermore, the anti-symmetrised ionisation amplitudes are of the form
+\begin{equation}
+  \label{eq:ionisation-amplitude-h}
+  F_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  =
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  -
+  \lr{-1}^{S + 1}
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{q}_{\alpha}, \vb{k}_{\alpha}, \vb{k}_{i}
+  }
+  .
+\end{equation}
 
 \subsubsection{Convergent Close-Coupling Calculations}
 \label{sec:e-h-ccc-calculations}
@@ -2431,6 +2451,17 @@ the step height, and thus the SDCS to a quarter of the step height, at the point
 of equal-energy-sharing.
 It is therefore notable that the SDCS resulting from the ansatz did not
 demonstrate any convergence to the expected quarter-step-height value.
+This characteristic (or lack thereof) of the ansatz was seen to suggest that it
+does not have a justifiable physical origin, despite of its otherwise acceptable
+level of agreement.
+
+Overall, the ansatz was suggested to constitute a useful interpolation scheme
+which could be used with an expectation of accuracy, provided that the target
+pseudoenergies formed a sufficiently dense discretisation of the outgoing energy
+continuum.
+That the ansatz can be readily extended to more complex targets, eliminating the
+need for the interpolation over ionisation amplitudes while retaining an
+acceptable level of validity, is what motivates this project.
 
 \subsection{Electron-Impact Helium Ionisation}
 \label{sec:e-he-ionisation}

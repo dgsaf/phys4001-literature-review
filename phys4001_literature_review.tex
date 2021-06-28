@@ -139,8 +139,7 @@ The topic of this project will be the application of the ansatz of Zatsarinny
 and Bartschat to the electron-impact ionisation of helium, with and without
 excitation, within the CCC method and in the context of the S-wave model.
 We shall explore the suitability of this ansatz in evaluating the ionisation
-amplitudes for this scattering process, including if and where any limitations
-in its use may exist.
+amplitudes, and determine if and where any limitations in its use may exist.
 
 \section{Theory}
 \label{sec:theory}
@@ -2247,13 +2246,13 @@ time, and is shown in \autoref{fig:physrevlett-78-4721-sdcs}.
 
 \begin{figure}[h]
   \centering
-  \include{SDCS}
+  % \include{figures/physrevlett-78-4721-sdcs/SDCS}
   \caption[e-H Singlet and Triplet SDCS]{
     Triplet and singlet single-differential cross sections (SDCS) for
     \SI{2}{\si{Ry}} electron-impact ionisation of hydrogen in S-wave model.
     The data points, for each CCC calculation, have been connected for visual
     clarity.
-    Original figure from \cite[Figure 2]{PhysRevLett.78.4721}.
+    Original figure from \cite[FIG 2]{PhysRevLett.78.4721}.
   }
   \label{fig:physrevlett-78-4721-sdcs}
 \end{figure}
@@ -2331,21 +2330,107 @@ The question of correctness in the treatment of ionisation processes in the
 CCC method was arguably resolved, having been demonstrated numerically and
 justified on theoretical grounds.
 Despite this, there remains the limitation of the ionisation amplitudes only
-being calculable for the countable number of outgoing projectile electron
-energies that satisfy \autoref{eq:asymptotic-ionisation-energy-constraint}.
+being calculable, in the manner of
+\autoref{eq:scattering-amplitude-ionisation-evaluated}, for the countable number
+of outgoing projectile electron energies that satisfy
+\autoref{eq:asymptotic-ionisation-energy-constraint}.
+This is undesirable, as the calculation of the differential cross sections
+requires integrating the ionisation amplitudes over continuous sets of values.
 
+To overcome this dilemma, the standard technique used in the CCC method is to
+calculate the ionisation amplitudes at those points which satisfy
+\autoref{eq:asymptotic-ionisation-energy-constraint}, and then interpolate
+between these points, thus allowing the differential cross sections to be
+calculated.
+However, this procedure is sensitive to the distribution of target
+pseudoenergies and may result in interpolating over sparse regions of the
+outgoing projectile energy.
 
+In light of this, an ansatz has been suggested by Zatsarinny and Bartschat
+\cite{PhysRevLett.107.023203} which allows for an alternatively simpler
+calculation of the ionisation amplitudes.
+Starting with \autoref{eq:scattering-amplitude-ionisation}, recall that the
+numerically calculated (unsymmetrised) ionisation amplitudes are given by the
+expression
+\begin{equation*}
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  =
+  \sum_{n = 1}^{N_{T}}
+  \braket*
+  {\vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
+  {\Phi_{n}^{\lr{N}}}
+  \mel*
+  {\vb{k}_{\alpha} \Phi_{n}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  ,
+\end{equation*}
+with the presence of the off-shell term $\bra*{\vb{k}_{\alpha}
+  \Phi_{n}^{\lr{N}}}$ prohibiting the evaluation of this sum except where
+$q_{\alpha}$ satisfies \autoref{eq:asymptotic-ionisation-energy-constraint}.
+The suggested ansatz of Zatsarinny and Bartschat, is to instead replace this
+off-shell term with $\bra*{\vb{k}_{n} \Phi_{n}^{\lr{N}}}$ where $k_{n}$ are the
+on-shell projectile momenta satisfying \autoref{eq:ccc-on-shell-momentum},
+whence the ionisation amplitudes is instead of the form
+\begin{equation}
+  \label{eq:ionisation-amplitude-ansatz}
+  f_{n_{\alpha}, n_{i}}^{\lr{N}}\lr
+  {
+    \vb{k}_{\alpha}, \vb{q}_{\alpha}, \vb{k}_{i}
+  }
+  =
+  \sum_{n = 1}^{N_{T}}
+  \braket*
+  {\vb{q}_{\alpha} \Phi_{n_{\alpha}}^{+}}
+  {\Phi_{n}^{\lr{N}}}
+  \mel*
+  {\vb{k}_{n} \Phi_{n}^{\lr{N}}}
+  {\hat{T}}
+  {\Phi_{n_{i}}^{\lr{N}} \vb{k}_{i}}
+  ,
+\end{equation}
+where the sum can now be evaluated without further restriction.
+The benefit of this ansatz is that it is not constrained to evaluating the
+ionisation amplitudes for only certain values of $q_{\alpha}$ and can be easily
+calculated using the on-shell matrix elements of the $\hat{T}$ operator,
+already determined in the CCC calculation.
+
+The correctness and the utility of this ansatz was investigated by Bray
+\textit{et al.} \cite{PhysRevA.90.022710} in the context of electron-impact
+ionisation of hydrogen, within the S-wave model and also with a more general
+treatment of angular momentum.
+By comparing the SDCS (and their $l$ components) resulting from the extant
+interpolation scheme, with the SDCS resulting from the ansatz, it was shown
+that while not in perfect agreement, the ansatz did demonstrate an effective
+level of agreement.
+In the context of the S-wave model, the SDCS resulting from the ansatz is
+presented for both the singlet and triplet cases in
+\autoref{fig:physreva-90-022710-sdcs-s-wave}.
 
 \begin{figure}[h]
   \centering
-  % \includegraphics{}
-  \caption[e-H Singlet and Triplet SDCS]{
+  \caption[e-H Singlet and Triplet SDCS with Ansatz]{
     Triplet and singlet single-differential cross sections (SDCS) for
     \SI{54.4}{\eV} electron-impact ionisation of hydrogen in S-wave model.
     Original figure from \cite[FIG 1]{PhysRevA.90.022710}.
   }
   \label{fig:physreva-90-022710-sdcs-s-wave}
 \end{figure}
+
+The behaviour of the ansatz in the vicinity of the equal-energy-sharing point
+for the singlet case raised suspicions on the correctness of the ansatz.
+As Stelbovics demonstrated \cite{PhysRevLett.83.1570} for the singlet case in
+the S-wave model, the ionisation amplitudes exhibit a step-like behaviour about
+the equal-energy-sharing point, which results in tumultuous behaviour in the CCC
+calculation as a consequence of the discontinuity.
+Despite this, the ionisation amplitudes are still expected to converge to half
+the step height, and thus the SDCS to a quarter of the step height, at the point
+of equal-energy-sharing.
+It is therefore notable that the SDCS resulting from the ansatz did not
+demonstrate any convergence to the expected quarter-step-height value.
 
 \subsection{Electron-Impact Helium Ionisation}
 \label{sec:e-he-ionisation}

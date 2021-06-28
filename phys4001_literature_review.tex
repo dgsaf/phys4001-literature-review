@@ -2466,14 +2466,65 @@ acceptable level of validity, is what motivates this project.
 \subsection{Electron-Impact Helium Ionisation}
 \label{sec:e-he-ionisation}
 
+Having examined the CCC approach to electron-impact ionisation of hydrogen, the
+simplest atomic target, we now consider its application to a helium target; this
+forms the motivation for this project, as we consider the electron-impact
+ionisation of helium, with and without excitation.
+
 \subsubsection{Additional Considerations for a Helium Target}
 \label{sec:e-he-target}
 
-\paragraph{Frozen-Core Model}
-\label{sec:e-he-frozen-core}
+Much of the CCC method, derived in \autoref{sec:ccc-method}, is naturally
+extended from a hydrogen target to a helium target.
+However, the presence of an additional electron does introduce additional
+complexity in the modelling of target structure, as target states are no longer
+described in terms of a single wavefunction, but rather a slater determinant of
+one-electron wavefunctions - significantly increasing the dimensionality of the
+calculation.
+Furthermore, the helium target states can have a total spin
+$s_{T} \in \lrset{0, 1}$, which couples with the spin of the projectile electron
+$s_{0} = \tfrac{1}{2}$, increasing the complexity of the spin algebra beyond
+that encountered for hydrogen.
 
-\paragraph{Autoionising States}
-\label{sec:e-he-autoionising}
+We have described the construction of Slater determinants and provided a brief
+overview of how their dimensionality may be handled in
+\autoref{sec:target-states}, however we shall not describe in explicit detail
+here how they are constructed in the CCC method.
+For a more detailed treatment of the target structure, and the handling of spin
+in electron-impact helium collisions, we refer to the work of Fursa, Bray and
+Stelbovics \cite{PhysRevA.52.1279, PhysRevLett.76.2674, Fursa_1997,
+  PhysRevA.63.040702}.
+Lastly, we note that the explicitly anti-symmetrised potential
+\autoref{eq:ccc-v}, for a helium target, is of the form
+\begin{equation}
+  \label{eq:ccc-v-he}
+  \hat{V}
+  =
+  \hat{V}_{0}
+  +
+  \hat{V}_{0, 1}
+  +
+  \hat{V}_{0, 2}
+  -
+  \hat{U}_{0}
+  +
+  \lrsq
+  {
+    E
+    -
+    \hat{H}
+  }
+  \lrsq
+  {
+    \hat{P}_{0, 1}
+    +
+    \hat{P}_{0, 2}
+  }
+  ,
+\end{equation}
+where it should be reiterated that this potential is modified form of the
+asymptotic potential, and does not include the potential terms of the helium
+target Hamiltonian.
 
 \subsubsection{Convergent Close-Coupling Calculations}
 \label{sec:e-he-ccc-calculations}
